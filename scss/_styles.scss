@@ -37,12 +37,23 @@
   }
 }
 
+.mainContent > div:nth-child(even) {
+  background-color: $secondaryBGColor;
+}
+.mainContent > div {
+  display: grid;
+  padding: 100px 220px 100px 200px;
+  grid-template-columns: 1fr;
+  align-items: center;
+}
+
 .article {
   background-color: $secondaryBGColor;
   display: grid;
   grid-template-columns: minmax(550px,1fr) minmax(300px,1fr) ;
   grid-auto-rows: minmax(650px,auto);
   grid-gap: 20px;
+  z-index: 0;
 
   &__info {
     align-self: center;
@@ -50,6 +61,7 @@
     &-title{
       font-size: 64px;
       font-weight: bold;
+      line-height: 75px;
   
     }
   
@@ -64,13 +76,148 @@
       line-height: 48px;   
     }
 
-  }
-
-  
+  } 
 
   &__photo {
     background: url(../images/Psyhologist-photo.png) no-repeat center top;
   }
 }
+
+.principles {
+  
+
+  .firstTree {
+    position: absolute;
+    right: -10px;
+    transform: translateY(-35%);
+    z-index: 1;
+  }
+
+  &__list {
+    display: grid;
+    margin-top: 50px;
+    grid-template-columns: repeat(2,500px) ;
+    grid-gap: 100px;
+    
+    &-block {
+      z-index: 2;
+      span {
+        color: $elementsColor;
+        display: inline-block;
+        font-size: 70px;
+        height: 115px;
+        width: 50px;
+        vertical-align: middle;        
+      }
+    }
+
+  }
+
+  &__block {
+
+    &-title {
+      font-size: 32px;
+      line-height: 100px;
+      font-weight: bold;      
+    }
+
+    &-text {
+      margin-left: 50px;
+    }
+
+  }
+
+}
+
+
+.title-for-block {
+  font-size: 52px;
+  line-height: 100px;
+  text-indent: 50px;
+}
+
+.questions {
+  height: 500px;
+}
+
+.secondTree {
+  position: absolute;
+  left: -500px;
+  transform: translateY(-100%);
+  z-index: 1;
+}
+
+.about {
+  min-height: 534px;
+  background: url(../images/about-me.png) no-repeat top;
+  background-position-x: right;
+
+  &__block {
+    max-width: 600px;
+    margin-left: 50px;
+    &-title {
+      font-weight: bold;
+      line-height: 100px;
+      font-size: 32px;
+    }
+  }
+
+}
+
+.thirdTree {
+  position: absolute;
+  left: 0;
+  transform: translateY(100%) rotate(15deg);
+  z-index: 1;
+}
+
+.mainContent > div:last-child {
+  padding: 100px;
+}
+
+
+.recording{ 
+
+  &__block {
+    padding: 50px;
+    padding-left: 70px;
+    border: 10px solid $elementsColor;
+    border-radius: 20px;    
+    display: grid;
+    grid-template-columns: 2fr 450px;
+    align-items: center;
+    grid-gap: 20px;
+
+    &-title {
+      margin-bottom: 50px;
+      font-size: 36px;
+      font-weight: bold;      
+    }
+
+    &-text {
+      width: 75%;
+      font-size: 32px;
+    }
+    &-button {
+      padding: 25px;
+      font-size: 32px;
+      border-radius: 10px;
+      color: #fff;
+      font-weight: bold;
+      background-color: $elementsColor;
+      border: none;
+      align-self: flex-end;
+      &:focus {
+        outline: none;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    
+  }
+
+}
+
 
 
