@@ -1,0 +1,35 @@
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
+  display: block;
+}
+body {
+  background: $primaryBGColor;
+  font: 26px/36px $primaryFont;
+  width: 100%;
+  color: $baseFontColor;
+}
+.wrapper {
+  width: 100%;
+  margin: 0 auto;
+}
+
+
+/* Header
+-----------------------------------------------------------------------------*/
+/*.header {
+   width: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}*/
+
+
+/* Navigation
+-----------------------------------------------------------------------------*/
+nav {  
+  position: absolute;
+  right: 0;
+  width: 50%;
+}
+
+
