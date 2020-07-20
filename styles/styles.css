@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* Eric Meyer's CSS Reset */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -480,8 +481,7 @@ nav {
 .mainContent > div {
   display: grid;
   padding: 100px 220px 100px 200px;
-  grid-template-columns: 1fr;
-  align-items: center;
+  grid-template-columns: repeat(auto-fix, 1fr);
 }
 
 .article {
@@ -522,33 +522,39 @@ nav {
 .principles__list {
   display: grid;
   margin-top: 50px;
-  grid-template-columns: repeat(2, 500px);
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 100px;
 }
 .principles__list-block {
   z-index: 2;
+  /* span {
+    color: $elementsColor;
+    display: inline-block;
+    font-size: 70px;
+    height: 115px;
+    width: 50px;
+    vertical-align: middle;        
+  } */
 }
-.principles__list-block span {
-  color: #8cbd10;
+.principles__list-block::before {
+  content: "";
+  background-color: #8cbd10;
+  position: absolute;
+  line-height: 100px;
+  transform: translate(-50px, calc(100% + 20px));
   display: inline-block;
-  font-size: 70px;
-  height: 115px;
-  width: 50px;
-  vertical-align: middle;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
 }
 .principles__block-title {
   font-size: 32px;
   line-height: 100px;
   font-weight: bold;
 }
-.principles__block-text {
-  margin-left: 50px;
-}
-
 .title-for-block {
   font-size: 52px;
   line-height: 100px;
-  text-indent: 50px;
 }
 
 .questions {
@@ -558,7 +564,7 @@ nav {
 .secondTree {
   position: absolute;
   left: -500px;
-  transform: translateY(-100%);
+  transform: translateY(-90%);
   z-index: 1;
 }
 
@@ -569,7 +575,6 @@ nav {
 }
 .about__block {
   max-width: 600px;
-  margin-left: 50px;
 }
 .about__block-title {
   font-weight: bold;
@@ -590,11 +595,11 @@ nav {
 
 .recording__block {
   padding: 50px;
-  padding-left: 70px;
+  padding-left: 100px;
   border: 10px solid #8cbd10;
   border-radius: 20px;
   display: grid;
-  grid-template-columns: 2fr 450px;
+  grid-template-columns: 2fr 400px;
   align-items: center;
   grid-gap: 20px;
 }
@@ -604,7 +609,6 @@ nav {
   font-weight: bold;
 }
 .recording__block-text {
-  width: 75%;
   font-size: 32px;
 }
 .recording__block-button {
@@ -622,6 +626,74 @@ nav {
 }
 .recording__block-button:hover {
   cursor: pointer;
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: 1.5fr repeat(3, 1fr) 1.5fr;
+  justify-items: center;
+  align-items: center;
+  margin: 0px 50px;
+  margin-bottom: 150px;
+  grid-gap: 50px;
+}
+.footer__block-subtitie {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.4);
+}
+.footer__block-text {
+  font-size: 18px;
+}
+.footer__block-text--name {
+  font-weight: bold;
+  font-size: 22px;
+}
+.footer__block:first-child {
+  justify-self: start;
+}
+.footer__block:last-child {
+  justify-self: end;
+}
+.footer__social-list {
+  display: flex;
+  justify-content: space-between;
+}
+.footer__social-item {
+  font-family: "Font Awesome 5 Brands";
+  width: 20px;
+  font-size: 0px;
+}
+.footer__social-item a {
+  color: rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+}
+.footer__social-item--facebook::before {
+  content: "";
+  font-size: 20px;
+}
+.footer__social-item--facebook:hover, .footer__social-item--facebook:active {
+  color: #0c88ef;
+}
+.footer__social-item--twitter::before {
+  content: "";
+  font-size: 20px;
+}
+.footer__social-item--twitter:hover, .footer__social-item--twitter:active {
+  color: #1da1f2;
+}
+.footer__social-item--youtube::before {
+  content: "";
+  font-size: 20px;
+}
+.footer__social-item--youtube:hover, .footer__social-item--youtube:active {
+  color: #ff0000;
+}
+.footer__social-item--instagram::before {
+  content: "";
+  font-size: 20px;
+}
+.footer__social-item--instagram:hover, .footer__social-item--instagram:active {
+  color: #cc2366;
 }
 
 /*# sourceMappingURL=styles.css.map */

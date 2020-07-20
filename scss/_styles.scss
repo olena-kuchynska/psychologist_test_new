@@ -37,15 +37,19 @@
   }
 }
 
+//Main content
+//-----------------------------------------------------------------------------
+
 .mainContent > div:nth-child(even) {
   background-color: $secondaryBGColor;
 }
 .mainContent > div {
   display: grid;
   padding: 100px 220px 100px 200px;
-  grid-template-columns: 1fr;
-  align-items: center;
+  grid-template-columns: repeat(auto-fix, 1fr);
 }
+//Header
+//-----------------------------------------------------------------------------
 
 .article {
   background-color: $secondaryBGColor;
@@ -83,6 +87,9 @@
   }
 }
 
+//Main content
+//-----------------------------------------------------------------------------
+
 .principles {
   
 
@@ -96,18 +103,29 @@
   &__list {
     display: grid;
     margin-top: 50px;
-    grid-template-columns: repeat(2,500px) ;
+    grid-template-columns: repeat(2,1fr);
     grid-gap: 100px;
     
     &-block {
       z-index: 2;
-      span {
+      /* span {
         color: $elementsColor;
         display: inline-block;
         font-size: 70px;
         height: 115px;
         width: 50px;
         vertical-align: middle;        
+      } */
+      &::before {
+        content: '';
+        background-color: $elementsColor;
+        position: absolute;
+        line-height: 100px;
+        transform: translate(-50px,calc(100% + 20px));
+        display: inline-block;
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
       }
     }
 
@@ -122,18 +140,15 @@
     }
 
     &-text {
-      margin-left: 50px;
     }
 
   }
 
 }
 
-
 .title-for-block {
   font-size: 52px;
   line-height: 100px;
-  text-indent: 50px;
 }
 
 .questions {
@@ -143,7 +158,7 @@
 .secondTree {
   position: absolute;
   left: -500px;
-  transform: translateY(-100%);
+  transform: translateY(-90%);
   z-index: 1;
 }
 
@@ -154,7 +169,6 @@
 
   &__block {
     max-width: 600px;
-    margin-left: 50px;
     &-title {
       font-weight: bold;
       line-height: 100px;
@@ -180,11 +194,11 @@
 
   &__block {
     padding: 50px;
-    padding-left: 70px;
+    padding-left: 100px;
     border: 10px solid $elementsColor;
     border-radius: 20px;    
     display: grid;
-    grid-template-columns: 2fr 450px;
+    grid-template-columns: 2fr 400px;
     align-items: center;
     grid-gap: 20px;
 
@@ -195,9 +209,9 @@
     }
 
     &-text {
-      width: 75%;
       font-size: 32px;
     }
+
     &-button {
       padding: 25px;
       font-size: 32px;
@@ -216,7 +230,107 @@
     }
     
   }
+}
 
+.footer {
+  display: grid;
+  grid-template-columns: 1.5fr repeat(3,1fr) 1.5fr;
+  justify-items: center;
+  align-items: center;
+  margin: 0px 50px;
+  margin-bottom: 150px;
+  grid-gap: 50px;
+  &__block {
+   
+    &-subtitie{
+      font-size: 14px;
+      color: $subtitleColor;
+    }
+    &-text{
+      font-size: 18px;
+      &--name {
+        font-weight: bold;
+        font-size: 22px;
+      }
+      
+    }
+    &:first-child {
+      justify-self: start;
+    }
+    &:last-child {
+      justify-self: end;
+    }
+  }
+
+  &__social {
+    &-list {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-item {
+      font-family: "Font Awesome 5 Brands";
+      width: 20px;      
+      font-size: 0px;
+      
+      & a {
+        color: $socialColor;
+        text-decoration: none;
+      }
+      &--facebook {
+
+        &::before{
+          content: "\f39e";                  
+          font-size: 20px;
+        }   
+        
+        &:hover,
+        &:active {
+          color: #0c88ef;
+        }
+      }
+
+      &--twitter {
+
+        &::before{
+          content: "\f099";                  
+          font-size: 20px;
+        }     
+        
+        &:hover,
+        &:active {
+          color: #1da1f2;
+        }
+      }
+
+      &--youtube {
+
+        &::before{
+          content: "\f167";                  
+          font-size: 20px;
+        }     
+        
+        &:hover,
+        &:active {
+          color: #ff0000;
+        }
+      }
+
+      &--instagram {
+
+        &::before{
+          content: "\f16d";                  
+          font-size: 20px;
+        }     
+        
+        &:hover,
+        &:active {
+          color: #cc2366; 
+        }
+      }
+
+    }
+  }  
 }
 
 

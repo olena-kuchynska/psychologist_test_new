@@ -45,12 +45,12 @@ class AppView {
             </article>
             <main class="mainContent">
                 <div class="principles" id="principles">
-                    <img class="firstTree" src="./images/tree-1.png" />
+                    <img class="firstTree" src="./images/tree-1.png" alt="tree"/>
                     <div class="title-for-block">Мои основные принцыпы</div>
                     <ul class="principles__list">
                         <li class="principles__list-block">                            
                             <p class="principles__block-title">
-                                <span>&#10625;</span>Конфидециальность
+                                <!--<span>&#10625;</span>-->Конфидециальность
                             </p>
                             <p class="principles__block-text">
                             Я с уважением отношусь к жизненным историям
@@ -59,7 +59,7 @@ class AppView {
                         </li>
                         <li class="principles__list-block">
                             <p class="principles__block-title">
-                                <span>&#10625;</span>Профиссионализм
+                                <!--<span>&#10625;</span>-->Профиссионализм
                             </p>
                             <p class="principles__block-text">
                             Я постоянно повышаю свою квалификацию, расширяю возможности,
@@ -68,7 +68,7 @@ class AppView {
                         </li>
                         <li class="principles__list-block">
                             <p class="principles__block-title">
-                                <span>&#10625;</span>Ответственность
+                                <!--<span>&#10625;</span>-->Ответственность
                             </p>
                             <p class="principles__block-text">
                             Я работаю только в границах своей окомпетенстности и
@@ -77,7 +77,7 @@ class AppView {
                         </li>
                         <li class="principles__list-block">
                             <p class="principles__block-title">
-                                <span>&#10625;</span>Благополучие клиента
+                                <!--<span>&#10625;</span>-->Благополучие клиента
                             </p>
                             <p class="principles__block-text">
                             Нет одинаковых людей. К каждому клиенту индивидуальный
@@ -87,7 +87,7 @@ class AppView {
                     </ul> 
                 </div>
                 <div class="questions" id="questions">
-                    <img class="secondTree" src="./images/tree-2.png" />
+                    <img class="secondTree" src="./images/tree-2.png" alt="tree"/>
                     <div class="title-for-block">Часто задаваемые вопросы</div>
 
                 </div>
@@ -103,7 +103,7 @@ class AppView {
                         Европейской Ассоциации Транзактного Анализа.
                         </p>
                     </div>
-                    <img class="thirdTree" src="./images/tree-3.png" />
+                    <img class="thirdTree" src="./images/tree-3.png" alt="tree" />
                 </div>
                 <div class="education" id="education">
                     <div class="title-for-block">Образование</div>
@@ -124,15 +124,50 @@ class AppView {
                 </div>
             </main>            
             <footer class="footer">
-            <div>
-            <p>
-            </p>
-            <p>
-            </p>
-            </div>
-            <div>
-            </div>
-
+                <div class="footer__block">
+                    <p class="footer__block-subtitie">
+                    Психолог, психотерапевт
+                    </p>
+                    <p class="footer__block-text footer__block-text--name">
+                    Татьяна Колесник
+                    </p>
+                </div>
+                <div class="footer__block">
+                    <p class="footer__block-subtitie">
+                    Звоните с 11 до 20
+                    </p>
+                    <p class="footer__block-text">
+                    +38 067 563 63 15
+                    </p>
+                </div>
+                <div class="footer__block">
+                    <p class="footer__block-subtitie">
+                    или пишите в любое время
+                    </p>
+                    <p class="footer__block-text">
+                    hello@happylife.dp.ua
+                    </p>
+                </div>
+                <div class="footer__block">
+                    <p class="footer__block-subtitie">
+                    следите за новостями
+                    </p>
+                    <ul class="footer__social-list">
+                    <li class="footer__social-item">
+                    <a href="https://uk-ua.facebook.com" target="_blank" class="footer__social-item--facebook">Facebook</a>
+                    </li>
+                    <li class="footer__social-item">
+                    <a href="https://twitter.com" target="_blank" class="footer__social-item--twitter">Twitter</a>
+                    </li>
+                    <li class="footer__social-item">
+                    <a href="https://www.youtube.com" target="_blank" class="footer__social-item--youtube">Youtube</a>
+                    </li>
+                    <li class="footer__social-item">
+                    <a href="https://www.instagram.com/" target="_blank" class="footer__social-item--instagram">Instagram</a>
+                    </li>
+                    </ul>
+			    </div>
+                <img class="footer__block footer__block--logo" src="../images/logo-desing.png" alt="logo"/>
             </footer>`;
     }
 }
