@@ -462,6 +462,8 @@ nav {
 }
 .header-nav__link:hover {
   margin-top: 14px;
+  text-decoration: none;
+  color: #000;
 }
 .header-nav__link:hover::before {
   content: "";
@@ -480,7 +482,7 @@ nav {
 
 .mainContent > div {
   display: grid;
-  padding: 100px 220px 100px 200px;
+  padding: 100px 140px 100px 200px;
   grid-template-columns: repeat(auto-fix, 1fr);
 }
 
@@ -540,8 +542,8 @@ nav {
   content: "";
   background-color: #8cbd10;
   position: absolute;
-  line-height: 100px;
-  transform: translate(-50px, calc(100% + 20px));
+  margin: 30px 0;
+  transform: translate(-50px, 10px);
   display: inline-block;
   height: 20px;
   width: 20px;
@@ -549,16 +551,104 @@ nav {
 }
 .principles__block-title {
   font-size: 32px;
-  line-height: 100px;
+  margin: 30px 0;
   font-weight: bold;
 }
+
 .title-for-block {
   font-size: 52px;
-  line-height: 100px;
+  margin-bottom: 100px;
 }
 
-.questions {
-  height: 500px;
+.questions .carousel {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 100px;
+}
+.questions .carousel-indicators {
+  display: block;
+  position: static;
+  margin: auto 0;
+}
+.questions .carousel-indicators li {
+  background-color: transparent;
+  width: 100%;
+  margin: 0;
+  margin-bottom: 10px;
+  height: auto;
+  text-indent: 0;
+}
+.questions .carousel-indicators li.active::before {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: -50px;
+  transform: translateY(6px);
+  border-style: solid;
+  border-width: 13px 0 13px 16px;
+  z-index: 10000000;
+  border-color: transparent transparent transparent #8cbd10;
+}
+.questions .carousel-inner {
+  align-self: center;
+}
+.questions .carousel-item {
+  /*  .tringle {
+          text-align: right;      
+        }
+
+        & span,
+            span::before,
+            span::after {
+              width: 5em;
+              height: .25em;
+              background-color: red;
+              border-radius: 5em;
+              box-shadow: 0 0 0 1.5em red;        
+          }
+
+          & span {
+            position: relative;
+            display: block;
+            font-size: 0.3em;
+          }
+
+          & span::before,
+            span::after {
+              content: '';
+              position: absolute;   
+              top: -2.1em;  
+          }
+
+          & span::before {
+            right: 1.2em;
+            transform: rotate(-60deg);     
+          }
+
+          & span::after {
+            left: 1.2em;
+            transform: rotate(60deg);
+          }
+  */
+}
+.questions .carousel-item p {
+  background-color: #8cbd10;
+  border-radius: 20px 20px 0 20px;
+  padding: 40px;
+  margin-bottom: 35px;
+  position: relative;
+}
+.questions .carousel-item p::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  position: absolute;
+  right: 0;
+  bottom: -35px;
+  border-width: 0 60px 35px 0;
+  border-color: transparent #8cbd10 transparent transparent;
 }
 
 .secondTree {
@@ -569,7 +659,7 @@ nav {
 }
 
 .about {
-  min-height: 534px;
+  height: 730px;
   background: url(../images/about-me.png) no-repeat top;
   background-position-x: right;
 }
