@@ -421,15 +421,6 @@ body {
   margin: 0 auto;
 }
 
-/* Header
------------------------------------------------------------------------------*/
-/*.header {
-   width: 100%;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-}*/
 /* Navigation
 -----------------------------------------------------------------------------*/
 nav {
@@ -515,10 +506,13 @@ nav {
   background: url(../images/Psyhologist-photo.png) no-repeat center top;
 }
 
+.principles {
+  position: relative;
+}
 .principles .firstTree {
   position: absolute;
   right: -10px;
-  transform: translateY(-35%);
+  top: -150px;
   z-index: 1;
 }
 .principles__list {
@@ -529,14 +523,6 @@ nav {
 }
 .principles__list-block {
   z-index: 2;
-  /* span {
-    color: $elementsColor;
-    display: inline-block;
-    font-size: 70px;
-    height: 115px;
-    width: 50px;
-    vertical-align: middle;        
-  } */
 }
 .principles__list-block::before {
   content: "";
@@ -560,25 +546,27 @@ nav {
   margin-bottom: 100px;
 }
 
-.questions .carousel {
+.carousel {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr minmax(500px, 1fr);
   grid-gap: 100px;
 }
-.questions .carousel-indicators {
+.carousel-indicators {
   display: block;
   position: static;
   margin: auto 0;
 }
-.questions .carousel-indicators li {
+.carousel-indicators li {
   background-color: transparent;
   width: 100%;
   margin: 0;
-  margin-bottom: 10px;
+  margin-bottom: 40px;
   height: auto;
   text-indent: 0;
+  cursor: pointer;
+  z-index: 5;
 }
-.questions .carousel-indicators li.active::before {
+.carousel-indicators li.active::before {
   content: "";
   width: 0;
   height: 0;
@@ -587,50 +575,15 @@ nav {
   transform: translateY(6px);
   border-style: solid;
   border-width: 13px 0 13px 16px;
-  z-index: 10000000;
   border-color: transparent transparent transparent #8cbd10;
 }
-.questions .carousel-inner {
+.carousel-inner {
   align-self: center;
+  justify-self: center;
 }
-.questions .carousel-item {
-  /*  .tringle {
-          text-align: right;      
-        }
 
-        & span,
-            span::before,
-            span::after {
-              width: 5em;
-              height: .25em;
-              background-color: red;
-              border-radius: 5em;
-              box-shadow: 0 0 0 1.5em red;        
-          }
-
-          & span {
-            position: relative;
-            display: block;
-            font-size: 0.3em;
-          }
-
-          & span::before,
-            span::after {
-              content: '';
-              position: absolute;   
-              top: -2.1em;  
-          }
-
-          & span::before {
-            right: 1.2em;
-            transform: rotate(-60deg);     
-          }
-
-          & span::after {
-            left: 1.2em;
-            transform: rotate(60deg);
-          }
-  */
+.questions {
+  position: relative;
 }
 .questions .carousel-item p {
   background-color: #8cbd10;
@@ -650,11 +603,29 @@ nav {
   border-width: 0 60px 35px 0;
   border-color: transparent #8cbd10 transparent transparent;
 }
+.questions .carousel-item span {
+  font-size: 26;
+  font-weight: bold;
+  float: right;
+  margin: 0 50px;
+  line-height: 60px;
+}
+.questions .carousel-item span::before {
+  content: "";
+  width: 60px;
+  height: 60px;
+  display: block;
+  margin-right: 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  float: left;
+  background: url(../images/psyhologist-icon.png) no-repeat -55px top;
+}
 
 .secondTree {
   position: absolute;
   left: -500px;
-  transform: translateY(-90%);
+  top: -165px;
   z-index: 1;
 }
 
@@ -662,6 +633,7 @@ nav {
   height: 730px;
   background: url(../images/about-me.png) no-repeat top;
   background-position-x: right;
+  position: relative;
 }
 .about__block {
   max-width: 600px;
@@ -672,11 +644,29 @@ nav {
   font-size: 32px;
 }
 
+.education {
+  position: relative;
+}
+.education .carousel {
+  grid-template-columns: 1fr 500px;
+  grid-gap: 90px;
+}
+.education .carousel img {
+  z-index: 15;
+}
+
 .thirdTree {
   position: absolute;
   left: 0;
-  transform: translateY(100%) rotate(15deg);
+  bottom: -160px;
+  transform: rotate(15deg);
   z-index: 1;
+}
+
+.fourthTree {
+  position: absolute;
+  right: 0;
+  top: 50%;
 }
 
 .mainContent > div:last-child {

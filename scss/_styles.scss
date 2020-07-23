@@ -93,12 +93,12 @@
 //-----------------------------------------------------------------------------
 
 .principles {
-  
+  position: relative;
 
   .firstTree {
     position: absolute;
     right: -10px;
-    transform: translateY(-35%);
+    top: -150px;
     z-index: 1;
   }
 
@@ -110,14 +110,7 @@
     
     &-block {
       z-index: 2;
-      /* span {
-        color: $elementsColor;
-        display: inline-block;
-        font-size: 70px;
-        height: 115px;
-        width: 50px;
-        vertical-align: middle;        
-      } */
+
       &::before {
         content: '';
         background-color: $elementsColor;
@@ -139,10 +132,8 @@
       font-size: 32px;
       margin: 30px 0;
       font-weight: bold;      
-    }
-  
+    }  
   }
-
 }
 
 .title-for-block {
@@ -150,10 +141,9 @@
   margin-bottom: 100px;
 }
 
-.questions {
-  & .carousel {
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
+.carousel {
+  display: grid;
+    grid-template-columns: 1fr minmax(500px,1fr);
     grid-gap: 100px;
 
     &-indicators {
@@ -164,9 +154,11 @@
         background-color: transparent;
         width: 100%;
         margin: 0;
-        margin-bottom: 10px;
+        margin-bottom: 40px;
         height: auto;
         text-indent: 0;
+        cursor: pointer;
+        z-index: 5;
         
         &.active {
 
@@ -179,7 +171,6 @@
             transform: translateY(6px);
             border-style: solid;
             border-width: 13px 0 13px 16px;
-            z-index: 10000000;
             border-color: transparent transparent transparent $elementsColor;
           }
           
@@ -189,20 +180,24 @@
 
     &-inner {      
       align-self: center;
+      justify-self: center;
       
     }
+}
 
-    
+.questions {
+  position: relative;
+
+  & .carousel { 
 
     &-item {  
       
-
       & p {
         background-color: $elementsColor;
-      border-radius: 20px 20px 0 20px;
-      padding: 40px;
-      margin-bottom: 35px;
-      position: relative;
+        border-radius: 20px 20px 0 20px;
+        padding: 40px;
+        margin-bottom: 35px;
+        position: relative;
 
         &::after {
           content: '';
@@ -215,58 +210,35 @@
           border-width: 0 60px 35px 0;
           border-color: transparent $elementsColor transparent transparent;
         }
-
-        
-
       }
 
-     /*  .tringle {
-        text-align: right;      
-      }
+      & span {
+        font-size: 26;
+        font-weight: bold;
+        float: right;
+        margin: 0 50px;
+        line-height: 60px;
       
-      & span,
-          span::before,
-          span::after {
-            width: 5em;
-            height: .25em;
-            background-color: red;
-            border-radius: 5em;
-            box-shadow: 0 0 0 1.5em red;        
-        }
-
-        & span {
-          position: relative;
+        &::before {
+          content: "";
+          width: 60px;
+          height: 60px;
           display: block;
-          font-size: 0.3em;
+          margin-right: 20px;
+          border-radius: 50%;
+          overflow: hidden;
+          float: left;
+          background: url(../images/psyhologist-icon.png) no-repeat -55px top;
         }
-
-        & span::before,
-          span::after {
-            content: '';
-            position: absolute;   
-            top: -2.1em;  
-        }
-
-        & span::before {
-          right: 1.2em;
-          transform: rotate(-60deg);     
-        }
-
-        & span::after {
-          left: 1.2em;
-          transform: rotate(60deg);
-        }
-*/
-
+      }
     } 
   }
-
 }
 
 .secondTree {
   position: absolute;
   left: -500px;
-  transform: translateY(-90%);
+  top: -165px;
   z-index: 1;
 }
 
@@ -274,6 +246,7 @@
   height: 730px;
   background: url(../images/about-me.png) no-repeat top;
   background-position-x: right;
+  position: relative;
 
   &__block {
     max-width: 600px;
@@ -286,11 +259,31 @@
 
 }
 
+.education {
+  position: relative;
+  & .carousel {
+    grid-template-columns: 1fr 500px;
+    grid-gap: 90px;
+
+    & img {
+      z-index: 15;
+      
+    }
+  }
+}
+
 .thirdTree {
   position: absolute;
   left: 0;
-  transform: translateY(100%) rotate(15deg);
+  bottom: -160px;
+  transform: rotate(15deg);
   z-index: 1;
+}
+
+.fourthTree {
+  position: absolute;
+  right: 0;
+  top: 50%;
 }
 
 .mainContent > div:last-child {
