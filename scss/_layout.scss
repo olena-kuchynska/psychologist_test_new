@@ -1,11 +1,12 @@
 article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
   display: block;
 }
+
 body {
   background: $primaryBGColor;
-  font: 26px/36px $primaryFont;
+  font: 26px $primaryFont;
   width: 100%;
-  color: $baseFontColor;
+  color: $baseFontColor;  
 }
 .wrapper {
   width: 100%;

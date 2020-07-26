@@ -7,13 +7,13 @@ class AppView {
         const container = document.querySelector('.wrapper');
 
         container.innerHTML = 
-            `<header class="header">        
-                <!--<input id="burger" type="checkbox" class="header__burger-state"/>                
+            `<header class="header">
+                <input id="burger" type="checkbox" class="header__burger-state"/>                
                 <label for="burger" class="header__burger-btn">
                     <span class="header__burger-icon1"></span>
                     <span class="header__burger-icon2"></span>
                     <span class="header__burger-icon3"></span>
-                </label>-->
+                </label>
                 <nav> 
                     <ul class="header-nav">
                         <li class="header-nav__item">
@@ -250,7 +250,7 @@ class AppView {
                         в семье до вопросов саморазвития.
                         </p>
                     </div>                    
-                        <button class="recording__block-button">Написать в Telegram</button>
+                        <button class="recording__block-button"><a href="tg://resolve?domain=bulatik0101" target="_blank">Написать в Telegram</a></button>
                     </div>
                 </div>
             </main>            
