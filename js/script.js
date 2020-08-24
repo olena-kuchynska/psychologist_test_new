@@ -1,4 +1,4 @@
-class AppView {
+class AboutView {
     constructor() {        
 
     }
@@ -17,13 +17,13 @@ class AppView {
                 <nav> 
                     <ul class="header-nav">
                         <li class="header-nav__item">
-                            <a href="#about" class="header-nav__link">Обо мне</a>
+                            <a href="#" class="header-nav__link">Обо мне</a>
                         </li>
                         <li class="header-nav__item">
-                            <a href="" class="header-nav__link">Консультации</a>
+                            <a href="#" class="header-nav__link">Консультации</a>
                         </li>
                         <li class="header-nav__item">
-                            <a href="" class="header-nav__link">Кабинет</a>
+                            <a href="#" class="header-nav__link">Кабинет</a>
                         </li>
                         <li class="header-nav__item">
                             <a href="#recording" class="header-nav__link">Записаться</a>
@@ -108,8 +108,8 @@ class AppView {
                             </li>
                         </ol>
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <p>
+                            <div class="carousel-item active answer">
+                                <p class="answer__block-text">
                                     Любой человек может столкнуться со сложностью, справиться с которой 
                                     самому не всегда бывает под силу. Это не значит, что он слаб и безнадежен,
                                     это значит, что необходимо найти дополнительный ресурс. Этим ресурсом становится психолог. 
@@ -117,8 +117,8 @@ class AppView {
                                 </p>
                                 <span>Татьяна Колесник</span>                                
                             </div>
-                            <div class="carousel-item">
-                                <p>
+                            <div class="carousel-item answer">
+                                <p class="answer__block-text">
                                     Любой человек может столкнуться со сложностью, справиться с которой 
                                     самому не всегда бывает под силу. Это не значит, что он слаб и безнадежен,
                                     это значит, что необходимо найти дополнительный ресурс. Этим ресурсом становится психолог. 
@@ -126,8 +126,8 @@ class AppView {
                                 </p>
                                 <span>Татьяна Колесник</span>                          
                             </div>
-                            <div class="carousel-item">
-                                <p>
+                            <div class="carousel-item answer">
+                                <p class="answer__block-text">
                                     Любой человек может столкнуться со сложностью, справиться с которой 
                                     самому не всегда бывает под силу. Это не значит, что он слаб и безнадежен,
                                     это значит, что необходимо найти дополнительный ресурс. Этим ресурсом становится психолог. 
@@ -135,8 +135,8 @@ class AppView {
                                 </p>
                                 <span>Татьяна Колесник</span>                                                         
                             </div>
-                            <div class="carousel-item">
-                                <p>
+                            <div class="carousel-item answer">
+                                <p class="answer__block-text">
                                     Любой человек может столкнуться со сложностью, справиться с которой 
                                     самому не всегда бывает под силу. Это не значит, что он слаб и безнадежен,
                                     это значит, что необходимо найти дополнительный ресурс. Этим ресурсом становится психолог. 
@@ -144,8 +144,8 @@ class AppView {
                                 </p>
                                 <span>Татьяна Колесник</span>                           
                             </div>
-                            <div class="carousel-item">
-                                <p>
+                            <div class="carousel-item answer">
+                                <p class="answer__block-text">
                                     Любой человек может столкнуться со сложностью, справиться с которой 
                                     самому не всегда бывает под силу. Это не значит, что он слаб и безнадежен,
                                     это значит, что необходимо найти дополнительный ресурс. Этим ресурсом становится психолог. 
@@ -239,9 +239,10 @@ class AppView {
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="recording" id="recording">
-                    <div class="recording__block">
+                </div>                
+            </main>
+            <section class="recording" id="recording">
+                <div class="recording__block">
                     <div class ="recording__block-acticle">
                         <p class="recording__block-title">Запишитесь на консультацию</p>
                         <p class="recording__block-text">
@@ -250,10 +251,9 @@ class AppView {
                         в семье до вопросов саморазвития.
                         </p>
                     </div>                    
-                        <button class="recording__block-button"><a href="tg://resolve?domain=bulatik0101" target="_blank">Написать в Telegram</a></button>
-                    </div>
+                    <button class="recording__block-button"><a href="tg://resolve?domain=bulatik0101" target="_blank">Написать в Telegram</a></button>
                 </div>
-            </main>            
+            </section>
             <footer class="footer">
                 <div class="footer__block">
                     <p class="footer__block-subtitie">
@@ -298,12 +298,190 @@ class AppView {
                     </li>
                     </ul>
 			    </div>
-                <img class="footer__block footer__block--logo" src="../images/logo-desing.png" alt="logo"/>
+                <img class="footer__block footer__block--logo" src="./images/logo-desing.png" alt="logo"/>
             </footer>`;
+    }
+
+    reorganizedView() {
+        const mainContent = document.querySelector('.mainContent');
+        mainContent.innerHTML = '';
+
+        const articalPhoto = document.querySelector('.article__photo');        
+        const articalInfoText = document.querySelector('.article__info-text');        
+
+        if(articalPhoto && articalInfoText) {
+
+            articalPhoto.remove();
+            articalInfoText.remove();        
+
+            const article = document.querySelector('article');
+            article.classList.add('article--another');            
+        }        
     }
 }
 
-class AppForm {
+class AboutForm {
+    constructor(view) {
+        this.view = view;        
+    }
+
+    handleShowForm() {
+        this.view.showForm();
+    }
+    handleReorganized() {
+        this.view.reorganizedView();
+    }
+}
+
+class AboutFormControll {
+    constructor(model, subscribers) {
+        this.model = model;
+        this.subscribers = subscribers;
+    }
+
+    handleShowForm() {
+        this.model.handleShowForm();
+        this.actionforForm();
+    }
+
+    handleReorganized() {
+        this.model.handleReorganized();
+    }
+
+    actionforForm() {
+        const navigation = document.querySelector('.header-nav');
+
+        navigation.addEventListener('click', event => {
+            let currentElement = event.target.parentElement;
+            let currentEvent = currentElement.innerText;
+            if(currentElement!=='Записаться') {
+                this.subscribers.publish('reorganized');
+                if(currentEvent === 'Обо мне') {
+                    this.subscribers.publish('about');
+                } else if(currentEvent === 'Консультации') {
+                    this.subscribers.publish('consultation');
+                } else if(currentEvent === 'Кабинет') {
+                    this.subscribers.publish('consulation');
+                }
+            }
+            
+        });        
+    }
+        
+}
+
+class ConsultationView {
+    constructor() {        
+
+    }
+
+    showForm() {
+        const container = document.querySelector('.wrapper');        
+
+        
+
+        const mainContent = document.querySelector('.mainContent');
+        mainContent.innerHTML = `
+            <div class="article-relationship">
+                <div class="article-new">
+                    <p class="article__info-title">Консультации</p>
+                    <p class="article__info-subtitle article__info-subtitle--italic">Моя основная специализация&nbsp;&mdash; отношения.</p>
+                </div>
+                <div class="relationship">
+                    <div class="relationship__image-block">
+                        <div class="relationship__image"></div>
+                    </div>
+                    <ul class="principles__list">
+                        <li class="principles__list-block">                            
+                            <p class="principles__block-title">Отношения с собой</p>
+                            <p class="principles__block-text">
+                                Самоактуализация, смыслы, счастье, радость, вопросы собственной свободы и авторства своей жизни…
+                            </p>
+                        </li>
+                        <li class="principles__list-block">                            
+                            <p class="principles__block-title">Отношения с собой</p>
+                            <p class="principles__block-text">
+                                Самоактуализация, смыслы, счастье, радость, вопросы собственной свободы и авторства своей жизни…
+                            </p>
+                        </li>  
+                        <li class="principles__list-block">                            
+                            <p class="principles__block-title">Отношения с собой</p>
+                            <p class="principles__block-text">
+                                Самоактуализация, смыслы, счастье, радость, вопросы собственной свободы и авторства своей жизни…
+                            </p>
+                        </li>  
+                        <li class="principles__list-block">                            
+                            <p class="principles__block-title">Отношения с собой</p>
+                            <p class="principles__block-text">
+                                Самоактуализация, смыслы, счастье, радость, вопросы собственной свободы и авторства своей жизни…
+                            </p>
+                        </li>  
+                        <li class="principles__list-block">                            
+                            <p class="principles__block-title">Отношения с собой</p>
+                            <p class="principles__block-text">
+                                Самоактуализация, смыслы, счастье, радость, вопросы собственной свободы и авторства своей жизни…
+                            </p>
+                        </li>                      
+                    </ul>         
+                </div>
+            </div>
+            <div class="organisational__block">
+                <p class="title-for-block">Организационные моменты</p>
+                <p class="organisational__block-title">
+                Я психолог, специализируюсь на личностно-центрированной терапии психотерапевт,
+                сертифицированный преподаватель практик, член Украинской
+                ассоциации когнитивно-поведенческой терапии,
+                член Украинского Союза Психотерапевтов,
+                Украинской Ассоциации Транзактного Анализа и
+                Европейской Ассоциации Транзактного Анализа.
+                </p>
+                <p class="organisational__block-title">
+                Я психолог, специализируюсь на личностно-центрированной терапии психотерапевт,
+                сертифицированный преподаватель практик, член Украинской
+                ассоциации когнитивно-поведенческой терапии,
+                член Украинского Союза Психотерапевтов,
+                Украинской Ассоциации Транзактного Анализа и
+                Европейской Ассоциации Транзактного Анализа.
+                </p> 
+                <p class="organisational__block-title">
+                Я психолог, специализируюсь на личностно-центрированной терапии психотерапевт,
+                сертифицированный преподаватель практик, член Украинской
+                ассоциации когнитивно-поведенческой терапии,
+                член Украинского Союза Психотерапевтов,
+                Украинской Ассоциации Транзактного Анализа и
+                Европейской Ассоциации Транзактного Анализа.
+                </p>             
+            </div>
+            <div class="answer">
+                <div class="answer__block">
+                    <span class="answer__block-text answer__block--new">Читать отзывы</span>                           
+                </div>                         
+            </div>
+            
+        `;
+
+        /* const articleNew = document.createElement('div');
+        articleNew.setAttribute('class','article-new');
+        mainContent.appendChild(articleNew);
+
+        const articalCaption = document.createElement('div');
+        articalCaption.setAttribute('class','article__info-title');
+        articalCaption.innerText = 'Консультации';
+        articleNew.appendChild(articalCaption);
+
+        const articalSubtitle = document.createElement('div');
+        articalSubtitle.setAttribute('class','article__info-subtitle');
+        articalSubtitle.classList.add('article__info-subtitle--italic')
+        articalSubtitle.innerHTML = 'Моя основная специализация&nbsp;&mdash; отношения.';
+        articleNew.appendChild(articalSubtitle); */
+
+        
+
+    }
+}
+
+
+class ConsultationForm {
     constructor(view) {
         this.view = view;        
     }
@@ -313,9 +491,43 @@ class AppForm {
     }
 }
 
-class AppFormControll {
-    constructor(model) {
+class ConsultationFormControll {
+    constructor(model, subscribers) {
         this.model = model;
+        this.subscribers = subscribers;
+    }
+
+    handleShowForm() {
+        this.model.handleShowForm();
+    }
+        
+}
+
+class CabinetView {
+    constructor() {        
+
+    }
+
+    showForm() {
+        
+    }
+}
+
+
+class CabinetForm {
+    constructor(view) {
+        this.view = view;        
+    }
+
+    handleShowForm() {
+        this.view.showForm();
+    }
+}
+
+class CabinetFormControll {
+    constructor(model, subscribers) {
+        this.model = model;
+        this.subscribers = subscribers;
     }
 
     handleShowForm() {
@@ -325,12 +537,47 @@ class AppFormControll {
 }
 
 
+class PubSub {
+    constructor() {
+        this.subscribers = {};
+    }
+
+    subscribe(event, callback) {
+        if (!this.subscribers[event]) {
+            this.subscribers[event] = [];
+        }    
+        this.subscribers[event].push(callback);
+    }
+
+    publish(event, data) {
+        if (!this.subscribers[event]) return;
+        this.subscribers[event].forEach(subscriberCallback =>
+            subscriberCallback(data));
+    }
+}
+
+
 document.addEventListener ('DOMContentLoaded', function() {
 
-    const appView = new AppView();
-    const appForm = new AppForm(appView);
-    const appFormControll = new AppFormControll(appForm);
+    const subscribers = new PubSub();
+
+    const aboutView = new AboutView();
+    const aboutForm = new AboutForm(aboutView);
+    const aboutFormController = new AboutFormControll(aboutForm, subscribers);
+
+    const consultationView = new ConsultationView();
+    const consultationForm = new ConsultationForm(consultationView);
+    const consultationFormController = new ConsultationFormControll(consultationForm, subscribers);
+
+    const cabinetView = new CabinetView();
+    const cabinetForm = new CabinetForm(cabinetView);
+    const cabinetFormController = new CabinetFormControll(cabinetForm, subscribers);    
+
+    subscribers.subscribe('about', aboutFormController.handleShowForm.bind(aboutFormController));
+    subscribers.subscribe('reorganized', aboutFormController.handleReorganized.bind(aboutFormController));
+    subscribers.subscribe('consultation', consultationFormController.handleShowForm.bind(consultationFormController));
+    subscribers.subscribe('cabinet', cabinetFormController.handleShowForm.bind(cabinetFormController));
     
-    appFormControll.handleShowForm();
+    aboutFormController.handleShowForm();
 
 });

@@ -562,7 +562,8 @@ nav {
   background-color: #fbfbfb;
 }
 
-.mainContent > div {
+.mainContent > div,
+.recording {
   display: grid;
   padding: 100px 140px 100px 200px;
   grid-template-columns: repeat(auto-fix, 1fr);
@@ -570,7 +571,7 @@ nav {
 
 .title-for-block {
   font-size: 52px;
-  margin-bottom: 100px;
+  margin-bottom: 70px;
 }
 
 .article {
@@ -580,6 +581,10 @@ nav {
   grid-auto-rows: minmax(650px, auto);
   grid-gap: 20px;
   z-index: 0;
+}
+.article-new {
+  text-align: center;
+  margin: 100px 0;
 }
 .article__info {
   align-self: center;
@@ -593,6 +598,9 @@ nav {
   font-size: 28px;
   line-height: 100px;
   color: rgba(0, 0, 0, 0.4);
+}
+.article__info-subtitle--italic {
+  font-style: italic;
 }
 .article__info-text {
   font-size: 32px;
@@ -622,7 +630,7 @@ nav {
 }
 .principles__block-title {
   font-size: 32px;
-  margin: 30px 0;
+  margin-bottom: 30px;
   font-weight: bold;
 }
 .principles__block-title::before {
@@ -650,7 +658,7 @@ nav {
   background-color: transparent;
   width: 100%;
   margin: 0;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   height: auto;
   text-indent: 0;
   cursor: pointer;
@@ -672,17 +680,14 @@ nav {
   justify-self: center;
 }
 
-.questions {
-  position: relative;
-}
-.questions .carousel-item p {
+.answer__block-text {
   background-color: #8cbd10;
   border-radius: 20px 20px 0 20px;
-  padding: 40px;
+  padding: 30px 40px;
   margin-bottom: 35px;
   position: relative;
 }
-.questions .carousel-item p::after {
+.answer__block-text::after {
   content: "";
   width: 0;
   height: 0;
@@ -692,6 +697,31 @@ nav {
   bottom: -35px;
   border-width: 0 60px 35px 0;
   border-color: transparent #8cbd10 transparent transparent;
+}
+
+.questions {
+  position: relative;
+}
+.questions .carousel-item {
+  /* & p {
+    background-color: $elementsColor;
+    border-radius: 20px 20px 0 20px;
+    padding: 40px;
+    margin-bottom: 35px;
+    position: relative;
+
+    &::after {
+      content: '';
+      width: 0;
+      height: 0;
+      border-style: solid;
+      position: absolute;
+      right: 0;
+      bottom: -35px;
+      border-width: 0 60px 35px 0;
+      border-color: transparent $elementsColor transparent transparent;
+    }
+  } */
 }
 .questions .carousel-item span {
   font-size: 26;
@@ -756,7 +786,7 @@ nav {
   top: 50%;
 }
 
-.mainContent > div:last-child {
+.recording {
   padding: 100px;
 }
 
@@ -883,11 +913,12 @@ nav {
     display: block;
   }
 
-  .mainContent > div {
+  .mainContent > div,
+.recording {
     padding: 60px 80px 100px 120px;
   }
 
-  .mainContent > div:last-child {
+  .recording {
     padding: 60px;
   }
 
@@ -919,14 +950,14 @@ nav {
   }
 
   .principles__list {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
     margin-top: 0;
     grid-gap: 50px;
     font-size: 16px;
   }
   .principles__block-title {
     font-size: 20px;
-    margin: 20px 0;
+    margin-bottom: 20px;
     font-weight: bold;
   }
   .principles__block-title::before {
@@ -946,7 +977,7 @@ nav {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     grid-auto-rows: auto;
-    grid-gap: 45px;
+    grid-gap: 0 45px;
   }
   .carousel-indicators li {
     position: relative;
@@ -964,6 +995,10 @@ nav {
   .questions .carousel-item p::after {
     bottom: -28px;
     border-width: 0 50px 28px 0;
+  }
+  .questions .carousel-item span {
+    margin: 0;
+    margin-right: 30px;
   }
   .questions .carousel-item span::before {
     content: "";
@@ -985,21 +1020,6 @@ nav {
 
   .education .carousel img {
     width: 400px;
-  }
-
-  .recording__block {
-    grid-template-columns: 1fr;
-    grid-gap: 20px;
-    padding: 50px;
-  }
-  .recording__block-title {
-    font-size: 22px;
-  }
-  .recording__block-text {
-    font-size: 20px;
-  }
-  .recording__block-button {
-    font-size: 22px;
   }
 
   .footer {
@@ -1036,6 +1056,21 @@ nav {
     background-size: 390px;
   }
 
+  .recording__block {
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+    padding: 50px;
+  }
+  .recording__block-title {
+    font-size: 22px;
+  }
+  .recording__block-text {
+    font-size: 20px;
+  }
+  .recording__block-button {
+    font-size: 22px;
+  }
+
   .principles .firstTree {
     top: -110px;
     height: 300px;
@@ -1062,14 +1097,15 @@ nav {
   }
 
   .article {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     grid-auto-rows: minmax(460px, auto);
   }
   .article__photo {
     background-size: 390px;
   }
 
-  .mainContent > div {
+  .mainContent > div,
+.recording {
     padding: 100px 40px 100px 50px;
   }
 
@@ -1085,7 +1121,24 @@ nav {
   }
 
   .education .carousel img {
-    width: 280px;
+    width: 250px;
+  }
+
+  .recording__block {
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+    padding: 30px;
+  }
+  .recording__block-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .recording__block-text {
+    font-size: 14px;
+  }
+  .recording__block-button {
+    padding: 15px;
+    font-size: 18px;
   }
 
   .principles .firstTree {
@@ -1107,6 +1160,90 @@ nav {
   .fourthTree {
     display: none;
   }
+}
+.article--another {
+  background-color: #ffffff;
+  padding: 15px 50px;
+  display: block;
+}
+.article--another .article__info {
+  display: flex;
+  flex-direction: column-reverse;
+  align-self: center;
+}
+.article--another .article__info-title {
+  font-size: 26px;
+  line-height: 30px;
+}
+.article--another .article__info-subtitle {
+  font-size: 14px;
+  line-height: 19px;
+}
+
+/* .article-new {
+  background-color: $primaryBGColor;
+  padding: 15px 50px;
+  display: block;
+
+
+  &__caption{
+    font-size: 26px;
+    line-height: 30px;
+
+  }
+
+  &__subtitle{
+    font-size: 64px;
+    font-weight: bold;
+    line-height: 75px;
+  }
+
+} */
+.mainContent > .article-relationship {
+  padding: 0 150px 60px 100px;
+}
+
+.relationship {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 90px;
+}
+.relationship__image {
+  background: url(../images/consultation-image.png) no-repeat center center;
+  height: 520px;
+  width: 520px;
+  margin: 0 auto;
+}
+.relationship .principles__list {
+  margin-top: 0;
+  grid-template-columns: minmax(500px, 1fr);
+}
+.relationship .principles__block-title::before {
+  visibility: hidden;
+}
+
+.organisational__block-title {
+  margin-bottom: 40px;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.answer {
+  position: relative;
+}
+.answer__block--new {
+  display: inline-block;
+  margin: auto 0;
+  font-weight: bold;
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 20px;
+}
+.answer__block--new::after {
+  transform: scale(-1, 1);
+  left: 40px;
+  bottom: -30px;
+  border-width: 0 50px 30px 0;
 }
 
 /*# sourceMappingURL=styles.css.map */
