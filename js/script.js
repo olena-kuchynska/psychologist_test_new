@@ -388,8 +388,8 @@ class ConsultationView {
                     <p class="article__info-subtitle article__info-subtitle--italic">Моя основная специализация&nbsp;&mdash; отношения.</p>
                 </div>
                 <div class="relationship">
-                    <div class="relationship__image-block">
-                        <div class="relationship__image"></div>
+                    <div class="relationship__image">
+                        <div class="relationship__image-block"></div>
                     </div>
                     <ul class="principles__list">
                         <li class="principles__list-block">                            
@@ -452,10 +452,36 @@ class ConsultationView {
                 Европейской Ассоциации Транзактного Анализа.
                 </p>             
             </div>
-            <div class="answer">
+            <section class="answer">
                 <div class="answer__block">
                     <span class="answer__block-text answer__block--new">Читать отзывы</span>                           
                 </div>                         
+            </section>
+            <div class="toDoList">
+                <div class="class="toDoList__iDo"">
+                    <p class="toDoList__title">Что я делаю</p>
+                    <ul class="toDoList__list">
+                        <li>Элементы схема-терапии;</li>
+                        <li>Элементы когнитивно-поведенческой психотерапии</li>
+                        <li>Элементы терапии основанной на осознанности;</li>
+                        <li>Элементы схема-терапии;</li>
+                        <li>Элементы схема-терапии;</li>
+                        <li>Элементы схема-терапии;</li>
+                        <li>Элементы схема-терапии;</li>
+                        <li>Элементы схема-терапии;</li>
+                    </ul>
+                </div>
+                <div class="toDoList__iNotDo">
+                    <div class="toDoList__iNotDo--block"> 
+                        <p class="toDoList__title">Что я не делаю</p>
+                        <ul class="toDoList__list">
+                            <li>гипноз и внушение;</li>
+                            <li>навязывание мнения и взглядов;</li>
+                            <li>навязывание мнения и взглядов;</li>
+                            <li>навязывание мнения и взглядов;</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             
         `;
