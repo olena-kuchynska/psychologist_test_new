@@ -90,7 +90,7 @@ class AboutView {
                     <img class="secondTree" src="./images/tree-2.png" alt="tree"/>
                     <div class="title-for-block">Часто задаваемые вопросы</div>
                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
+                        <ol class="carousel-indicators" id="first">
                             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">
                                 К психологу ходят только нездоровые. Вы хотите сказать, что я теряю рассудок?
                             </li>
@@ -107,8 +107,8 @@ class AboutView {
                                 Можно не ходить к психологу пока не совсем все плохо. если будет невыносимо, тогда пойду
                             </li>
                         </ol>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active answer">
+                        <div class="carousel-inner" id="carousel-first">
+                            <div id="item-0" class="carousel-item active answer">
                                 <p class="answer__block-text">
                                     Любой человек может столкнуться со сложностью, справиться с которой 
                                     самому не всегда бывает под силу. Это не значит, что он слаб и безнадежен,
@@ -117,16 +117,17 @@ class AboutView {
                                 </p>
                                 <span>Татьяна Колесник</span>                                
                             </div>
-                            <div class="carousel-item answer">
+                            <div id="item-1" class="carousel-item answer">
                                 <p class="answer__block-text">
-                                    Любой человек может столкнуться со сложностью, справиться с которой 
-                                    самому не всегда бывает под силу. Это не значит, что он слаб и безнадежен,
-                                    это значит, что необходимо найти дополнительный ресурс. Этим ресурсом становится психолог. 
-                                    Вы же обращаетесь к стоматологу, когда болит зуб, не потому, что вы — слабак?
+                                    Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. 
+                                    Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. 
+                                    В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя 
+                                    Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений 
+                                    пять веков, но и перешагнул в электронный дизайн.
                                 </p>
                                 <span>Татьяна Колесник</span>                          
                             </div>
-                            <div class="carousel-item answer">
+                            <div id="item-2" class="carousel-item answer">
                                 <p class="answer__block-text">
                                     Любой человек может столкнуться со сложностью, справиться с которой 
                                     самому не всегда бывает под силу. Это не значит, что он слаб и безнадежен,
@@ -135,7 +136,7 @@ class AboutView {
                                 </p>
                                 <span>Татьяна Колесник</span>                                                         
                             </div>
-                            <div class="carousel-item answer">
+                            <div id="item-3" class="carousel-item answer">
                                 <p class="answer__block-text">
                                     Любой человек может столкнуться со сложностью, справиться с которой 
                                     самому не всегда бывает под силу. Это не значит, что он слаб и безнадежен,
@@ -144,7 +145,7 @@ class AboutView {
                                 </p>
                                 <span>Татьяна Колесник</span>                           
                             </div>
-                            <div class="carousel-item answer">
+                            <div id="item-4" class="carousel-item answer">
                                 <p class="answer__block-text">
                                     Любой человек может столкнуться со сложностью, справиться с которой 
                                     самому не всегда бывает под силу. Это не значит, что он слаб и безнадежен,
@@ -174,67 +175,67 @@ class AboutView {
                     <img class="fourthTree" src="./images/tree-4.png" alt="tree" />
                     <div class="title-for-block">Образование</div>
                     <div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-target="#carouselExampleIndicators1" data-slide-to="0" class="active">
+                        <ol class="carousel-indicators" id="second">
+                            <li data-target="#carouselExampleIndicators1" data-slide-to="00" class="active">
                                 Schema Therapy training Standard and Advanced Level, Accredited by International Society of  Schema Therapy (2018)
                             </li>
-                            <li data-target="#carouselExampleIndicators1" data-slide-to="1">
+                            <li data-target="#carouselExampleIndicators1" data-slide-to="01">
                                 Инструктор практик осознанности (2018)
                             </li>
-                            <li data-target="#carouselExampleIndicators1" data-slide-to="2">
+                            <li data-target="#carouselExampleIndicators1" data-slide-to="02">
                                 Базовый 2-x годовой курс обучения УАТА по Транзакционному анализу в области психологии (2012)
                             </li>
-                            <li data-target="#carouselExampleIndicators1" data-slide-to="3">
+                            <li data-target="#carouselExampleIndicators1" data-slide-to="03">
                                 Introduction to Cognitive Behavioural Therapy, by the European Psychiatric Association (2018)
                             </li>
-                            <li data-target="#carouselExampleIndicators1" data-slide-to="4">
+                            <li data-target="#carouselExampleIndicators1" data-slide-to="04">
                                 Профессиональное развитие в КПТ (2018)
                             </li>
-                            <li data-target="#carouselExampleIndicators1" data-slide-to="5">
+                            <li data-target="#carouselExampleIndicators1" data-slide-to="05">
                                 Нейробиология в психотерапии (2018)
                             </li>
-                            <li data-target="#carouselExampleIndicators1" data-slide-to="6">
+                            <li data-target="#carouselExampleIndicators1" data-slide-to="06">
                                 Фасилитатор практик осознанности: Mindfulness Practitioner Course: Level I, II, III & Master (2018)
                             </li>
-                            <li data-target="#carouselExampleIndicators1" data-slide-to="7">
+                            <li data-target="#carouselExampleIndicators1" data-slide-to="07">
                             Когнитивно-поведенческая терапия расстройств регуляции злости. Когнитивно-поведенческая терапия усложненной реакции утраты (2018)
                             </li>
-                            <li data-target="#carouselExampleIndicators1" data-slide-to="8">
+                            <li data-target="#carouselExampleIndicators1" data-slide-to="08">
                             Введение в Терапию принятия и ответственности (ACT) с элементами Функционального анализа поведения (FAP) и Теории реляционных рамок (RFT), (2018)
                             </li>
-                            <li data-target="#carouselExampleIndicators1" data-slide-to="9">
+                            <li data-target="#carouselExampleIndicators1" data-slide-to="09">
                             Когнитивно-поведенческая терапия социальной фобии. Когнитивно поведенческая терапия низкой самооценки (2017)
                             </li>
                         </ol>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
+                        <div class="carousel-inner" id="carousel-second">
+                            <div id="item-00" class="carousel-item active">
                             <img class="certificate" src="./images/certificate.png" alt="certificate" />                               
                             </div>
-                            <div class="carousel-item">
+                            <div id="item-01" class="carousel-item">
                             <img class="certificate" src="./images/certificate.png" alt="certificate" />                          
                             </div>
-                            <div class="carousel-item">
+                            <div id="item-02" class="carousel-item">
                             <img class="certificate" src="./images/certificate.png" alt="certificate" />                                                         
                             </div>
-                            <div class="carousel-item">
+                            <div id="item-03" class="carousel-item">
                             <img class="certificate" src="./images/certificate.png" alt="certificate" />                                                         
                             </div>
-                            <div class="carousel-item">
+                            <div id="item-04" class="carousel-item">
                             <img class="certificate" src="./images/certificate.png" alt="certificate" />                                                         
                             </div>
-                            <div class="carousel-item">
+                            <div id="item-05" class="carousel-item">
                             <img class="certificate" src="./images/certificate.png" alt="certificate" />                                                         
                             </div>
-                            <div class="carousel-item">
+                            <div id="item-06" class="carousel-item">
                             <img class="certificate" src="./images/certificate.png" alt="certificate" />                                                         
                             </div>
-                            <div class="carousel-item">
+                            <div id="item-07" class="carousel-item">
                             <img class="certificate" src="./images/certificate.png" alt="certificate" />                                                         
                             </div>
-                            <div class="carousel-item">
+                            <div id="item-08" class="carousel-item">
                             <img class="certificate" src="./images/certificate.png" alt="certificate" />                                                         
                             </div>
-                            <div class="carousel-item">
+                            <div id="item-09" class="carousel-item">
                             <img class="certificate" src="./images/certificate.png" alt="certificate" />                                                         
                             </div>
                         </div>
@@ -298,7 +299,7 @@ class AboutView {
                     </li>
                     </ul>
 			    </div>
-                <img class="footer__block footer__block--logo" src="./images/logo-desing.png" alt="logo"/>
+                <div class="footer__logo">Fedorov<br /> Desing Studio</div>
             </footer>`;
     }
 
@@ -350,9 +351,12 @@ class AboutFormControll {
 
     actionforForm() {
         const navigation = document.querySelector('.header-nav');
+        const caruselIndicatorsAll = document.querySelectorAll('.carousel-indicators');
+        const caruselInnerAll = document.querySelectorAll('.carousel-inner');
+
 
         navigation.addEventListener('click', event => {
-            let currentElement = event.target.parentElement;
+            let currentElement = event.target;
             let currentEvent = currentElement.innerText;
             if(currentElement!=='Записаться') {
                 this.subscribers.publish('reorganized');
@@ -365,7 +369,77 @@ class AboutFormControll {
                 }
             }
             
-        });        
+        });
+
+        caruselIndicatorsAll.forEach( caruselIndicators => { 
+
+            caruselIndicators.addEventListener('click', event => {
+                let currentElement = event.target;
+                let parentElement = currentElement.parentElement;
+                let currentClass = currentElement.classList;
+                let statusActive = false;
+                currentClass.forEach(item => {
+                    if(item === 'active') {
+                        statusActive = true;
+                    } else {
+                        statusActive = false;
+                    }
+                });
+
+                if(!statusActive) {
+                    parentElement.childNodes.forEach(item => {
+
+                        if(item.classList) {
+                            item.classList.remove('active');
+                        } 
+                        
+                    })
+                    currentElement.classList.add('active');
+                    let numberAnswer = currentElement.getAttribute('data-slide-to');
+                    let idCarusel = `carousel-${parentElement.id}`;
+                    let inner;
+
+                    caruselInnerAll.forEach(caruselInner => {
+                        console.log(caruselInner.id)
+                        if(caruselInner.id === idCarusel) {
+                            inner= caruselInner.childNodes;
+                        }                         
+                    });                 
+                    
+                    
+                    inner.forEach(item => {
+
+                        let idItem = item.id;
+                    let id = `item-${numberAnswer}`;
+                    let i = idItem===id;
+
+                        if(item.classList) {
+                            item.classList.forEach(className => {
+                                if(className === 'active') {
+                                    item.classList.remove('active');
+                                } else if(idItem === id) {
+                            
+                            
+                                    item.classList.add('active');
+                                    console.log(item.classList);
+                                }
+                            });
+                            
+                        } 
+                        
+                        
+
+                        
+                    });
+
+                    
+
+                }
+
+
+            }); 
+        });
+        
     }
         
 }
