@@ -212,7 +212,7 @@ class AboutView {
                             <img class="certificate" src="./images/certificate.png" alt="certificate" />                               
                             </div>
                             <div id="item-01" class="carousel-item">
-                            <img class="certificate" src="./images/certificate.png" alt="certificate" />                          
+                            <img class="certificate" src="./images/psyhologist-icon.png" alt="certificate" />                          
                             </div>
                             <div id="item-02" class="carousel-item">
                             <img class="certificate" src="./images/certificate.png" alt="certificate" />                                                         
@@ -243,17 +243,17 @@ class AboutView {
                 </div>                
             </main>
             <section class="recording" id="recording">
-                <div class="recording__block">
+                <form class="recording__block">
                     <div class ="recording__block-acticle">
-                        <p class="recording__block-title">Запишитесь на консультацию</p>
+                        <p class="recording__block-title">Запишитесь на&nbsp;консультацию</p>
                         <p class="recording__block-text">
                         Я помогаю улучшить качество жизни и
                         конструктивно решать проблемы, от конфликтов
                         в семье до вопросов саморазвития.
                         </p>
-                    </div>                    
+                    </div>
                     <button class="recording__block-button"><a href="tg://resolve?domain=bulatik0101" target="_blank">Написать в Telegram</a></button>
-                </div>
+                </form>
             </section>
             <footer class="footer">
                 <div class="footer__block">
@@ -308,7 +308,9 @@ class AboutView {
         mainContent.innerHTML = '';
 
         const articalPhoto = document.querySelector('.article__photo');        
-        const articalInfoText = document.querySelector('.article__info-text');        
+        const articalInfoText = document.querySelector('.article__info-text');  
+        const recordingButton = document.querySelector('.recording__block-button');
+        const recording = document.querySelector('.recording');
 
         if(articalPhoto && articalInfoText) {
 
@@ -316,7 +318,48 @@ class AboutView {
             articalInfoText.remove();        
 
             const article = document.querySelector('article');
-            article.classList.add('article--another');            
+            article.classList.add('article--another');
+
+            recordingButton.innerText = 'Отправить';
+            recording.classList.add('recording--new')
+
+            const recordingInfo = document.createElement('div');
+            recordingInfo.classList.add('recording__block-form');
+            recordingButton.before(recordingInfo);
+
+
+            const inputName = document.createElement('input');
+            inputName.classList.add('recording__block-form-input');
+            const inputPhone = document.createElement('input');
+            inputPhone.classList.add('recording__block-form-input');
+            const inputDate = document.createElement('input');
+            inputDate.classList.add('recording__block-form-input');
+            inputDate.setAttribute('type','datetime-local');
+            const inputComments = document.createElement('input');
+            inputComments.classList.add('recording__block-form-input');
+
+            const titleName = document.createElement('p');
+            titleName.innerText = 'Ваше имя';
+            titleName.classList.add('recording__block-form-title');
+            const titlePhone = document.createElement('p');
+            titlePhone.innerText = 'Ваш номер телефона';
+            titlePhone.classList.add('recording__block-form-title');
+            const titleDate = document.createElement('p');
+            titleDate.innerText = 'Удбные даты и время';
+            titleDate.classList.add('recording__block-form-title');
+            const titleComments = document.createElement('p');
+            titleComments.innerText = 'Что вы ожидаете от встречи?';
+            titleComments.classList.add('recording__block-form-title');
+            recordingInfo.appendChild(titleName);
+            recordingInfo.appendChild(inputName);
+            recordingInfo.appendChild(titlePhone);
+            recordingInfo.appendChild(inputPhone);
+            recordingInfo.appendChild(titleDate);
+            recordingInfo.appendChild(inputDate);            
+            recordingInfo.appendChild(titleComments);
+            recordingInfo.appendChild(inputComments);
+
+
         }        
     }
 }
@@ -532,7 +575,7 @@ class ConsultationView {
                 </div>                         
             </section>
             <div class="toDoList">
-                <div class="class="toDoList__iDo"">
+                <div class="toDoList__iDo">
                     <p class="toDoList__title">Что я делаю</p>
                     <ul class="toDoList__list">
                         <li>Элементы схема-терапии;</li>

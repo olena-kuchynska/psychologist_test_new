@@ -303,6 +303,7 @@
 
     &-item {
       position: absolute;
+      top: 0;
       opacity: 0;
       transition: all 1s ease 0s;
 
@@ -1185,8 +1186,13 @@
 }
 
 .toDoList {
-  grid-template-columns: 440px 300px;
-  grid-gap: 150px;
+  grid-template-columns: repeat(2,1fr);
+  justify-content: space-between;
+
+  &__iDo {
+    width: 400px;
+  }
+
 
   &__title {
     font-weight: bold;
@@ -1196,29 +1202,31 @@
 
   &__list{
     list-style: disc;
+    
      li {
        margin-bottom: 30px;
      }
   }
 
-  &__iNotDo {
+  &__iNotDo {    
     position: relative;
 
-    &--block {      
+    &--block {
       position: absolute;
       bottom: 0;
-      left: 0;
       right: 0;
+      left: 0;
       margin: 0 auto;
+      width: 300px;
 
       &::before {
         content: "";
-        height: 130%;
+        height: 140%;
         width: 2px;
         background-color: #d4172e;
         transform: rotate(35deg);
         position: absolute;
-        left: 0;
+        left: -10%;
         right: 0;        
         top: 0;
         bottom: 0;
@@ -1232,3 +1240,68 @@
 
   }
 }
+
+.recording--new {
+  .recording{ 
+
+    &__block {
+      grid-gap: 100px;
+      grid-template-areas: 
+      "article info"
+      "button info";
+      align-items: start;     
+
+      &-title {
+        
+        width: 50%;
+      }
+      &-text {
+        font-size: 24px;
+      }
+      
+
+      &-article {
+        grid-area: article;
+        font-size: 32px;
+      }
+ 
+      &-button {
+        grid-area: button;
+        display: inline;
+        width: 270px;
+        
+      }
+
+      &-form {
+        grid-area: info;
+
+        &-title {
+          font-size: 18px;
+        }
+        &-input {
+          margin-bottom: 40px;
+          border: none;
+          border-bottom: 2px solid $elementsColor;
+          opacity: .6;
+          padding-bottom: 10px;
+          transition: all .5s;
+          width: 100%;
+          height: 40px;
+          &:focus {
+            outline: none;
+            opacity: 1;
+            transition: all .5s;
+          }
+        }
+      }
+      
+    }
+
+    
+  }
+
+  
+  
+
+}
+
