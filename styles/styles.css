@@ -660,14 +660,15 @@ nav {
   grid-gap: 100px;
 }
 .carousel-item {
-  position: absolute;
-  top: 0;
+  float: left;
+  max-height: 0;
   opacity: 0;
-  transition: all 1s ease 0s;
+  transition: opacity 1s ease 0s;
 }
 .carousel-item.active {
   opacity: 1;
-  transition: all 500ms ease 0s;
+  max-height: 520px;
+  transition: opacity 500ms ease 0s;
 }
 .carousel-indicators {
   display: block;

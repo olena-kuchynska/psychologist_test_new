@@ -401,7 +401,7 @@ class AboutFormControll {
         navigation.addEventListener('click', event => {
             let currentElement = event.target;
             let currentEvent = currentElement.innerText;
-            if(currentElement!=='Записаться') {
+            if(currentEvent!=='Записаться') {
                 this.subscribers.publish('reorganized');
                 if(currentEvent === 'Обо мне') {
                     this.subscribers.publish('about');
