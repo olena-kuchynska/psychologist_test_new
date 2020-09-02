@@ -1,0 +1,26 @@
+{
+  "name": "psychologist_test_new",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Olena-Bulatova/psychologist_test_new.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Olena-Bulatova/psychologist_test_new/issues"
+  },
+  "homepage": "https://github.com/Olena-Bulatova/psychologist_test_new#readme",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.14.0",
+    "animate.css": "^4.1.0",
+    "bootstrap": "^3.4.1",
+    "jquery": "^3.5.1"
+  },
+  "devDependencies": {}
+}

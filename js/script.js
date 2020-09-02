@@ -89,21 +89,21 @@ class AboutView {
                 <div class="questions" id="questions">
                     <img class="secondTree" src="./images/tree-2.png" alt="tree"/>
                     <div class="title-for-block">Часто задаваемые вопросы</div>
-                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <div id="carouselQuestions" class="carousel slide carousel-fade" data-ride="carousel">
                         <ol class="carousel-indicators" id="first">
-                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">
+                            <li data-target="#carouselQuestions" data-slide-to="0" class="active">
                                 К психологу ходят только нездоровые. Вы хотите сказать, что я теряю рассудок?
                             </li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="1">
+                            <li data-target="#carouselQuestions" data-slide-to="1">
                                 Если ты слабак, то иди к психологу. Сильные личности справляются сами?
                             </li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="2">
+                            <li data-target="#carouselQuestions" data-slide-to="2">
                                 Мне стыдно говорить об этом с чужим человеком
                             </li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="3">
+                            <li data-target="#carouselQuestions" data-slide-to="3">
                                 Откуда ему знать, каково мне? И как он может помочь, если никогда не был на моем месте?
                             </li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="4">
+                            <li data-target="#carouselQuestions" data-slide-to="4">
                                 Можно не ходить к психологу пока не совсем все плохо. если будет невыносимо, тогда пойду
                             </li>
                         </ol>
@@ -122,8 +122,7 @@ class AboutView {
                                     Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. 
                                     Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. 
                                     В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя 
-                                    Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений 
-                                    пять веков, но и перешагнул в электронный дизайн.
+                                    Lorem Ipsum для распечатки образцов.
                                 </p>
                                 <span>Татьяна Колесник</span>                          
                             </div>
@@ -157,6 +156,7 @@ class AboutView {
                         </div>
                     </div>
                 </div>
+                
                 <div class="about" id="about">
                     <div class="about__block">
                         <p class="about__block-title">Обо мне</p>
@@ -174,36 +174,36 @@ class AboutView {
                 <div class="education" id="education">                
                     <img class="fourthTree" src="./images/tree-4.png" alt="tree" />
                     <div class="title-for-block">Образование</div>
-                    <div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel">
+                    <div id="carouselEducation" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators" id="second">
-                            <li data-target="#carouselExampleIndicators1" data-slide-to="00" class="active">
+                            <li data-target="#carouselEducation" data-slide-to="00" class="active">
                                 Schema Therapy training Standard and Advanced Level, Accredited by International Society of  Schema Therapy (2018)
                             </li>
-                            <li data-target="#carouselExampleIndicators1" data-slide-to="01">
+                            <li data-target="#carouselEducation" data-slide-to="01">
                                 Инструктор практик осознанности (2018)
                             </li>
-                            <li data-target="#carouselExampleIndicators1" data-slide-to="02">
+                            <li data-target="#carouselEducation" data-slide-to="02">
                                 Базовый 2-x годовой курс обучения УАТА по Транзакционному анализу в области психологии (2012)
                             </li>
-                            <li data-target="#carouselExampleIndicators1" data-slide-to="03">
+                            <li data-target="#carouselEducation" data-slide-to="03">
                                 Introduction to Cognitive Behavioural Therapy, by the European Psychiatric Association (2018)
                             </li>
-                            <li data-target="#carouselExampleIndicators1" data-slide-to="04">
+                            <li data-target="#carouselEducation" data-slide-to="04">
                                 Профессиональное развитие в КПТ (2018)
                             </li>
-                            <li data-target="#carouselExampleIndicators1" data-slide-to="05">
+                            <li data-target="#carouselEducation" data-slide-to="05">
                                 Нейробиология в психотерапии (2018)
                             </li>
-                            <li data-target="#carouselExampleIndicators1" data-slide-to="06">
+                            <li data-target="#carouselEducation" data-slide-to="06">
                                 Фасилитатор практик осознанности: Mindfulness Practitioner Course: Level I, II, III & Master (2018)
                             </li>
-                            <li data-target="#carouselExampleIndicators1" data-slide-to="07">
+                            <li data-target="#carouselEducation" data-slide-to="07">
                             Когнитивно-поведенческая терапия расстройств регуляции злости. Когнитивно-поведенческая терапия усложненной реакции утраты (2018)
                             </li>
-                            <li data-target="#carouselExampleIndicators1" data-slide-to="08">
+                            <li data-target="#carouselEducation" data-slide-to="08">
                             Введение в Терапию принятия и ответственности (ACT) с элементами Функционального анализа поведения (FAP) и Теории реляционных рамок (RFT), (2018)
                             </li>
-                            <li data-target="#carouselExampleIndicators1" data-slide-to="09">
+                            <li data-target="#carouselEducation" data-slide-to="09">
                             Когнитивно-поведенческая терапия социальной фобии. Когнитивно поведенческая терапия низкой самооценки (2017)
                             </li>
                         </ol>
@@ -449,31 +449,30 @@ class AboutFormControll {
                         }                         
                     });                 
                     
+                    if(inner) {
+                        inner.forEach(item => {
+
+                            let idItem = item.id;
+                        let id = `item-${numberAnswer}`;
+                        let i = idItem===id;
+    
+                            if(item.classList) {
+                                item.classList.forEach(className => {
+                                    if(className === 'active') {
+                                        item.classList.remove('active');
+                                    } else if(idItem === id) {
+                                        item.classList.add('active');
+                                        console.log(item.classList);
+                                    }
+                                });
+                                
+                            }   
+                            
+                        });
+
+                    }
                     
-                    inner.forEach(item => {
-
-                        let idItem = item.id;
-                    let id = `item-${numberAnswer}`;
-                    let i = idItem===id;
-
-                        if(item.classList) {
-                            item.classList.forEach(className => {
-                                if(className === 'active') {
-                                    item.classList.remove('active');
-                                } else if(idItem === id) {
-                            
-                            
-                                    item.classList.add('active');
-                                    console.log(item.classList);
-                                }
-                            });
-                            
-                        } 
-                        
-                        
-
-                        
-                    });
+                    
 
                     
 
@@ -481,7 +480,7 @@ class AboutFormControll {
 
 
             }); 
-        });
+        }); 
         
     }
         

@@ -660,20 +660,22 @@ nav {
   grid-gap: 100px;
 }
 .carousel-item {
-  float: left;
-  max-height: 0;
+  position: absolute;
+  height: 0;
   opacity: 0;
-  transition: opacity 1s ease 0s;
+  transition: 0.7s ease-in-out opacity;
 }
 .carousel-item.active {
   opacity: 1;
-  max-height: 520px;
+  position: relative;
   transition: opacity 500ms ease 0s;
 }
 .carousel-indicators {
   display: block;
   position: static;
-  margin: auto 0;
+  margin: 0;
+  width: 100%;
+  text-align: left;
 }
 .carousel-indicators li {
   background-color: transparent;
@@ -684,11 +686,13 @@ nav {
   text-indent: 0;
   cursor: pointer;
   z-index: 5;
+  border: none;
   position: relative;
   color: rgba(0, 0, 0, 0.4);
 }
 .carousel-indicators li.active {
   color: #000;
+  background-color: transparent;
 }
 .carousel-indicators li.active::before {
   content: "";
@@ -696,7 +700,7 @@ nav {
   height: 0;
   position: absolute;
   left: -50px;
-  transform: translateY(20%);
+  transform: translateY(50%);
   border-style: solid;
   border-width: 13px 0 13px 16px;
   border-color: transparent transparent transparent #8cbd10;
@@ -704,8 +708,17 @@ nav {
 .carousel-inner {
   /* justify-self: center; */
   position: relative;
+  height: 100%;
 }
 
+/* .carousel.carousel-fade .carousel-item {
+  opacity:0;
+  transition: opacity ease-out .1s;
+}
+
+.carousel.carousel-fade .active.carousel-item {
+    opacity:1;
+} */
 .answer__block-text {
   background-color: #8cbd10;
   border-radius: 20px 20px 0 20px;
@@ -781,7 +794,7 @@ nav {
 }
 
 .about {
-  height: 730px;
+  height: 530px;
   background: url(../images/about-me.png) no-repeat top;
   background-position-x: right;
   position: relative;
@@ -805,6 +818,7 @@ nav {
   position: sticky;
   top: 0;
   margin: auto 0;
+  height: auto;
 }
 .education .carousel img {
   z-index: 15;
@@ -1038,11 +1052,10 @@ nav {
   }
   .carousel-indicators li {
     position: relative;
-    margin-bottom: 0;
   }
   .carousel-indicators li.active::before {
     left: -30px;
-    transform: translateY(20%);
+    transform: translateY(50%);
     border-width: 10px 0 10px 14px;
   }
 
