@@ -668,7 +668,6 @@ nav {
 .carousel-item.active {
   opacity: 1;
   position: relative;
-  transition: opacity 500ms ease 0s;
 }
 .carousel-indicators {
   display: block;
@@ -706,19 +705,10 @@ nav {
   border-color: transparent transparent transparent #8cbd10;
 }
 .carousel-inner {
-  /* justify-self: center; */
   position: relative;
   height: 100%;
 }
 
-/* .carousel.carousel-fade .carousel-item {
-  opacity:0;
-  transition: opacity ease-out .1s;
-}
-
-.carousel.carousel-fade .active.carousel-item {
-    opacity:1;
-} */
 .answer__block-text {
   background-color: #8cbd10;
   border-radius: 20px 20px 0 20px;
@@ -739,42 +729,14 @@ nav {
   border-width: 0 60px 35px 0;
   border-color: transparent #8cbd10 transparent transparent;
 }
-.answer .carousel-inner {
-  align-self: center;
-}
-
-.questions {
-  position: relative;
-}
-.questions .carousel-item {
-  /* & p {
-    background-color: $elementsColor;
-    border-radius: 20px 20px 0 20px;
-    padding: 40px;
-    margin-bottom: 35px;
-    position: relative;
-
-    &::after {
-      content: '';
-      width: 0;
-      height: 0;
-      border-style: solid;
-      position: absolute;
-      right: 0;
-      bottom: -35px;
-      border-width: 0 60px 35px 0;
-      border-color: transparent $elementsColor transparent transparent;
-    }
-  } */
-}
-.questions .carousel-item span {
+.answer__block-author {
   font-size: 26;
   font-weight: bold;
   float: right;
   margin: 0 50px;
   line-height: 60px;
 }
-.questions .carousel-item span::before {
+.answer__block-author::before {
   content: "";
   width: 60px;
   height: 60px;
@@ -785,7 +747,13 @@ nav {
   float: left;
   background: url(../images/psyhologist-icon.png) no-repeat -55px top;
 }
+.answer .carousel-inner {
+  align-self: center;
+}
 
+.questions {
+  position: relative;
+}
 .secondTree {
   position: absolute;
   left: -500px;
@@ -912,9 +880,6 @@ nav {
 .footer__block:first-child {
   justify-self: start;
 }
-.footer__block:last-child {
-  justify-self: end;
-}
 .footer__social-list {
   display: flex;
   justify-content: space-between;
@@ -962,6 +927,7 @@ nav {
   font-size: 18px;
   border-radius: 12px;
   position: relative;
+  justify-self: end;
 }
 .footer__logo::before {
   content: "";
@@ -1250,25 +1216,6 @@ nav {
   line-height: 19px;
 }
 
-/* .article-new {
-  background-color: $primaryBGColor;
-  padding: 15px 50px;
-  display: block;
-
-
-  &__caption{
-    font-size: 26px;
-    line-height: 30px;
-
-  }
-
-  &__subtitle{
-    font-size: 64px;
-    font-weight: bold;
-    line-height: 75px;
-  }
-
-} */
 .mainContent > .article-relationship {
   padding: 0 150px 60px 100px;
 }
@@ -1300,6 +1247,56 @@ nav {
   color: rgba(0, 0, 0, 0.4);
 }
 
+.answer__title {
+  font-weight: bold;
+  text-align: center;
+}
+.answer--feedbacks {
+  padding: 60px 150px;
+}
+.answer--feedbacks::after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+.answer--feedbacks .answer__block {
+  margin: 0;
+  cursor: default;
+  font-weight: 50;
+  margin: 60px 0;
+}
+.answer--feedbacks .answer__block::after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+.answer--feedbacks .answer__block-author {
+  color: rgba(0, 0, 0, 0.2);
+}
+.answer--feedbacks .answer__block-author::before {
+  background-image: none;
+  background-color: #fbfbfb;
+}
+.answer--feedbacks .answer__block-author--even {
+  float: left;
+}
+.answer--feedbacks .answer__block-text {
+  color: #ffffff;
+  width: 60%;
+  float: right;
+  margin-bottom: 20px;
+}
+.answer--feedbacks .answer__block-text--even {
+  border-radius: 20px 20px 20px 0;
+  float: left;
+}
+.answer--feedbacks .answer__block-text--even:hover {
+  box-shadow: none;
+}
+.answer--feedbacks .answer__block-text--even::after {
+  transform: scale(-1, 1);
+  left: 0;
+}
 .answer__block {
   margin-top: 60px;
   margin-left: 200px;
@@ -1407,5 +1404,13 @@ nav {
   opacity: 1;
   transition: all 0.5s;
 }
+
+/* .containier--another {
+  background-color: rgba($secondaryBGColor, .5);
+  position: fixed;
+  width: 100%;
+  z-index: 10000;
+}
+ */
 
 /*# sourceMappingURL=styles.css.map */

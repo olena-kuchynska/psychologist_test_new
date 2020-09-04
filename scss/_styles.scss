@@ -2,7 +2,7 @@
 //-----------------------------------------------------------------------------
 
 .header {
-
+  
   nav {
     z-index: 98;
   }
@@ -307,11 +307,11 @@
       opacity: 0;
       transition: 0.7s ease-in-out opacity;
 
+
       
       &.active {        
         opacity: 1;
         position: relative;
-        transition: opacity 500ms ease 0s;
       }
     }
 
@@ -357,28 +357,19 @@
     }
 
     &-inner {
-      /* justify-self: center; */
       position: relative; 
       height: 100%;  
     }
 
 }
 
-/* .carousel.carousel-fade .carousel-item {
-  opacity:0;
-  transition: opacity ease-out .1s;
-}
-
-.carousel.carousel-fade .active.carousel-item {
-    opacity:1;
-} */
-
 
 //Questions block
 //-----------------------------------------------------------------------------
 
 .answer {
-  &__block-text {
+  &__block {
+  &-text {
     background-color: $elementsColor;
     border-radius: 20px 20px 0 20px;           
     padding: 30px 40px;
@@ -402,6 +393,27 @@
     }
   }
 
+  &-author {
+    font-size: 26;
+    font-weight: bold;
+    float: right;
+    margin: 0 50px;
+    line-height: 60px;
+  
+    &::before {
+      content: "";
+      width: 60px;
+      height: 60px;
+      display: block;
+      margin-right: 20px;
+      border-radius: 50%;
+      overflow: hidden;
+      float: left;
+      background: url(../images/psyhologist-icon.png) no-repeat -55px top;
+    }
+  }
+} 
+
   
   .carousel-inner {      
     align-self: center; 
@@ -414,49 +426,7 @@
 
   & .carousel { 
 
-    &-item {  
-       
-      
-      /* & p {
-        background-color: $elementsColor;
-        border-radius: 20px 20px 0 20px;
-        padding: 40px;
-        margin-bottom: 35px;
-        position: relative;
-
-        &::after {
-          content: '';
-          width: 0;
-          height: 0;
-          border-style: solid;
-          position: absolute;
-          right: 0;
-          bottom: -35px;
-          border-width: 0 60px 35px 0;
-          border-color: transparent $elementsColor transparent transparent;
-        }
-      } */
-
-      & span {
-        font-size: 26;
-        font-weight: bold;
-        float: right;
-        margin: 0 50px;
-        line-height: 60px;
-      
-        &::before {
-          content: "";
-          width: 60px;
-          height: 60px;
-          display: block;
-          margin-right: 20px;
-          border-radius: 50%;
-          overflow: hidden;
-          float: left;
-          background: url(../images/psyhologist-icon.png) no-repeat -55px top;
-        }
-      }
-    } 
+    
   }
 }
 
@@ -619,10 +589,9 @@
     &:first-child {
       justify-self: start;
     }
-    &:last-child {
-      justify-self: end;
-    }
   }
+
+      
 
   &__social {
     &-list {
@@ -700,6 +669,7 @@
     font-size: 18px;
     border-radius: 12px;
     position: relative;
+    justify-self: end;
 
     &::before {
       content: "\f1f9";
@@ -1078,6 +1048,7 @@
   display: block;
 
   .article {
+    
 
     &__info {
       display: flex;
@@ -1101,25 +1072,6 @@
   }   
 }
 
-/* .article-new {
-  background-color: $primaryBGColor;
-  padding: 15px 50px;
-  display: block;
-  
-
-  &__caption{
-    font-size: 26px;
-    line-height: 30px;
-
-  }
-
-  &__subtitle{
-    font-size: 64px;
-    font-weight: bold;
-    line-height: 75px;
-  }
-
-} */
 
 .mainContent > .article-relationship {
   padding: 0 150px 60px 100px;
@@ -1173,6 +1125,64 @@
 }
 
 .answer {
+
+  &__title {
+    font-weight: bold;
+    text-align: center;
+  }
+
+  &--feedbacks {
+    padding: 60px 150px;
+    @include clearfix;
+
+    .answer__block {
+      margin: 0;
+      @include clearfix;
+      cursor: default;
+      font-weight: 50;      
+      margin: 60px 0;
+
+      &-author {
+        color: rgba($baseFontColor, .2);
+        &::before {
+          background-image: none;
+          background-color: $secondaryBGColor;
+        }
+        
+        &--even{
+          float: left;
+        }
+      }
+    
+      &-text {         
+        color: $primaryBGColor;
+        width: 60%;
+        float: right;
+        margin-bottom: 20px;
+
+        &--even {
+          border-radius: 20px 20px 20px 0;
+          float: left;
+          
+          
+          &:hover {
+            box-shadow: none;
+          } 
+  
+          &::after {
+            transform: scale(-1, 1);         
+            left: 0;
+          }
+  
+        }
+                
+        
+      }
+        
+      
+      
+    }
+  }
   
 
   &__block {    
@@ -1274,6 +1284,7 @@
       }
       &-text {
         font-size: 24px;
+        
       }
       
 
@@ -1322,3 +1333,10 @@
 
 }
 
+/* .containier--another {
+  background-color: rgba($secondaryBGColor, .5);
+  position: fixed;
+  width: 100%;
+  z-index: 10000;
+}
+ */

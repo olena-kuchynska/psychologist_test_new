@@ -6,8 +6,9 @@ class AboutView {
     showForm() {
         const container = document.querySelector('.wrapper');
 
-        container.innerHTML = 
-            `<header class="header">
+        container.innerHTML =`
+            <div class="containier"> 
+            <header class="header">
                 <input id="burger" type="checkbox" class="header__burger-state"/>                
                 <label for="burger" class="header__burger-btn">
                     <span class="header__burger-icon1"></span>
@@ -43,6 +44,7 @@ class AboutView {
                 </p>
             </div>
             </article>
+            </div>
             <main class="mainContent">
                 <div class="principles" id="principles">
                     <img class="firstTree" src="./images/tree-1.png" alt="tree"/>
@@ -115,7 +117,7 @@ class AboutView {
                                     это значит, что необходимо найти дополнительный ресурс. Этим ресурсом становится психолог. 
                                     Вы же обращаетесь к стоматологу, когда болит зуб, не потому, что вы — слабак?
                                 </p>
-                                <span>Татьяна Колесник</span>                                
+                                <span class="answer__block-author">Татьяна Колесник</span>                                
                             </div>
                             <div id="item-1" class="carousel-item answer">
                                 <p class="answer__block-text">
@@ -124,7 +126,7 @@ class AboutView {
                                     В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя 
                                     Lorem Ipsum для распечатки образцов.
                                 </p>
-                                <span>Татьяна Колесник</span>                          
+                                <span class="answer__block-author">Татьяна Колесник</span>                          
                             </div>
                             <div id="item-2" class="carousel-item answer">
                                 <p class="answer__block-text">
@@ -133,7 +135,7 @@ class AboutView {
                                     это значит, что необходимо найти дополнительный ресурс. Этим ресурсом становится психолог. 
                                     Вы же обращаетесь к стоматологу, когда болит зуб, не потому, что вы — слабак?
                                 </p>
-                                <span>Татьяна Колесник</span>                                                         
+                                <span class="answer__block-author">Татьяна Колесник</span>                                                         
                             </div>
                             <div id="item-3" class="carousel-item answer">
                                 <p class="answer__block-text">
@@ -142,7 +144,7 @@ class AboutView {
                                     это значит, что необходимо найти дополнительный ресурс. Этим ресурсом становится психолог. 
                                     Вы же обращаетесь к стоматологу, когда болит зуб, не потому, что вы — слабак?
                                 </p>
-                                <span>Татьяна Колесник</span>                           
+                                <span class="answer__block-author">Татьяна Колесник</span>                           
                             </div>
                             <div id="item-4" class="carousel-item answer">
                                 <p class="answer__block-text">
@@ -151,13 +153,13 @@ class AboutView {
                                     это значит, что необходимо найти дополнительный ресурс. Этим ресурсом становится психолог. 
                                     Вы же обращаетесь к стоматологу, когда болит зуб, не потому, что вы — слабак?
                                 </p>
-                                <span>Татьяна Колесник</span>                            
+                                <span class="answer__block-author">Татьяна Колесник</span>                            
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="about" id="about">
+                <div class="about">
                     <div class="about__block">
                         <p class="about__block-title">Обо мне</p>
                         <p class="about__block-text">
@@ -315,7 +317,10 @@ class AboutView {
         if(articalPhoto && articalInfoText) {
 
             articalPhoto.remove();
-            articalInfoText.remove();        
+            articalInfoText.remove();
+            
+            const block = document.querySelector('.containier');
+            block.classList.add('containier--another');
 
             const article = document.querySelector('article');
             article.classList.add('article--another');
@@ -405,10 +410,13 @@ class AboutFormControll {
                 this.subscribers.publish('reorganized');
                 if(currentEvent === 'Обо мне') {
                     this.subscribers.publish('about');
+                    history.pushState(null, null, '/about');
                 } else if(currentEvent === 'Консультации') {
                     this.subscribers.publish('consultation');
+                    history.pushState(null, null, '/consultation');
                 } else if(currentEvent === 'Кабинет') {
-                    this.subscribers.publish('consulation');
+                    this.subscribers.publish('cabinet');
+                    history.pushState(null, null, '/cabinet');
                 }
             }
             
@@ -460,6 +468,7 @@ class AboutFormControll {
                                 item.classList.forEach(className => {
                                     if(className === 'active') {
                                         item.classList.remove('active');
+
                                     } else if(idItem === id) {
                                         item.classList.add('active');
                                         console.log(item.classList);
@@ -616,8 +625,37 @@ class ConsultationView {
         articalSubtitle.classList.add('article__info-subtitle--italic')
         articalSubtitle.innerHTML = 'Моя основная специализация&nbsp;&mdash; отношения.';
         articleNew.appendChild(articalSubtitle); */
+    }
 
-        
+    showFeedbacks() {
+        const mainContent = document.querySelector('.mainContent');
+        mainContent.innerHTML = `
+        <section class="answer answer--feedbacks">
+            <h1 class="answer__title">Отзывы</h1>     
+            <div class="answer__block">
+                <div class="answer__block-text">Сразу же после первого сеанса с Татьяной я вышла с широкой улыбкой на лице. Проблемы превратились в решаемые задачи и абсолютно перестали беспокоить, как это было раньше. Очень приятный и светлый человек. Татьяна, огромное Вам спасибо!</div>                           
+                <span class="answer__block-author">Татьяна Колесник</span>
+            </div>
+            <div class="answer__block">
+                <div class="answer__block-text answer__block-text--even">Пришла к Татьяне в полном состоянии не ресурса и апатии. Было чувство, что запуталась в жизни, понимания "Кто я?" и "Чем хочу заниматься". Всего несколько встреч с Ириной помогли вернутся в ресурсное состоянии и желания творить. Больше всего понравилось, что все индивидуально и работа идет по моему запросу. Я люблю решать проблемы быстро и Татьянаподкупила тем, что не надо будет ходить 1,5 года на терапию чтобы решить мою задачу. Хотя другие специалисты предлагали свои услуги от 10 встреч и более :) Татьяна, огромная благодарность за профессионализм, индивидуальны подход и кропотливый труд в нашей совместной работе. Не всегда было легко, но однозначно этого того стоило. Я теперь точно знаю к кому идти, если на жизненном пути возникли трудности. И вам рекомендую.</div>                      
+                <span class="answer__block-author answer__block-author--even">Татьяна Колесник</span></div>                          
+            <div class="answer__block">
+                <div class="answer__block-text">Мені достатньо було одного візиту до Татьяни ,щоб зрозуміти всю суть моєї проблеми,і дійсно зараз я дуже щаслива,і кохана людина,тим паче і сама кохаю, спілкування було дуже приємним, і я змогла повністю розкритися психологу.Хочу вас подякувати Ірино,за те що ви є,і допомагаєте людям,іноді сам ти не взмозі зрозуміти ,і друзі і рідні теж не можуть тобі відкрити очі і допомогти ,тому звернення до психолога це вихід,тим більш допомога собі розібратися в свої думках,які дуже швидку змінюються.Ви мені дуже допомогли ,я дуже щаслива.Дякую.</div>                           
+                <span class="answer__block-author">Татьяна Колесник</span></div>                          
+            </div> 
+            <div class="answer__block">
+                <div class="answer__block-text answer__block-text--even">Хочу поблагодарить Татьяну за помощь! Мне очень помогли консультации. Я осознала некоторые очевидные вещи в своей жизни, о которых раньше даже не задумывалась. Смогла изменить отношение к проблемам из прошлого, которые до сих пор меня беспокоили, и, что самое важное, переосмыслить свое будущее.</div>                           
+                <span class="answer__block-author answer__block-author--even">Татьяна Колесник</span></div>                          
+            </div> 
+            <div class="answer__block">
+                <div class="answer__block-text">Обращалась по поводу проблем после того, как переболела серьезной болезнью и лежала в больнице. Хотя у меня есть не одна подруга, рассказывать им о своих проблемах было сложно. Да и что они могли посоветовать - "не парься и все пройдет". После нескольких сеансов поняла для себя, что все проблемы, которые у меня есть находятся у меня внутри и справиться с ними могу я сама. И это было как-то удивительно - вроде человек тебе помогает, но и вроде как ты помогаешь себе сама. Я очень благодарна и сейчас прохожу терапию у Татьяны!</div>                           
+                <span class="answer__block-author">Татьяна Колесник</span></div>                          
+            </div> 
+            <div class="answer__block">
+                <div class="answer__block-text answer__block-text--even">Моя история прихода к психологу Татьяне, начинается с того ,что я запутался сам в себе. Я как бы знал что мне делать и в тоже время не знал... Наверное эта ситуация знакома многим. Буду краток, мне кажется что каждый из нас нуждается во взгляде на наш внутренний мир, и лучше когда это делает профессионал своего дела. Огромное спасибо за профессиональную консультацию. С признательностью и уважением Юра. =))</div>                           
+                <span class="answer__block-author answer__block-author--even">Татьяна Колесник</span></div>                          
+            </div> 
+        </section>`
 
     }
 }
@@ -631,6 +669,9 @@ class ConsultationForm {
     handleShowForm() {
         this.view.showForm();
     }
+    handleFeedbacks() {
+        this.view.showFeedbacks();
+    }
 }
 
 class ConsultationFormControll {
@@ -641,6 +682,19 @@ class ConsultationFormControll {
 
     handleShowForm() {
         this.model.handleShowForm();
+        this.actionforForm();
+    }
+    
+    handleFeedbacks() {
+        this.model.handleFeedbacks();
+    }
+
+    actionforForm() {
+        const answers = document.querySelector('.answer__block');
+        answers.addEventListener('click', event => {
+            this.handleFeedbacks();
+            history.pushState(null, null, '/consultation#feedbacks');                        
+        });
     }
         
 }
