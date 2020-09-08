@@ -306,7 +306,15 @@ class AboutView {
     }
 
     reorganizedView() {
-        const mainContent = document.querySelector('.mainContent');
+        const block = document.querySelector('.containier');
+        block.classList.remove('containier--another');
+        const container = document.querySelector('.wrapper');
+        container.classList.remove('wrapper__cabinet');
+        container.removeAttribute('style');
+        const mainContent = document.querySelector('.mainContent');/* 
+        mainContent.classList.remove('mainContent__horizontal');
+        const recordingBlock = document.querySelector('.recording__block');
+        recordingBlock.classList.remove('recording__block--smaller'); */
         mainContent.innerHTML = '';
 
         const articalPhoto = document.querySelector('.article__photo');        
@@ -317,10 +325,7 @@ class AboutView {
         if(articalPhoto && articalInfoText) {
 
             articalPhoto.remove();
-            articalInfoText.remove();
-            
-            const block = document.querySelector('.containier');
-            block.classList.add('containier--another');
+            articalInfoText.remove();        
 
             const article = document.querySelector('article');
             article.classList.add('article--another');
@@ -406,17 +411,19 @@ class AboutFormControll {
         navigation.addEventListener('click', event => {
             let currentElement = event.target;
             let currentEvent = currentElement.innerText;
+            const body = document.querySelector('body');
+            body.removeAttribute('style');
             if(currentEvent!=='Записаться') {
                 this.subscribers.publish('reorganized');
                 if(currentEvent === 'Обо мне') {
-                    this.subscribers.publish('about');
-                    history.pushState(null, null, '/about');
+                    this.subscribers.publish('about');/* 
+                    history.pushState(null, null, '/about'); */
                 } else if(currentEvent === 'Консультации') {
-                    this.subscribers.publish('consultation');
-                    history.pushState(null, null, '/consultation');
+                    this.subscribers.publish('consultation');/* 
+                    history.pushState(null, null, '/consultation'); */
                 } else if(currentEvent === 'Кабинет') {
-                    this.subscribers.publish('cabinet');
-                    history.pushState(null, null, '/cabinet');
+                    this.subscribers.publish('cabinet');/* 
+                    history.pushState(null, null, '/cabinet'); */
                 }
             }
             
@@ -692,8 +699,9 @@ class ConsultationFormControll {
     actionforForm() {
         const answers = document.querySelector('.answer__block');
         answers.addEventListener('click', event => {
-            this.handleFeedbacks();
-            history.pushState(null, null, '/consultation#feedbacks');                        
+            window.scrollTo(pageXOffset, 0);
+            this.handleFeedbacks();/* 
+            history.pushState(null, null, '/consultation#feedbacks');   */                      
         });
     }
         
@@ -705,8 +713,43 @@ class CabinetView {
     }
 
     showForm() {
+        const mainContent = document.querySelector('.mainContent');
+        mainContent.innerHTML = `
+        <img class="cabinet__img" src="./images/cabinet.png" alt="cabinet" />
+        <article class="location">
+            <h1 class="location__title">Мой кабинет</h1>
+            <p class="location__description">Как и в своей работе, в моем кабинете я стараюсь создать атмосферу комфорта и уюта.</p>
+            <div class="location__map"></div>
+        </article>
+        <!--<span class="cabinet__description">Можем перекусить</span>
+        <span class="cabinet__description">Мое образование</span>
+        <span class="cabinet__description">Забавные подарки</span>
+        <span class="cabinet__description">Много интересного</span>
+        <span class="cabinet__description">Искусство в основе</span>
+        <span class="cabinet__description">Групповые занятия</span>
+        <span class="cabinet__description">Все для вашего комфорта</span>-->`;
         
     }
+
+    reorganizedView() {
+        /* const mainContent = document.querySelector('.mainContent');
+        mainContent.classList.add('mainContent__horizontal'); */
+         
+        const container = document.querySelector('.wrapper');
+        container.classList.add('wrapper__cabinet');
+
+        /* const body = document.querySelector('body');
+        body.setAttribute('style','overflow-y: hidden;'); */
+
+        const block = document.querySelector('.containier');
+        block.classList.add('containier--another');
+
+        /* const recording = document.querySelector('.recording__block');
+        recording.classList.add('recording__block--smaller'); */
+        
+    }
+
+
 }
 
 
@@ -718,6 +761,10 @@ class CabinetForm {
     handleShowForm() {
         this.view.showForm();
     }
+
+    handleReorganized() {        
+        this.view.reorganizedView();
+    }
 }
 
 class CabinetFormControll {
@@ -726,8 +773,23 @@ class CabinetFormControll {
         this.subscribers = subscribers;
     }
 
-    handleShowForm() {
+    resizing() {
+        let height = document.documentElement.clientHeight;
+        const cabinet = document.querySelector('.cabinet__img');
+        cabinet.setAttribute('style',`height: ${height}` + `px;`);
+    }
+
+    actionforForm() {
+        this.resizing();
+        /* window.addEventListener('resize',this.resizing()); */
+
+    }
+
+    handleShowForm() {      
+        
+        this.model.handleReorganized();        
         this.model.handleShowForm();
+        this.actionforForm();
     }
         
 }
