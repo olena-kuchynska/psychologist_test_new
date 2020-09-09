@@ -47,7 +47,7 @@ class AboutView {
             </div>
             <main class="mainContent">
                 <div class="principles" id="principles">
-                    <img class="firstTree" src="./images/tree-1.png" alt="tree"/>
+                    <img class="tree tree__first" src="./images/tree-1.png" alt="tree"/>
                     <div class="title-for-block">Мои основные принцыпы</div>
                     <ul class="principles__list">
                         <li class="principles__list-block">                            
@@ -89,7 +89,7 @@ class AboutView {
                     </ul> 
                 </div>
                 <div class="questions" id="questions">
-                    <img class="secondTree" src="./images/tree-2.png" alt="tree"/>
+                    <img class="tree tree__second" src="./images/tree-2.png" alt="tree"/>
                     <div class="title-for-block">Часто задаваемые вопросы</div>
                     <div id="carouselQuestions" class="carousel slide carousel-fade" data-ride="carousel">
                         <ol class="carousel-indicators" id="first">
@@ -171,10 +171,10 @@ class AboutView {
                         Европейской Ассоциации Транзактного Анализа.
                         </p>
                     </div>
-                    <img class="thirdTree" src="./images/tree-3.png" alt="tree" />
+                    <img class="tree tree__third" src="./images/tree-3.png" alt="tree" />
                 </div>
                 <div class="education" id="education">                
-                    <img class="fourthTree" src="./images/tree-4.png" alt="tree" />
+                    <img class="tree tree__fourth" src="./images/tree-4.png" alt="tree" />
                     <div class="title-for-block">Образование</div>
                     <div id="carouselEducation" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators" id="second">
@@ -518,6 +518,7 @@ class ConsultationView {
                 <div class="article-new">
                     <p class="article__info-title">Консультации</p>
                     <p class="article__info-subtitle article__info-subtitle--italic">Моя основная специализация&nbsp;&mdash; отношения.</p>
+                    <img class="tree tree__first--consult" src="./images/tree-3.png" alt="tree" />
                 </div>
                 <div class="relationship">
                     <div class="relationship__image">
@@ -554,7 +555,8 @@ class ConsultationView {
                                 Самоактуализация, смыслы, счастье, радость, вопросы собственной свободы и авторства своей жизни…
                             </p>
                         </li>                      
-                    </ul>         
+                    </ul>    
+                <img class="tree tree__second--consult" src="./images/tree-2.png" alt="tree" />
                 </div>
             </div>
             <div class="organisational__block">
@@ -586,6 +588,7 @@ class ConsultationView {
             </div>
             <section class="answer">
                 <div class="answer__block">
+                    <img class="tree tree__third--consult" src="./images/tree-1.png" alt="tree" />
                     <span class="answer__block-text answer__block--new">Читать отзывы</span>                           
                 </div>                         
             </section>
@@ -617,21 +620,6 @@ class ConsultationView {
             </div>
             
         `;
-
-        /* const articleNew = document.createElement('div');
-        articleNew.setAttribute('class','article-new');
-        mainContent.appendChild(articleNew);
-
-        const articalCaption = document.createElement('div');
-        articalCaption.setAttribute('class','article__info-title');
-        articalCaption.innerText = 'Консультации';
-        articleNew.appendChild(articalCaption);
-
-        const articalSubtitle = document.createElement('div');
-        articalSubtitle.setAttribute('class','article__info-subtitle');
-        articalSubtitle.classList.add('article__info-subtitle--italic')
-        articalSubtitle.innerHTML = 'Моя основная специализация&nbsp;&mdash; отношения.';
-        articleNew.appendChild(articalSubtitle); */
     }
 
     showFeedbacks() {
@@ -640,10 +628,12 @@ class ConsultationView {
         <section class="answer answer--feedbacks">
             <h1 class="answer__title">Отзывы</h1>     
             <div class="answer__block">
+                <img class="tree tree__first--feedbacks" src="./images/tree-1.png" alt="tree" />
                 <div class="answer__block-text">Сразу же после первого сеанса с Татьяной я вышла с широкой улыбкой на лице. Проблемы превратились в решаемые задачи и абсолютно перестали беспокоить, как это было раньше. Очень приятный и светлый человек. Татьяна, огромное Вам спасибо!</div>                           
                 <span class="answer__block-author">Татьяна Колесник</span>
             </div>
             <div class="answer__block">
+                <img class="tree tree__second--feedbacks" src="./images/tree-3.png" alt="tree" />
                 <div class="answer__block-text answer__block-text--even">Пришла к Татьяне в полном состоянии не ресурса и апатии. Было чувство, что запуталась в жизни, понимания "Кто я?" и "Чем хочу заниматься". Всего несколько встреч с Ириной помогли вернутся в ресурсное состоянии и желания творить. Больше всего понравилось, что все индивидуально и работа идет по моему запросу. Я люблю решать проблемы быстро и Татьянаподкупила тем, что не надо будет ходить 1,5 года на терапию чтобы решить мою задачу. Хотя другие специалисты предлагали свои услуги от 10 встреч и более :) Татьяна, огромная благодарность за профессионализм, индивидуальны подход и кропотливый труд в нашей совместной работе. Не всегда было легко, но однозначно этого того стоило. Я теперь точно знаю к кому идти, если на жизненном пути возникли трудности. И вам рекомендую.</div>                      
                 <span class="answer__block-author answer__block-author--even">Татьяна Колесник</span></div>                          
             <div class="answer__block">
@@ -651,12 +641,14 @@ class ConsultationView {
                 <span class="answer__block-author">Татьяна Колесник</span></div>                          
             </div> 
             <div class="answer__block">
+                <img class="tree tree__third--feedbacks" src="./images/tree-5.png" alt="tree" />
                 <div class="answer__block-text answer__block-text--even">Хочу поблагодарить Татьяну за помощь! Мне очень помогли консультации. Я осознала некоторые очевидные вещи в своей жизни, о которых раньше даже не задумывалась. Смогла изменить отношение к проблемам из прошлого, которые до сих пор меня беспокоили, и, что самое важное, переосмыслить свое будущее.</div>                           
                 <span class="answer__block-author answer__block-author--even">Татьяна Колесник</span></div>                          
             </div> 
             <div class="answer__block">
+                <img class="tree tree__fourth--feedbacks" src="./images/tree-3.png" alt="tree" />
                 <div class="answer__block-text">Обращалась по поводу проблем после того, как переболела серьезной болезнью и лежала в больнице. Хотя у меня есть не одна подруга, рассказывать им о своих проблемах было сложно. Да и что они могли посоветовать - "не парься и все пройдет". После нескольких сеансов поняла для себя, что все проблемы, которые у меня есть находятся у меня внутри и справиться с ними могу я сама. И это было как-то удивительно - вроде человек тебе помогает, но и вроде как ты помогаешь себе сама. Я очень благодарна и сейчас прохожу терапию у Татьяны!</div>                           
-                <span class="answer__block-author">Татьяна Колесник</span></div>                          
+                <span class="answer__block-author">Татьяна Колесник</span></div>
             </div> 
             <div class="answer__block">
                 <div class="answer__block-text answer__block-text--even">Моя история прихода к психологу Татьяне, начинается с того ,что я запутался сам в себе. Я как бы знал что мне делать и в тоже время не знал... Наверное эта ситуация знакома многим. Буду краток, мне кажется что каждый из нас нуждается во взгляде на наш внутренний мир, и лучше когда это делает профессионал своего дела. Огромное спасибо за профессиональную консультацию. С признательностью и уважением Юра. =))</div>                           
@@ -719,15 +711,18 @@ class CabinetView {
         <article class="location">
             <h1 class="location__title">Мой кабинет</h1>
             <p class="location__description">Как и в своей работе, в моем кабинете я стараюсь создать атмосферу комфорта и уюта.</p>
-            <div class="location__map"></div>
+            <div id="wrapper-9cd199b9cc5410cd3b1ad21cab2e54d3">
+            <div class="location__map"> 
+            <iframe src="https://www.google.com/maps/d/embed?mid=1KWKO1v_9qWF90PK3R7huW-_5hlCmCxeq" width="350" height="220" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>    
         </article>
-        <!--<span class="cabinet__description">Можем перекусить</span>
-        <span class="cabinet__description">Мое образование</span>
-        <span class="cabinet__description">Забавные подарки</span>
-        <span class="cabinet__description">Много интересного</span>
-        <span class="cabinet__description">Искусство в основе</span>
-        <span class="cabinet__description">Групповые занятия</span>
-        <span class="cabinet__description">Все для вашего комфорта</span>-->`;
+         <span class="cabinet__description cabinet__description-first">Можем<br />перекусить</span>
+        <span class="cabinet__description cabinet__description-second">Мое образование</span>
+        <span class="cabinet__description cabinet__description-third cabinet__description--right">Забавные<br />подарки</span>
+        <span class="cabinet__description cabinet__description-fourth">Много<br />интересного</span>
+        <span class="cabinet__description cabinet__description-fifth cabinet__description--right">Искусство<br />в основе</span>
+        <span class="cabinet__description cabinet__description-sixth">Групповые<br />занятия</span>
+        <span class="cabinet__description cabinet__description-seventh">Все для вашего комфорта</span>`;
         
     }
 
@@ -738,8 +733,8 @@ class CabinetView {
         const container = document.querySelector('.wrapper');
         container.classList.add('wrapper__cabinet');
 
-        /* const body = document.querySelector('body');
-        body.setAttribute('style','overflow-y: hidden;'); */
+        const body = document.querySelector('body');
+        body.setAttribute('style','overflow-y: hidden;');
 
         const block = document.querySelector('.containier');
         block.classList.add('containier--another');

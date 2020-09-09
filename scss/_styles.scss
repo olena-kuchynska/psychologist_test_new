@@ -251,13 +251,6 @@
 .principles {
   position: relative;
 
-  .firstTree {
-    position: absolute;
-    right: 0;
-    top: -150px;
-    z-index: 1;
-  }
-
   &__list {
     display: grid;
     margin-top: 50px;
@@ -425,12 +418,6 @@
   position: relative;
 }
 
-.secondTree {
-  position: absolute;
-  left: -500px;
-  top: -165px;
-  z-index: 1;
-}
 
 //About block
 //-----------------------------------------------------------------------------
@@ -478,23 +465,82 @@
   }
 }
 
-.thirdTree {
-  position: absolute;
-  left: 0;
-  bottom: -160px;
-  transform: rotate(15deg);
-  z-index: 1;
-}
-
-.fourthTree {
-  position: absolute;
-  right: 0;
-  top: 50%;
-}
-
 .recording {
   padding: 100px;
 }
+
+
+//Decoration elements
+//-----------------------------------------------------------------------------
+
+.tree {
+  position: absolute;
+  z-index: 1;
+  &__first{
+    right: 0;
+    top: -150px;
+    
+    &--consult {
+      right: -220px;
+      top: -50%;
+      width: 450px;
+      transform: scale(-1, 1) rotate(15deg);
+    }
+    &--feedbacks {
+      left: -170px;
+      top: -50%;
+      width: 370px;
+      transform: scale(-1, -1) rotate(5deg);
+    }
+  }
+
+  &__second{
+    left: -500px;
+    top: -165px;
+    &--consult {
+      bottom: -100px;
+      left: -300px;
+      width: 600px;
+    }
+    &--feedbacks {
+      transform: scale(-1,1) rotate(90deg);
+      right: -250px;
+      top: 50%;
+      height: 370px;
+      
+    }
+    
+  }
+  &__third{
+    left: 0;
+    bottom: -160px;
+    transform: rotate(15deg);
+    
+    &--consult {
+      right: 15%;
+      top: calc(-100% - 70px);
+      width: 350px;
+      transform: rotate(-90deg);
+      z-index: -1;
+    }
+    &--feedbacks {
+      left: -155px;
+      top: -70%;
+      width: 250px;
+    }
+  }
+  &__fourth{
+    right: 0;
+    top: 50%;
+    &--feedbacks {
+      transform: rotate(30deg);
+      left: -250px;
+      bottom: 0;
+      width: 400px;      
+    }
+  }  
+}
+
 
 //Recording block
 //-----------------------------------------------------------------------------
@@ -916,24 +962,20 @@
       
     }
   }
-
-  .principles {
-    .firstTree {
+    .tree__first {
       top: -110px;
       height: 300px;
-    }
-  }
-  
-  .secondTree {
+    } 
+  .tree__second {
     height: 200px;
     left: -350px;
     top: -120px;
   }
-  .thirdTree {
+  .tree__third {
     height: 300px;
     bottom: -120px;
   }
-  .fourthTree {
+  .tree__fourth {
     display: 400px;
   }
 }
@@ -1012,23 +1054,23 @@
   }
 
   .principles {
-    .firstTree {
+    .tree__first {
       top: -80px;
       height: 270px;
     }
 
   }
   
-  .secondTree {
+  .tree__second {
     height: 180px;
     left: -320px;
     top: -110px;
   }
-  .thirdTree {
+  .tree__third {
     height: 250px;
     bottom: -100px;
   }
-  .fourthTree {
+  .tree__fourth {
     display: none;
   }
 }
@@ -1072,12 +1114,17 @@
   padding: 0 150px 60px 100px;
 }
 
+.article-new {
+  position: relative;
+}
+
 
 .relationship {
   margin-top: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr ;
   grid-gap: 90px;
+  position: relative;
 
   &__image {
         
@@ -1087,6 +1134,7 @@
     height: 520px;
     width: 520px;
     margin: 0 auto;
+    margin-bottom: 100px;
     position: sticky;
     top: 0;
 
@@ -1119,8 +1167,7 @@
   }
 }
 
-.answer {
-
+.answer {  
   &__title {
     font-weight: bold;
     text-align: center;
@@ -1136,6 +1183,7 @@
       cursor: default;
       font-weight: 50;      
       margin: 60px 0;
+      position: relative;
 
       &-author {
         color: rgba($baseFontColor, .2);
@@ -1182,7 +1230,8 @@
 
   &__block {    
     margin-top: 60px;
-    margin-left: 200px;
+    margin-left: 200px;    
+    position: relative;
     
     &--new {
       display: inline-block;
@@ -1195,6 +1244,21 @@
 
       &:hover {
         box-shadow: 0 0 11px rgba(33,33,33,.5);
+        &::before {
+          content: "";
+          position: absolute;
+          width: 50px;
+          height: 75px;
+          background: transparent;
+          transform: rotate(60deg);
+          top: 51px;
+          left: 28px;
+          box-shadow: 14px 0 11px -11px rgba(33,33,33,.3);
+        }
+        &::after {
+          box-shadow: 7px 0 6px -5px rgba(33,33,33,.3);
+        }
+
       } 
 
       &::after {
@@ -1414,9 +1478,48 @@
     @include clearfix;
   }
   &__description{
-    font-size: 24px;
+    font-size: 20px;
     color: $elementsColor;
     font-weight: bolder;
+    z-index: 1000;
+    position: absolute;
+  
+    &--right{
+      text-align: right;
+    }
+
+    &-first {
+      bottom: 25%;
+      left: 22%;
+    }
+
+    &-second {
+      top: 100px;
+      left: 28%
+    }
+
+    &-third {
+      bottom: 25%;
+      left: 37%;
+    }
+
+    &-fourth {
+      top: 150px;
+      left: 45%;
+    }
+    &-fifth {
+      left: 65%;
+      top: 30%;
+    }
+    &-sixth {
+      left: 71%;
+      bottom: 25%;
+    }
+    &-seventh {
+      top: 130px;
+      left: 3315px;  
+    }
+
   }
 }
 
@@ -1436,6 +1539,7 @@
     margin: 10px;
   }
   &__map {
+    color: $elementsColor;
     height: 220px;
     width: 100%;
     outline: 3px solid $primaryBGColor;
