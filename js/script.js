@@ -7,7 +7,7 @@ class AboutView {
         const container = document.querySelector('.wrapper');
 
         container.innerHTML =`
-            
+        <div class="containier">
                 <header class="header">
                     <input id="burger" type="checkbox" class="header__burger-state"/>                
                     <label for="burger" class="header__burger-btn">
@@ -32,7 +32,6 @@ class AboutView {
                         </ul>
                     </nav>
                 </header>
-                <div class="containier"> 
                 <article class="article">
                     <div class="article__photo">
                     </div>
@@ -44,7 +43,8 @@ class AboutView {
                         от конфликтов в семье до вопросов саморазвития.
                         </p>
                     </div>
-                </article>
+                </article>                
+                </div>
                 <main class="mainContent">
                     <div class="principles" id="principles">
                         <img class="tree tree__first" src="./images/tree-1.png" alt="tree"/>
@@ -302,8 +302,7 @@ class AboutView {
                         </ul>
                     </div>
                     <div class="footer__logo">Fedorov<br /> Desing Studio</div>
-                </footer>
-            </div>`;
+                </footer>`;
     }
 
     reorganizedView() {
@@ -408,19 +407,24 @@ class AboutFormControll {
         const caruselIndicatorsAll = document.querySelectorAll('.carousel-indicators');
         const caruselInnerAll = document.querySelectorAll('.carousel-inner');
         const burger = document.querySelector('#burger');
-        const container = document.querySelector('.containier');
+        const article = document.querySelector('.article');
+        const mainContent = document.querySelector('.mainContent');
+        const recording = document.querySelector('.recording');                
+        const footer = document.querySelector('.footer');
 
-        burger.addEventListener('click', event => {
+        burger.addEventListener('click', event => {            
+            
+
             if (event.target.checked === true) {
-                container.setAttribute('style',
-                `-webkit-filter: blur(8px);
-                -moz-filter: blur(8px);
-                -o-filter: blur(8px);
-                -ms-filter: blur(8px);
-                filter: blur(8px);                
-                transition: all 0.2s;`)
-            } else {
-                container.removeAttribute('style');
+                article.classList.add('blur');
+                mainContent.classList.add('blur');
+                footer.classList.add('blur');
+                recording.classList.add('blur');
+            } else {                
+                article.classList.remove('blur');
+                mainContent.classList.remove('blur');
+                footer.classList.remove('blur');
+                recording.classList.remove('blur');
             }
             
         });
@@ -432,8 +436,11 @@ class AboutFormControll {
             const body = document.querySelector('body');
             body.removeAttribute('style');
             burger.checked = false;
-            container.removeAttribute('style');
-            
+            article.classList.remove('blur');
+            mainContent.classList.remove('blur');
+            footer.classList.remove('blur');
+            recording.classList.remove('blur');
+
             if(currentEvent!=='Записаться') {
                 this.subscribers.publish('reorganized');
                 if(currentEvent === 'Обо мне') {

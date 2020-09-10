@@ -565,6 +565,15 @@ nav {
   transform: rotate(45deg) translateZ(0);
 }
 
+.blur {
+  -webkit-filter: blur(8px);
+  -moz-filter: blur(8px);
+  -o-filter: blur(8px);
+  -ms-filter: blur(8px);
+  filter: blur(8px);
+  transition: all 0.2s;
+}
+
 .mainContent > div:nth-of-type(even) {
   background-color: #fbfbfb;
 }
