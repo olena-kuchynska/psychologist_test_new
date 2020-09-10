@@ -815,6 +815,7 @@
   grid-template-columns: 1fr 1fr ;
   grid-gap: 0 90px;
   position: relative;
+  overflow: hidden;
 
   &__image {
         

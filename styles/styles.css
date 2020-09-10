@@ -420,7 +420,6 @@ body {
 .wrapper {
   height: 100%;
   margin: 0 auto;
-  overflow: hidden;
 }
 .wrapper::after {
   content: " ";
@@ -1053,6 +1052,7 @@ nav {
   grid-template-columns: 1fr 1fr;
   grid-gap: 0 90px;
   position: relative;
+  overflow: hidden;
 }
 .relationship__image-block {
   background: url(../images/consultation-image.png) no-repeat center center;
