@@ -404,6 +404,7 @@ class AboutFormControll {
 
     actionforForm() {
         const navigation = document.querySelector('.header-nav');
+        const menu = document.querySelector('nav');
         const caruselIndicatorsAll = document.querySelectorAll('.carousel-indicators');
         const caruselInnerAll = document.querySelectorAll('.carousel-inner');
         const burger = document.querySelector('#burger');
@@ -415,7 +416,8 @@ class AboutFormControll {
         burger.addEventListener('click', event => {            
             
 
-            if (event.target.checked === true) {
+            if (event.target.checked === true) {                                
+                menu.setAttribute('style','display:block;');
                 article.classList.add('blur');
                 mainContent.classList.add('blur');
                 footer.classList.add('blur');
@@ -424,7 +426,8 @@ class AboutFormControll {
                 article.classList.remove('blur');
                 mainContent.classList.remove('blur');
                 footer.classList.remove('blur');
-                recording.classList.remove('blur');
+                recording.classList.remove('blur'); 
+                setTimeout(() => { menu.setAttribute('style','display:none;') },170);
             }
             
         });
@@ -440,6 +443,7 @@ class AboutFormControll {
             mainContent.classList.remove('blur');
             footer.classList.remove('blur');
             recording.classList.remove('blur');
+            menu.removeAttribute('style');
 
             if(currentEvent!=='Записаться') {
                 this.subscribers.publish('reorganized');
@@ -488,7 +492,6 @@ class AboutFormControll {
                     let inner;
 
                     caruselInnerAll.forEach(caruselInner => {
-                        console.log(caruselInner.id)
                         if(caruselInner.id === idCarusel) {
                             inner= caruselInner.childNodes;
                         }                         
@@ -508,7 +511,6 @@ class AboutFormControll {
 
                                     } else if(idItem === id) {
                                         item.classList.add('active');
-                                        console.log(item.classList);
                                     }
                                 });
                                 
@@ -544,13 +546,12 @@ class ConsultationView {
 
         const mainContent = document.querySelector('.mainContent');
         mainContent.innerHTML = `
-            <div class="article-relationship">
+            <div class="relationship">
                 <div class="article-new">
                     <p class="article__info-title">Консультации</p>
                     <p class="article__info-subtitle article__info-subtitle--italic">Моя основная специализация&nbsp;&mdash; отношения.</p>
                     <img class="tree tree__first--consult" src="./images/tree-3.png" alt="tree" />
                 </div>
-                <div class="relationship">
                     <div class="relationship__image">
                         <div class="relationship__image-block"></div>
                     </div>
@@ -587,7 +588,6 @@ class ConsultationView {
                         </li>                      
                     </ul>    
                 <img class="tree tree__second--consult" src="./images/tree-2.png" alt="tree" />
-                </div>
             </div>
             <div class="organisational__block">
                 <p class="title-for-block">Организационные моменты</p>
