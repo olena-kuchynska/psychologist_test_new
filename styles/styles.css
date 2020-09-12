@@ -435,16 +435,6 @@ nav {
   width: 50%;
 }
 
-@keyframes slidein {
-  from {
-    margin-left: 100%;
-    width: 300%;
-  }
-  to {
-    margin-left: 0%;
-    width: 100%;
-  }
-}
 .header nav {
   z-index: 98;
 }
@@ -715,7 +705,7 @@ nav {
   height: 0;
   position: absolute;
   left: -50px;
-  transform: translateY(50%);
+  transform: translateY(20%);
   border-style: solid;
   border-width: 13px 0 13px 16px;
   border-color: transparent transparent transparent #8cbd10;
@@ -1075,7 +1065,7 @@ nav {
   visibility: hidden;
 }
 
-.organisational__block-title {
+.organisational__block-text {
   margin-bottom: 40px;
   color: rgba(0, 0, 0, 0.4);
 }
@@ -1086,6 +1076,7 @@ nav {
 }
 .answer--feedbacks {
   padding: 60px 150px;
+  overflow: hidden;
 }
 .answer--feedbacks::after {
   content: " ";
@@ -1132,8 +1123,7 @@ nav {
   left: 0;
 }
 .answer__block {
-  margin-top: 60px;
-  margin-left: 200px;
+  margin: 50px 200px;
   position: relative;
 }
 .answer__block--new {
@@ -1174,7 +1164,7 @@ nav {
   justify-content: space-between;
 }
 .toDoList__iDo {
-  width: 400px;
+  max-width: 400px;
 }
 .toDoList__title {
   font-weight: bold;
@@ -1412,6 +1402,12 @@ nav {
   .recording {
     padding: 60px;
   }
+  .recording__block-title {
+    font-size: 32px;
+  }
+  .recording__block-text {
+    font-size: 24px;
+  }
 
   .title-for-block {
     font-size: 36px;
@@ -1484,8 +1480,8 @@ nav {
     position: relative;
   }
   .carousel-indicators li.active::before {
-    left: -30px;
-    transform: translateY(50%);
+    left: -25px;
+    transform: translateY(0);
     border-width: 10px 0 10px 14px;
   }
 
@@ -1573,6 +1569,9 @@ nav {
   .relationship .principles__list-block {
     margin-bottom: 50px;
   }
+  .relationship .principles__list-block:last-child {
+    margin-bottom: 0;
+  }
   .relationship .principles__block-title::before {
     visibility: visible;
     position: relative;
@@ -1604,6 +1603,10 @@ nav {
     margin-bottom: 15px;
   }
 
+  .organisational__block-text {
+    font-size: 24px;
+  }
+
   .recording--new .recording__block {
     grid-gap: 0 50px;
   }
@@ -1611,19 +1614,39 @@ nav {
     font-size: 32px;
     width: 100%;
   }
+  .recording--new .recording__block-button {
+    font-size: 24px;
+    max-width: 250px;
+  }
 
   .answer__block {
     margin-left: 120px;
   }
 
+  .tree__first {
+    top: -110px;
+    height: 300px;
+  }
   .tree__first--consult {
     width: 320px;
+  }
+  .tree__second {
+    height: 200px;
+    left: -350px;
+    top: -120px;
   }
   .tree__second--consult {
     width: 450px;
   }
+  .tree__third {
+    height: 300px;
+    bottom: -120px;
+  }
   .tree__third--consult {
     width: 270px;
+  }
+  .tree__fourth {
+    display: 400px;
   }
 }
 @media all and (max-width: 900px) {
@@ -1655,34 +1678,20 @@ nav {
   .recording__block-button {
     font-size: 22px;
   }
-
-  .tree__first {
-    top: -110px;
-    height: 300px;
-  }
-
-  .tree__second {
-    height: 200px;
-    left: -350px;
-    top: -120px;
-  }
-
-  .tree__third {
-    height: 300px;
-    bottom: -120px;
-  }
-
-  .tree__fourth {
-    display: 400px;
-  }
 }
 @media all and (max-width: 750px) {
+  .header-nav {
+    font-size: 20px;
+  }
+  .header-nav__item {
+    line-height: 90px;
+  }
   .header__burger-btn {
     margin: 15px 30px;
   }
 
   .article {
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: minmax(320px, 1fr);
     grid-auto-rows: minmax(460px, auto);
   }
   .article__photo {
@@ -1691,6 +1700,9 @@ nav {
   .article-new {
     margin-top: 0;
   }
+  .article--another {
+    padding-left: 20px;
+  }
   .article--another .article__info {
     margin: 0;
   }
@@ -1698,10 +1710,13 @@ nav {
     margin: 0;
     font-size: 22px;
   }
+  .article__info-subtitle--italic {
+    color: #000;
+  }
 
   .mainContent > div,
 .recording {
-    padding: 100px 40px 50px 50px;
+    padding: 30px 20px 30px 30px;
   }
 
   .carousel {
@@ -1709,6 +1724,15 @@ nav {
   }
   .carousel-indicators {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  .carousel-indicators li.active::before {
+    left: -20px;
+  }
+
+  .principles__block-title::before {
+    position: relative;
+    transform: translate(0);
+    margin-right: 15px;
   }
 
   .about {
@@ -1731,40 +1755,75 @@ nav {
   .recording__block {
     grid-template-columns: 1fr;
     grid-gap: 20px;
-    padding: 30px;
+    padding: 20px;
+    border-width: 3px;
   }
   .recording__block-title {
-    font-size: 18px;
+    font-size: 22px;
     margin-bottom: 10px;
   }
   .recording__block-text {
-    font-size: 14px;
+    font-size: 16px;
   }
   .recording__block-button {
     padding: 15px;
     font-size: 18px;
   }
-
-  .principles .tree__first {
-    top: -80px;
-    height: 270px;
+  .recording--new .recording__block {
+    grid-template-columns: minmax(200px, 1fr);
+    padding: 20px;
+  }
+  .recording--new .recording__block-title {
+    font-size: 26px;
+  }
+  .recording--new .recording__block-form-title {
+    font-size: 14px;
+  }
+  .recording--new .recording__block-form-input {
+    font-size: 18px;
+    margin-bottom: 20px;
+    padding-bottom: 0;
+  }
+  .recording--new .recording__block-text {
+    font-size: 18px;
+  }
+  .recording--new .recording__block-button {
+    font-size: 22px;
+    padding: 20px;
+    width: 100%;
   }
 
   .mainContent > .relationship {
     padding: 0 40px 0 50px;
   }
 
-  .tree__second {
-    height: 180px;
-    left: -320px;
-    top: -110px;
-  }
-
-  .tree__third {
+  .tree__first {
+    top: -80px;
     height: 250px;
+  }
+  .tree__first--consult {
+    width: 250px;
+    top: 40%;
+    right: -180px;
+    z-index: -1;
+  }
+  .tree__second {
+    height: 130px;
+    left: -225px;
+    top: -70px;
+  }
+  .tree__second--consult {
+    display: none;
+  }
+  .tree__third {
+    height: 220px;
     bottom: -100px;
   }
-
+  .tree__third--consult {
+    width: 200px;
+    right: 3%;
+    top: calc(-100% - 30px);
+  }
   .tree__fourth {
     display: none;
   }
@@ -1799,6 +1858,46 @@ nav {
     margin: 0;
     justify-content: center;
     grid-column: -1/1;
+  }
+  .organisational__block-text {
+    font-size: 16px;
+  }
+
+  .toDoList {
+    grid-template-columns: minmax(200px, 250px);
+    font-size: 16px;
+  }
+  .toDoList__list li {
+    margin-bottom: 10px;
+  }
+  .toDoList__title {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+  .toDoList__iDo {
+    max-width: 250px;
+  }
+  .toDoList__iNotDo--block {
+    max-width: 250px;
+  }
+  .toDoList__iNotDo--block::before {
+    transform: rotate(55deg);
+    height: 190%;
+  }
+
+  .answer__block {
+    margin: 15px 30px;
+    margin-bottom: 40px;
+  }
+  .answer__block--new {
+    font-size: 22px;
+    padding: 20px 40px;
+  }
+
+  .title-for-block {
+    font-size: 32px;
+    margin: 0;
+    margin-bottom: 20px;
   }
 }
 

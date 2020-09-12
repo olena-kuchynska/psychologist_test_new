@@ -427,7 +427,8 @@ class AboutFormControll {
                 mainContent.classList.remove('blur');
                 footer.classList.remove('blur');
                 recording.classList.remove('blur'); 
-                setTimeout(() => { menu.setAttribute('style','display:none;') },170);
+                setTimeout(() => { menu.setAttribute('style','display:none;');},170);                
+                setTimeout(() => { menu.removeAttribute('style');},200);
             }
             
         });
@@ -591,7 +592,7 @@ class ConsultationView {
             </div>
             <div class="organisational__block">
                 <p class="title-for-block">Организационные моменты</p>
-                <p class="organisational__block-title">
+                <p class="organisational__block-text">
                 Я психолог, специализируюсь на личностно-центрированной терапии психотерапевт,
                 сертифицированный преподаватель практик, член Украинской
                 ассоциации когнитивно-поведенческой терапии,
@@ -599,7 +600,7 @@ class ConsultationView {
                 Украинской Ассоциации Транзактного Анализа и
                 Европейской Ассоциации Транзактного Анализа.
                 </p>
-                <p class="organisational__block-title">
+                <p class="organisational__block-text">
                 Я психолог, специализируюсь на личностно-центрированной терапии психотерапевт,
                 сертифицированный преподаватель практик, член Украинской
                 ассоциации когнитивно-поведенческой терапии,
@@ -607,7 +608,7 @@ class ConsultationView {
                 Украинской Ассоциации Транзактного Анализа и
                 Европейской Ассоциации Транзактного Анализа.
                 </p> 
-                <p class="organisational__block-title">
+                <p class="organisational__block-text">
                 Я психолог, специализируюсь на личностно-центрированной терапии психотерапевт,
                 сертифицированный преподаватель практик, член Украинской
                 ассоциации когнитивно-поведенческой терапии,
