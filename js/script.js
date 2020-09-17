@@ -447,7 +447,7 @@ class AboutFormControll {
             recording.classList.remove('blur');
             menu.removeAttribute('style');
 
-            if(currentEvent!=='Записаться') {
+            if(currentEvent!=='Записаться' && currentEvent.length < 20 ) {
                 this.subscribers.publish('reorganized');
                 if(currentEvent === 'Обо мне') {
                     this.subscribers.publish('about');/* 
@@ -737,45 +737,44 @@ class CabinetView {
 
     }
 
-    showForm() {
+    showForm() { 
+
         const mainContent = document.querySelector('.mainContent');
         mainContent.innerHTML = `
-        <img class="cabinet__img" src="./images/cabinet.png" alt="cabinet" />
+        <div class="cabinet">
+            <img class="cabinet__img" src="./images/cabinet.png" alt="cabinet" />
+            <span class="cabinet__description cabinet__description-first">Можем<br />перекусить</span>
+            <span class="cabinet__description cabinet__description-second">Мое образование</span>
+            <span class="cabinet__description cabinet__description-third cabinet__description--right">Забавные<br />подарки</span>
+            <span class="cabinet__description cabinet__description-fourth">Много<br />интересного</span>
+            <span class="cabinet__description cabinet__description-fifth cabinet__description--right">Искусство<br />в основе</span>
+            <span class="cabinet__description cabinet__description-sixth">Групповые<br />занятия</span>
+            <span class="cabinet__description cabinet__description-seventh">Все для вашего комфорта</span>
+        </div>
         <article class="location">
             <h1 class="location__title">Мой кабинет</h1>
             <p class="location__description">Как и в своей работе, в моем кабинете я стараюсь создать атмосферу комфорта и уюта.</p>
-            <div id="wrapper-9cd199b9cc5410cd3b1ad21cab2e54d3">
             <div class="location__map"> 
-            <iframe src="https://www.google.com/maps/d/embed?mid=1KWKO1v_9qWF90PK3R7huW-_5hlCmCxeq" width="350" height="220" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                <iframe  class="location__map-bg" src="https://www.google.com/maps/d/embed?mid=1KWKO1v_9qWF90PK3R7huW-_5hlCmCxeq" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                <span class="location__map-adress">Украина, Днепр,<br />Крутогорный спуск, 16А</span>
             </div>    
         </article>
-         <span class="cabinet__description cabinet__description-first">Можем<br />перекусить</span>
-        <span class="cabinet__description cabinet__description-second">Мое образование</span>
-        <span class="cabinet__description cabinet__description-third cabinet__description--right">Забавные<br />подарки</span>
-        <span class="cabinet__description cabinet__description-fourth">Много<br />интересного</span>
-        <span class="cabinet__description cabinet__description-fifth cabinet__description--right">Искусство<br />в основе</span>
-        <span class="cabinet__description cabinet__description-sixth">Групповые<br />занятия</span>
-        <span class="cabinet__description cabinet__description-seventh">Все для вашего комфорта</span>`;
+         `;
         
     }
 
-    reorganizedView() {
-        /* const mainContent = document.querySelector('.mainContent');
-        mainContent.classList.add('mainContent__horizontal'); */
-         
+    reorganizedView() {               
         const container = document.querySelector('.wrapper');
         container.classList.add('wrapper__cabinet');
 
         const body = document.querySelector('body');
-        body.setAttribute('style','overflow-y: hidden;');
+        body.setAttribute('style','overflow-y: hidden;');     
 
         const block = document.querySelector('.containier');
-        block.classList.add('containier--another');
-
-        /* const recording = document.querySelector('.recording__block');
-        recording.classList.add('recording__block--smaller'); */
-        
+        block.classList.add('containier--another');        
     }
+
+
 
 
 }
@@ -783,7 +782,7 @@ class CabinetView {
 
 class CabinetForm {
     constructor(view) {
-        this.view = view;        
+        this.view = view;  
     }
 
     handleShowForm() {
@@ -805,19 +804,46 @@ class CabinetFormControll {
         let height = document.documentElement.clientHeight;
         const cabinet = document.querySelector('.cabinet__img');
         cabinet.setAttribute('style',`height: ${height}` + `px;`);
+
+        if(document.documentElement.clientWidth >= 1200)  {
+            this.model.handleReorganized();
+        } else { 
+            const container = document.querySelector('.wrapper');
+            container.classList.remove('wrapper__cabinet');
+
+            const body = document.querySelector('body');
+            body.removeAttribute('style');     
+
+            const block = document.querySelector('.containier');
+            block.classList.remove('containier--another');
+
+            const cabinetImg = document.querySelector('.cabinet__img');
+            cabinetImg.addEventListener('load', () => {
+            const cabinet = document.querySelector('.cabinet');
+            let scroll = cabinet.scrollWidth * 0.4;
+            cabinet.scrollLeft += parseInt(scroll);
+        });
+        }
+         
+
     }
 
-    actionforForm() {
-        this.resizing();
-        /* window.addEventListener('resize',this.resizing()); */
+    actionforForm() {                     
+        window.addEventListener('resize',() => {this.resizing();});
+
+        const cabinetImg = document.querySelector('.cabinet__img');
+            cabinetImg.addEventListener('click', () => {
+            const cabinet = document.querySelector('.cabinet');
+            cabinet.scrollLeft += 100; 
+        });
 
     }
 
-    handleShowForm() {      
-        
-        this.model.handleReorganized();        
+    handleShowForm() {
         this.model.handleShowForm();
-        this.actionforForm();
+        this.resizing(); 
+        this.actionforForm();     
+              
     }
         
 }
