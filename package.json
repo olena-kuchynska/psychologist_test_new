@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,7 +22,8 @@
     "express": "^4.17.1",
     "jquery": "^3.5.1",
     "jquery-mask-plugin": "^1.14.16",
-    "nicescroll": "^3.7.4"
+    "nicescroll": "^3.7.4",
+    "nodemailer": "^6.4.11"
   },
   "devDependencies": {}
 }

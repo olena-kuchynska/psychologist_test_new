@@ -18,13 +18,13 @@ class AboutView {
                     <nav> 
                         <ul class="header-nav">
                             <li class="header-nav__item">
-                                <a href="#" class="header-nav__link">Обо мне</a>
+                                <a href="" class="header-nav__link">Обо мне</a>
                             </li>
                             <li class="header-nav__item">
-                                <a href="#" class="header-nav__link">Консультации</a>
+                                <a href="" class="header-nav__link">Консультации</a>
                             </li>
                             <li class="header-nav__item">
-                                <a href="#" class="header-nav__link">Кабинет</a>
+                                <a href="" class="header-nav__link">Кабинет</a>
                             </li>
                             <li class="header-nav__item">
                                 <a href="#recording" class="header-nav__link">Записаться</a>
@@ -323,7 +323,11 @@ class AboutView {
         if(articalPhoto && articalInfoText) {
 
             articalPhoto.remove();
-            articalInfoText.remove();        
+            articalInfoText.remove();
+            
+            /*const recordingForm = document.querySelector('.recording__block');
+             recordingForm.setAttribute('method', 'POST');
+            recordingForm.setAttribute('action', 'http://localhost:3000/'); */
 
             const article = document.querySelector('article');
             article.classList.add('article--another');
@@ -340,18 +344,25 @@ class AboutView {
             inputName.classList.add('recording__block-form-input');
             inputName.setAttribute('placeholder', 'Констатнтин');
             inputName.setAttribute('required', 'required');
+            inputName.setAttribute('name', 'name');
+
             const inputPhone = document.createElement('input');
             inputPhone.classList.add('recording__block-form-input');
             inputPhone.classList.add('recording__block-form-inputPhone');
             inputPhone.setAttribute('placeholder', '+38 066 605 91 25');
             inputPhone.setAttribute('required', 'required');
+            inputPhone.setAttribute('name', 'phone');
+
             const inputDate = document.createElement('input');
             inputDate.classList.add('recording__block-form-input');
             inputDate.setAttribute('type','datetime-local');
+            inputDate.setAttribute('name', 'date');
+
             const inputComments = document.createElement('textarea');
             inputComments.classList.add('recording__block-form-input');
             inputComments.classList.add('recording__block-form-inputText');
             inputComments.setAttribute('placeholder','Хочу разобраться в отношениях в семье и с самим собой.');
+            inputComments.setAttribute('name', 'comments');
 
             const titleName = document.createElement('p');
             titleName.innerText = 'Ваше имя';
@@ -378,11 +389,23 @@ class AboutView {
         
         
     }
+
+    resetInfo() {        
+        const inputName = document.getElementsByName('name');
+        inputName[0].value = '';
+        const inputPhone = document.getElementsByName('phone');
+        inputPhone[0].value = '';
+        const inputDate = document.getElementsByName('date');
+        inputDate[0].value = '';
+        const inputComments = document.getElementsByName('comments');
+        inputComments[0].value = '';
+    }
 }
 
 class AboutForm {
-    constructor(view) {
-        this.view = view;        
+    constructor(view, subscribers) {
+        this.view = view;
+        this.subscribers = subscribers;        
     }
 
     handleShowForm() {
@@ -391,9 +414,19 @@ class AboutForm {
     handleReorganized() {
         this.view.reorganizedView();
     }
-
-    sendMassege() {
-
+    sendMassege(massege) {        
+        fetch('/', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(massege)
+        })
+        .then(response => {
+            alert('Ваше сообщение отправлено!');
+            this.view.resetInfo();
+        })
+        .catch(err => console.error(`Connection Error:${err}`));  
     }
 }
 
@@ -458,20 +491,44 @@ class AboutFormControll {
             menu.removeAttribute('style');
 
             if(currentEvent!=='Записаться' && currentEvent.length < 20 ) {
-                this.subscribers.publish('reorganized');
+                event.preventDefault();                                    
+                this.subscribers.publish('reorganized'); 
+                let link = undefined;
                 if(currentEvent === 'Обо мне') {
-                    this.subscribers.publish('about');/* 
-                    history.pushState(null, null, '/about'); */
-                } else if(currentEvent === 'Консультации') {
-                    this.subscribers.publish('consultation');/* 
-                    history.pushState(null, null, '/consultation'); */
-                } else if(currentEvent === 'Кабинет') {
-                    this.subscribers.publish('cabinet');/* 
-                    history.pushState(null, null, '/cabinet'); */
+                    this.subscribers.publish('about');
+                    history.pushState(null,null,`/`);
+                } else {
+                    if(currentEvent === 'Консультации') {
+                        link = 'consultation';                    
+                    } else if(currentEvent === 'Кабинет') {                    
+                        link = 'cabinet';
+                    }
+                    history.pushState(null,null,`/${link}`);
+                    this.subscribers.publish(link);
                 }
             }
             
-        });        
+        });
+        
+        window.addEventListener('popstate', () => {
+            let currentEvent = window.location.href.split('http://localhost:3000/')[1];                             
+            this.subscribers.publish('reorganized'); 
+            let link = undefined;
+            if(currentEvent === '') {
+                this.subscribers.publish('about');
+                history.pushState(null,null,`/`);
+            } else {
+                if(currentEvent === 'consultation') {
+                    link = 'consultation';                    
+                } else if(currentEvent === 'cabinet') {                    
+                    link = 'cabinet';
+                } else if(currentEvent === 'feedbacks') {
+                    link = 'feedbacks';
+                }
+                history.pushState(null,null,`/${link}`);
+                this.subscribers.publish(link);
+            }
+        });
 
 
         caruselIndicatorsAll.forEach( caruselIndicators => { 
@@ -539,8 +596,21 @@ class AboutFormControll {
 
     actionForReorganized() {
         const recordingButton = document.querySelector('.recording__block-button');
-        recordingButton.addEventListener('click', () => {
-            this.model.sendMassege();
+        recordingButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            const inputName = document.getElementsByName('name');
+            const inputPhone = document.getElementsByName('phone');
+            const inputDate = document.getElementsByName('date');
+            const inputComments = document.getElementsByName('comments');
+
+            let massege = {
+                name: inputName[0].value,
+                phone: inputPhone[0].value,
+                inputDate: new Date(inputDate[0].value),
+                inputComments: inputComments[0].value,
+            }
+
+            this.model.sendMassege(massege);
         });
 
         jQuery(function($){
@@ -551,16 +621,13 @@ class AboutFormControll {
 }
 
 class ConsultationView {
-    constructor() {        
-
+    constructor() {
     }
 
     showForm() {
-        const container = document.querySelector('.wrapper');     
-
         const mainContent = document.querySelector('.mainContent');
         mainContent.innerHTML = `
-            <div class="relationship">
+        <div class="relationship">
                 <div class="article-new">
                     <p class="article__info-title">Консультации</p>
                     <p class="article__info-subtitle article__info-subtitle--italic">Моя основная специализация&nbsp;&mdash; отношения.</p>
@@ -662,9 +729,7 @@ class ConsultationView {
                         </ul>
                     </div>
                 </div>
-            </div>
-            
-        `;
+            </div>`;
     }
 
     showFeedbacks() {
@@ -713,6 +778,17 @@ class ConsultationForm {
     handleShowForm() {
         this.view.showForm();
     }
+
+    /* getConnection() {
+        return fetch(`/consultation`)
+        .then(res => res.text())
+        .then( res => {
+            console.log(res);
+            this.view.showForm(res);
+        })
+        .catch(err => console.error(`Connection Error:${err}`));
+    } */
+
     handleFeedbacks() {
         this.view.showFeedbacks();
     }
@@ -724,9 +800,9 @@ class ConsultationFormControll {
         this.subscribers = subscribers;
     }
 
-    handleShowForm() {
+    handleShowForm(){     
         this.model.handleShowForm();
-        this.actionforForm();
+        this.actionforForm(); 
     }
     
     handleFeedbacks() {
@@ -737,8 +813,8 @@ class ConsultationFormControll {
         const answers = document.querySelector('.answer__block');
         answers.addEventListener('click', event => {
             window.scrollTo(pageXOffset, 0);
-            this.handleFeedbacks();/* 
-            history.pushState(null, null, '/consultation#feedbacks');   */                      
+            this.handleFeedbacks();
+            history.pushState(null, null, '/feedbacks');                   
         });
     }
         
@@ -899,7 +975,7 @@ document.addEventListener ('DOMContentLoaded', function() {
     const subscribers = new PubSub();
 
     const aboutView = new AboutView();
-    const aboutForm = new AboutForm(aboutView);
+    const aboutForm = new AboutForm(aboutView, subscribers);
     const aboutFormController = new AboutFormControll(aboutForm, subscribers);
 
     const consultationView = new ConsultationView();
@@ -914,6 +990,7 @@ document.addEventListener ('DOMContentLoaded', function() {
     subscribers.subscribe('reorganized', aboutFormController.handleReorganized.bind(aboutFormController));
     subscribers.subscribe('consultation', consultationFormController.handleShowForm.bind(consultationFormController));
     subscribers.subscribe('cabinet', cabinetFormController.handleShowForm.bind(cabinetFormController));
+    subscribers.subscribe('feedbacks', consultationFormController.handleFeedbacks.bind(consultationFormController));
     
     aboutFormController.handleShowForm();
 
