@@ -414,13 +414,13 @@ class AboutForm {
     handleReorganized() {
         this.view.reorganizedView();
     }
-    sendMassege(massege) {        
+    sendMessage(message) {        
         fetch('/', {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json;charset=utf-8'
             },
-            body: JSON.stringify(massege)
+            body: JSON.stringify(message)
         })
         .then(response => {
             alert('Ваше сообщение отправлено!');
@@ -490,7 +490,7 @@ class AboutFormControll {
             recording.classList.remove('blur');
             menu.removeAttribute('style');
 
-            if(currentEvent!=='Записаться' && currentEvent.length < 20 ) {
+            if(currentEvent!=='Записаться' && currentEvent.length < 20 ) {                
                 event.preventDefault();                                    
                 this.subscribers.publish('reorganized'); 
                 let link = undefined;
@@ -506,27 +506,35 @@ class AboutFormControll {
                     history.pushState(null,null,`/${link}`);
                     this.subscribers.publish(link);
                 }
+                window.scrollTo(pageXOffset, 0);
             }
-            
+                        
+        });
+
+        document.addEventListener('unload', () => {
+            history.pushState(null,null,`/`);
         });
         
         window.addEventListener('popstate', () => {
-            let currentEvent = window.location.href.split('http://localhost:3000/')[1];                             
-            this.subscribers.publish('reorganized'); 
-            let link = undefined;
-            if(currentEvent === '') {
-                this.subscribers.publish('about');
-                history.pushState(null,null,`/`);
-            } else {
-                if(currentEvent === 'consultation') {
-                    link = 'consultation';                    
-                } else if(currentEvent === 'cabinet') {                    
-                    link = 'cabinet';
-                } else if(currentEvent === 'feedbacks') {
-                    link = 'feedbacks';
+            let currentEvent = window.location.href.split('http://localhost:3000/')[1];
+            let recording = window.location.href.split('#')[1];
+            if(!recording) {                             
+                this.subscribers.publish('reorganized'); 
+                let link = undefined;
+                if(currentEvent === '') {
+                    this.subscribers.publish('about');
+                    history.pushState(null,null,`/`);
+                } else {
+                    if(currentEvent === 'consultation') {
+                        link = 'consultation';                    
+                    } else if(currentEvent === 'cabinet') {                    
+                        link = 'cabinet';
+                    } else if(currentEvent === 'feedbacks') {
+                        link = 'feedbacks';
+                    }
+                    history.pushState(null,null,`/${link}`);
+                    this.subscribers.publish(link);
                 }
-                history.pushState(null,null,`/${link}`);
-                this.subscribers.publish(link);
             }
         });
 
@@ -598,19 +606,19 @@ class AboutFormControll {
         const recordingButton = document.querySelector('.recording__block-button');
         recordingButton.addEventListener('click', (event) => {
             event.preventDefault();
+            event.stopPropagation();
             const inputName = document.getElementsByName('name');
             const inputPhone = document.getElementsByName('phone');
             const inputDate = document.getElementsByName('date');
             const inputComments = document.getElementsByName('comments');
 
-            let massege = {
+            let message = {
                 name: inputName[0].value,
                 phone: inputPhone[0].value,
-                inputDate: new Date(inputDate[0].value),
+                inputDate: inputDate[0].value,
                 inputComments: inputComments[0].value,
             }
-
-            this.model.sendMassege(massege);
+            this.model.sendMessage(message);
         });
 
         jQuery(function($){

@@ -24,10 +24,10 @@ const transporter = nodemailer.createTransport({
 }, {
     from : 'Bot Appointment <appointmentbot01@gmail.com>',});
 
-const mailer = massege => {
-    transporter.sendMail( massege, (err, info) => {
+const mailer = message => {
+    transporter.sendMail( message, (err) => {
         if(err) return console.log(err);
-        console.log('Email send:', info);
+        console.log('Email send');
     })
 }
 
@@ -43,27 +43,36 @@ app.get('/', (req, res) => {
             res.send(data);
     }); 
     
-});
-
-app.get('/cabinet', (req, res) => {
-    res.sendStatus(200);
-});
-
-app.get('/consultation#feedbacks', (req, res) => {
-
-    res.sendStatus(200);
-}); */
+});*/
 
 app.post('/', (req, res) => {
-    let massege = {
-        to: 'bulatova853@gmail.com',
-        subject: 'Запись на прием',
-        text: req.body.name
+    let elemOfText = `
+        <h2>Запись на консультацию</h2>
+        <p>Имя клиента: <i>${req.body.name}</i></p>
+        <p>Номер телефона: <i>${req.body.phone}</i></p>`;
+
+    if(req.body.inputDate || req.body.inputComments) {
+        if(req.body.inputDate) {
+            let month = ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'];
+            let dayOfWeek = ['Воскресенье', 'Понедельник', 'Четверг', 'Среда', 'Пятница', 'Суббота'];
+ 
+            let date = new Date(req.body.inputDate);
+            let hours =  date.getHours() < 10 ? `0${date.getHours()}`: date.getHours();
+            let minutes =  date.getMinutes() < 10 ? `0${date.getMinutes()}`: date.getMinutes();
+            let dateStr = `${dayOfWeek[date.getDay() - 1]},${date.getDate()} ${month[date.getMonth()]} ${date.getFullYear()}, ${hours}:${minutes}`;
+            elemOfText += `<p>Желаемая дата встречи: <i>${dateStr}</i></p>`;
+        }
+        if(req.body.inputComments) elemOfText += `<p>Ожидание от встречи: <i>${req.body.inputComments}</i></p>`;
     }
-    mailer(massege);
-    massege = req.body;
+
+    let message = {
+        to: 'bulatova853@gmail.com',
+        subject: `Запись на консультацию, ${req.body.name}`,
+        html: elemOfText,
+    }
+
+    mailer(message);
     res.sendStatus(200);
-    /* res.redirect('/'); */
 });
 
 app.listen(port_number, () => {
