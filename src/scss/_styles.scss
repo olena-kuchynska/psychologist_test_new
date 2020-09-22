@@ -37,8 +37,7 @@
       display: inline-block;      
       border-radius: 25%;
       left: 0;
-      width: 100%;      
-      /* transition: all .2s; */
+      width: 100%;
       top: 50%;
       -webkit-transition: -webkit-transform 1s cubic-bezier(.23,1,.32,1);
       transition: transform 1s cubic-bezier(.23,1,.32,1);
@@ -51,8 +50,7 @@
       display: inline-block;      
       border-radius: 25%;
       left: 0;
-      width: 100%;      
-      /* transition: all .2s; */
+      width: 100%;
       top: 50%;            
       -webkit-transform: translateY(15px) translateZ(0);
         transform: translateY(15px) translateZ(0);
@@ -574,7 +572,64 @@
     }
   }  
 }
+//Modal window
+//-----------------------------------------------------------------------------
 
+.overlay {
+  background-color: rgba(190, 190, 190, 0.4);
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: fixed;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;  
+  z-index: 12;
+  opacity: 1;
+  transition: opacity 0.3s;
+
+  &__popup {
+    max-width: 300px;
+    margin: 20px;
+    padding: 20px;
+    position: relative;
+    background-color: #fff;
+    font-size: 18px;
+    border: 2px solid $elementsColor;
+    border-radius: 10px;
+    text-align: center;
+    transform: scale(1);
+    transition: transform 0.2s;
+    
+    &--close {
+      &::before {
+        content: "\D7";
+        position: absolute;   
+        margin: 0 10px;
+        font-size: 25px;
+        right: 0;
+        top: 0;
+        cursor: pointer;
+      }
+
+      &:hover {
+        color: $elementsColor;
+      }
+    } 
+  } 
+  &--close {     
+    z-index: -12;
+    opacity: 0;
+    transition: opacity 0.3s;
+    .overlay__popup {
+      transform: scale(.5);
+      transition: transform 0.2s;
+    }
+  }
+}
 
 //Recording block
 //-----------------------------------------------------------------------------
@@ -846,8 +901,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr ;
   grid-gap: 0 90px;
-  position: relative;/* 
-  overflow: hidden; */
+  position: relative;
 
   &__image {
         

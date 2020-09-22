@@ -302,7 +302,13 @@ class AboutView {
                         </ul>
                     </div>
                     <div class="footer__logo">Fedorov<br /> Desing Studio</div>
-                </footer>`;
+                </footer>
+                <div id="popup1" class="overlay overlay--close">
+                    <div class="overlay__popup">
+                        <span class="overlay__popup--close"></span>
+                        <p class="overlay__popup--content">Ваш запрос успешно отправлен.<br/>Ожидайте обратную связь в ближайшее время.</p>
+                    </div>
+                </div>`;
     }
 
     reorganizedView() {
@@ -324,10 +330,6 @@ class AboutView {
 
             articalPhoto.remove();
             articalInfoText.remove();
-            
-            /*const recordingForm = document.querySelector('.recording__block');
-             recordingForm.setAttribute('method', 'POST');
-            recordingForm.setAttribute('action', 'http://localhost:3000/'); */
 
             const article = document.querySelector('article');
             article.classList.add('article--another');
@@ -345,6 +347,7 @@ class AboutView {
             inputName.setAttribute('placeholder', 'Констатнтин');
             inputName.setAttribute('required', 'required');
             inputName.setAttribute('name', 'name');
+            inputName.setAttribute('autocomplete', 'off');
 
             const inputPhone = document.createElement('input');
             inputPhone.classList.add('recording__block-form-input');
@@ -352,6 +355,7 @@ class AboutView {
             inputPhone.setAttribute('placeholder', '+38 066 605 91 25');
             inputPhone.setAttribute('required', 'required');
             inputPhone.setAttribute('name', 'phone');
+            inputPhone.setAttribute('autocomplete', 'off');
 
             const inputDate = document.createElement('input');
             inputDate.classList.add('recording__block-form-input');
@@ -363,6 +367,7 @@ class AboutView {
             inputComments.classList.add('recording__block-form-inputText');
             inputComments.setAttribute('placeholder','Хочу разобраться в отношениях в семье и с самим собой.');
             inputComments.setAttribute('name', 'comments');
+            inputComments.setAttribute('autocomplete', 'off');
 
             const titleName = document.createElement('p');
             titleName.innerText = 'Ваше имя';
@@ -403,9 +408,8 @@ class AboutView {
 }
 
 class AboutForm {
-    constructor(view, subscribers) {
-        this.view = view;
-        this.subscribers = subscribers;        
+    constructor(view) {
+        this.view = view;   
     }
 
     handleShowForm() {
@@ -423,8 +427,9 @@ class AboutForm {
             body: JSON.stringify(message)
         })
         .then(response => {
-            alert('Ваше сообщение отправлено!');
+            try {
             this.view.resetInfo();
+            } catch {console.log(`Access error: ${response}`)};            
         })
         .catch(err => console.error(`Connection Error:${err}`));  
     }
@@ -456,6 +461,11 @@ class AboutFormControll {
         const mainContent = document.querySelector('.mainContent');
         const recording = document.querySelector('.recording');                
         const footer = document.querySelector('.footer');
+        const overlay = document.querySelector('.overlay');
+
+        overlay.addEventListener('click', (event) => {
+            overlay.classList.add('overlay--close');
+        });
 
 
         burger.addEventListener('change', event => {  
@@ -511,10 +521,6 @@ class AboutFormControll {
                         
         });
 
-        document.addEventListener('unload', () => {
-            history.pushState(null,null,`/`);
-        });
-        
         window.addEventListener('popstate', () => {
             let currentEvent = window.location.href.split('http://localhost:3000/')[1];
             let recording = window.location.href.split('#')[1];
@@ -602,24 +608,32 @@ class AboutFormControll {
         
     }
 
-    actionForReorganized() {
-        const recordingButton = document.querySelector('.recording__block-button');
-        recordingButton.addEventListener('click', (event) => {
-            event.preventDefault();
-            event.stopPropagation();
-            const inputName = document.getElementsByName('name');
-            const inputPhone = document.getElementsByName('phone');
-            const inputDate = document.getElementsByName('date');
-            const inputComments = document.getElementsByName('comments');
+    listener = (event) => {
+        const inputName = document.getElementsByName('name');
+        const inputPhone = document.getElementsByName('phone');
+        const inputDate = document.getElementsByName('date');
+        const inputComments = document.getElementsByName('comments');
+        
+        let message = {
+            name: inputName[0].value,
+            phone: inputPhone[0].value,
+            inputDate: inputDate[0].value,
+            inputComments: inputComments[0].value,
+        }
 
-            let message = {
-                name: inputName[0].value,
-                phone: inputPhone[0].value,
-                inputDate: inputDate[0].value,
-                inputComments: inputComments[0].value,
-            }
+        if(inputPhone[0].value.length !== 17)  {inputPhone[0].setCustomValidity('Введите данные корректно');}
+        else if(inputName[0].value !== "" && inputPhone[0].value !== "") {                
+            event.preventDefault();
             this.model.sendMessage(message);
-        });
+            const overlay = document.querySelector('.overlay');
+            overlay.classList.remove('overlay--close');
+        }
+    }
+
+    actionForReorganized() {
+        const recordingButton = document.querySelector('.recording__block-button');                    
+        recordingButton.removeEventListener('click', this.listener, false);
+        recordingButton.addEventListener('click', this.listener);
 
         jQuery(function($){
             $('.recording__block-form-inputPhone').mask("+38 099 999 99 99");

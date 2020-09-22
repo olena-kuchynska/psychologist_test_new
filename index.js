@@ -31,44 +31,43 @@ const mailer = message => {
     })
 }
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'src', 'index.html'));
-});
-
-/* app.get('/consultation', (req, res) => {
-    fs.readFile(path.join(__dirname,'consult.html'), 'utf8', 
-        function(error,data){
-            console.log("Асинхронное чтение файла");
-            if(error) throw error; // если возникла ошибка
-            res.send(data);
-    }); 
-    
-});*/
-
-app.post('/', (req, res) => {
+let textMessage = (name, phone, inputDate, inputComments) => {
     let elemOfText = `
         <h2>Запись на консультацию</h2>
-        <p>Имя клиента: <i>${req.body.name}</i></p>
-        <p>Номер телефона: <i>${req.body.phone}</i></p>`;
+        <p>Имя клиента: <i>${name}</i></p>
+        <p>Номер телефона: <i>${phone}</i></p>`;
 
-    if(req.body.inputDate || req.body.inputComments) {
-        if(req.body.inputDate) {
+    if(inputDate || inputComments) {
+        if(inputDate) {
             let month = ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'];
             let dayOfWeek = ['Воскресенье', 'Понедельник', 'Четверг', 'Среда', 'Пятница', 'Суббота'];
  
-            let date = new Date(req.body.inputDate);
+            let date = new Date(inputDate);
             let hours =  date.getHours() < 10 ? `0${date.getHours()}`: date.getHours();
             let minutes =  date.getMinutes() < 10 ? `0${date.getMinutes()}`: date.getMinutes();
             let dateStr = `${dayOfWeek[date.getDay() - 1]},${date.getDate()} ${month[date.getMonth()]} ${date.getFullYear()}, ${hours}:${minutes}`;
             elemOfText += `<p>Желаемая дата встречи: <i>${dateStr}</i></p>`;
         }
-        if(req.body.inputComments) elemOfText += `<p>Ожидание от встречи: <i>${req.body.inputComments}</i></p>`;
+        if(inputComments) elemOfText += `<p>Ожидание от встречи: <i>${inputComments}</i></p>`;
     }
 
+    return elemOfText;
+}
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'src', 'index.html'));
+});
+
+app.get('/:name', (req, res) => {
+    res.redirect('/');
+});
+
+app.post('/', (req, res) => {   
+
     let message = {
-        to: 'bulatova853@gmail.com',
+        to: 'tawiw98077@eurazx.com',
         subject: `Запись на консультацию, ${req.body.name}`,
-        html: elemOfText,
+        html: textMessage(req.body.name, req.body.phone, req.body.inputDate, req.body.inputComments),
     }
 
     mailer(message);
