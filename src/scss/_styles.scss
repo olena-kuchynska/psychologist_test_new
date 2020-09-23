@@ -907,7 +907,7 @@
         
 
     &-block{
-    background: url(../images/consultation-image.png) no-repeat center center;
+    background: url(../images/consultation-image.png) no-repeat center center; 
     background-size: cover;
     height: 520px;
     width: 520px;
@@ -2000,8 +2000,8 @@
     }
   }
 
-  .about {
-    /* background-position-x: -630px; */
+  .about {    
+  background-image: url(../images/about-me-1200.png);
 
     &__block {
       max-width: 280px;
