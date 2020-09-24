@@ -54,7 +54,7 @@ let textMessage = (name, phone, inputDate, inputComments) => {
 }
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'src', 'index.html'));
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
 app.get('/:name', (req, res) => {
