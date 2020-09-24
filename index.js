@@ -8,6 +8,7 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use('/node_modules', express.static(__dirname + '/node_modules'));
 app.use(express.static(__dirname + '/dist'));
 app.use(bodyParser.urlencoded({ extended: false }))
 
