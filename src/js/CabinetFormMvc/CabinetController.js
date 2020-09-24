@@ -8,27 +8,30 @@ export default class CabinetFormControll {
         let height = document.documentElement.clientHeight;
         const cabinet = document.querySelector('.cabinet');
         const cabinetImg = document.querySelector('.cabinet__img');
-        cabinetImg.setAttribute('style',`height: ${height}` + `px;`);
 
-        if(document.documentElement.clientWidth > 1200)  {
-            this.model.handleReorganized();
-        } else { 
-            const container = document.querySelector('.wrapper');
-            container.classList.remove('wrapper__cabinet');
+        if(cabinetImg) {
 
-            const body = document.querySelector('body');
-            body.removeAttribute('style');     
+            cabinetImg.setAttribute('style',`height: ${height}` + `px;`);
 
-            const block = document.querySelector('.containier');
-            block.classList.remove('containier--another');
+            if(document.documentElement.clientWidth > 1200)  {
+                this.model.handleReorganized();
+            } else { 
+                const container = document.querySelector('.wrapper');
+                container.classList.remove('wrapper__cabinet');
 
-            cabinetImg.addEventListener('load', () => {
-                let scroll = cabinet.scrollWidth * 0.4;
-                cabinet.scrollLeft = parseInt(scroll);
-            });
-        }
-         
+                const body = document.querySelector('body');
+                body.removeAttribute('style');     
 
+                const block = document.querySelector('.containier');
+                block.classList.remove('containier--another');
+
+                cabinetImg.addEventListener('load', () => {
+                    let scroll = cabinet.scrollWidth * 0.4;
+                    cabinet.scrollLeft = parseInt(scroll);
+                });
+            }
+
+        } 
     }
 
     actionforForm() {                     

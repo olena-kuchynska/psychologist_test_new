@@ -1,6 +1,3 @@
-import jquery from 'jquery/dist/jquery.min.js'
-import nicescroll from 'nicescroll/dist/jquery.nicescroll.min.js';
-import mask from 'jquery-mask-plugin/dist/jquery.mask.min.js';
 import AboutView from './AboutFormMvc/AboutView';
 import AboutForm from './AboutFormMvc/AboutForm';
 import AboutFormControll from './AboutFormMvc/AboutController';

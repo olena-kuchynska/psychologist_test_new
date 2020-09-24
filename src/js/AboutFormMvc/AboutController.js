@@ -171,32 +171,32 @@ export default class AboutFormControll {
         
     }
 
-    listener(event) {
-        const inputName = document.getElementsByName('name');
-        const inputPhone = document.getElementsByName('phone');
-        const inputDate = document.getElementsByName('date');
-        const inputComments = document.getElementsByName('comments');
-        
-        let message = {
-            name: inputName[0].value,
-            phone: inputPhone[0].value,
-            inputDate: inputDate[0].value,
-            inputComments: inputComments[0].value,
-        }
-
-        if(inputPhone[0].value.length !== 17)  {inputPhone[0].setCustomValidity('Введите данные корректно');}
-        else if(inputName[0].value !== "" && inputPhone[0].value !== "") {                
-            event.preventDefault();
-            this.model.sendMessage(message);
-            const overlay = document.querySelector('.overlay');
-            overlay.classList.remove('overlay--close');
-        }
-    }
-
     actionForReorganized() {
-        const recordingButton = document.querySelector('.recording__block-button');                    
-        recordingButton.removeEventListener('click', this.listener, false);
-        recordingButton.addEventListener('click', this.listener);
+        const recordingButton = document.querySelector('.recording__block-button');        
+
+        let listener = (event) => {
+            const inputName = document.getElementsByName('name');
+            const inputPhone = document.getElementsByName('phone');
+            const inputDate = document.getElementsByName('date');
+            const inputComments = document.getElementsByName('comments');
+            
+            let message = {
+                name: inputName[0].value,
+                phone: inputPhone[0].value,
+                inputDate: inputDate[0].value,
+                inputComments: inputComments[0].value,
+            }
+
+            if(inputPhone[0].value.length !== 17)  {inputPhone[0].setCustomValidity('Введите данные корректно');}
+            else if(inputName[0].value !== "" && inputPhone[0].value !== "") {                
+                event.preventDefault();
+                this.model.sendMessage(message);
+                const overlay = document.querySelector('.overlay');
+                overlay.classList.remove('overlay--close');
+            }
+        }                    
+        recordingButton.removeEventListener('click', listener, false);
+        recordingButton.addEventListener('click', listener);
 
         jQuery(function($){
             $('.recording__block-form-inputPhone').mask("+38 099 999 99 99");

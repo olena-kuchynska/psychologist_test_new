@@ -1,13 +1,16 @@
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const webpack = require('webpack');
 
 module.exports =  {  
         mode: 'development',
-        entry: __dirname + '/src/js/script.js',
+        entry: __dirname + '/src/main.js',
         output: {
             path: __dirname + '/dist', 
             filename: 'main.js',  
@@ -16,9 +19,6 @@ module.exports =  {
         optimization: {
             minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
         },
-        resolve: {
-            modulesDirectories: ['node_modules']
-        },
         module: {  
             rules: [
                 {
@@ -26,29 +26,49 @@ module.exports =  {
                     exclude: [
                         /node_modules/,
                         /index.js/,
-                        /script1.js/,
                     ],
                     loader: 'babel-loader',
                     options: {
                         presets: ['@babel/preset-env']
                     }
-                },
-                {
+                }, 
+                { 
                     test: /\.s[ac]ss$/i,
                     use: [
-                        // Creates `style` nodes from JS strings
-                        'style-loader',
-                        // Translates CSS into CommonJS
-                        'css-loader',
+                        'style-loader', 
                         MiniCssExtractPlugin.loader,
-                        // Compiles Sass to CSS
-                        'sass-loader',
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                sourceMap: true,
+                            }
+                        },
+                        'sass-loader'
                     ],
-                  }
+                },
+                { 
+                    test: /\.css$/,
+                    use: [
+                        'style-loader', 
+                        MiniCssExtractPlugin.loader,
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                sourceMap: true,
+                            }
+                        }
+                    ],
+                }, 
+                {
+                    test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2)$/i,
+                    loader: 'url-loader',
+                }
             ]
         },
         plugins: [
-            new MiniCssExtractPlugin(),
+            new MiniCssExtractPlugin({
+                filename: 'styles/styles.css'
+            }),
             new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
             new HtmlWebpackPlugin({
                 template: __dirname + '/src/index.html'
@@ -56,8 +76,16 @@ module.exports =  {
             new CopyWebpackPlugin( {
                 patterns: [
                 { from: __dirname + '/src/images', to: 'images' },
-                { from: __dirname + '/src/styles', to: 'styles' }
+                { from: __dirname + '/src/fonts', to: 'fonts' },
                 ]
+            }),
+            new webpack.ProvidePlugin({
+                $: 'jquery',
+                jQuery: 'jquery'
             })      
-        ]
+        ],
+        devServer: {
+            contentBase: './dist',
+            open: true
+        } 
     };
