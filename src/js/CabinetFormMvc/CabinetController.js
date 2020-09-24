@@ -51,13 +51,19 @@ export default class CabinetFormControll {
             cursorwidth: "5px",
             cursorborderradius: "15px",
             cursorborder:"0px solid #505050",
-            background: "rgb(140, 189, 16)",          
-            sensitiverail: true,
+            background: "rgb(140, 189, 16)",
             owerflowy: false,
         });
 
+
         const cabinetImg = document.querySelector('.cabinet__img');
-            cabinetImg.addEventListener('keydown', event => {            
+
+        cabinetImg.addEventListener('click', event => {                      
+            var past = document.documentElement.clientWidth * 0.5;
+            event.offsetX > past ? cabinet.scrollLeft += 50 : cabinet.scrollRight += 50;
+        });
+
+        cabinetImg.addEventListener('keydown', event => {            
             if(event.code === "ArrowRight") {
                 cabinet.scrollLeft += 100;
             } else if(event.code === "ArrowLeft") {
