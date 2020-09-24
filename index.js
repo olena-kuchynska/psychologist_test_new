@@ -2,6 +2,7 @@ const path = require('path'); // module for working with path
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
+require('dotenv').config();
 const fs = require('fs');
 
 const app = express();
@@ -12,17 +13,17 @@ app.use('/node_modules', express.static(__dirname + '/node_modules'));
 app.use(express.static(__dirname + '/dist'));
 app.use(bodyParser.urlencoded({ extended: false }))
 
-const port_number = 3000;
+const port_number = process.env.PORT;
 const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 587,
     secure: false,
     auth: {
-        user: 'appointmentbot01@gmail.com',
-        pass: '58462587136rt'
+        user: process.env.EMAIL,
+        pass: process.env.PASS
     }
 }, {
-    from : 'Bot Appointment <appointmentbot01@gmail.com>',});
+    from : `Bot Appointment <${process.env.EMAIL}>`,});
 
 const mailer = message => {
     transporter.sendMail( message, (err) => {
