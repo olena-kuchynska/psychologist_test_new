@@ -60,8 +60,6 @@ export default class CabinetFormControll {
 
         cabinet.addEventListener('click', event => {                      
             var past = document.documentElement.clientWidth * 0.5;
-            console.log(past,event.clientX);
-
             if(event.clientX >= past) {
                 cabinet.scrollLeft += 100;
             } else if(event.clientX < past) {
