@@ -58,17 +58,25 @@ export default class CabinetFormControll {
 
         const cabinetImg = document.querySelector('.cabinet__img');
 
-        cabinetImg.addEventListener('click', event => {                      
+        cabinet.addEventListener('click', event => {                      
             var past = document.documentElement.clientWidth * 0.5;
-            event.offsetX > past ? cabinet.scrollLeft += 50 : cabinet.scrollRight += 50;
+            console.log(past,event.clientX);
+
+            if(event.clientX >= past) {
+                cabinet.scrollLeft += 100;
+            } else if(event.clientX < past) {
+                cabinet.scrollLeft -= 100;
+            }
+
         });
 
         cabinetImg.addEventListener('keydown', event => {            
             if(event.code === "ArrowRight") {
                 cabinet.scrollLeft += 100;
             } else if(event.code === "ArrowLeft") {
-                cabinet.scrollRight += 100;
+                cabinet.scrollLeft -= 100;
             }
+
         });
 
     }
