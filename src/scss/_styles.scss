@@ -2138,6 +2138,10 @@
   .footer {
     margin-bottom: 50px;
 
+    &__block {
+      margin: 20px;
+    }
+
     &__logo{
       font-size: 15px;
       &::before {
