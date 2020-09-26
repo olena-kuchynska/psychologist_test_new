@@ -15,7 +15,7 @@ document.addEventListener ('DOMContentLoaded', function() {
 
     const aboutView = new AboutView();
     const aboutForm = new AboutForm(aboutView);
-    const aboutFormController = new AboutFormControll(aboutForm, subscribers);
+    const aboutFormController = new AboutFormControll(aboutForm, subscribers, window.location.href);
 
     const consultationView = new ConsultationView();
     const consultationForm = new ConsultationForm(consultationView);

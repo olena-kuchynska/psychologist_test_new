@@ -1,7 +1,8 @@
 export default class AboutFormControll {
-    constructor(model, subscribers) {
+    constructor(model, subscribers, host) {
         this.model = model;
         this.subscribers = subscribers;
+        this.host = host;
     }
 
     handleShowForm() {
@@ -85,7 +86,7 @@ export default class AboutFormControll {
         });
 
         window.addEventListener('popstate', () => {
-            let currentEvent = window.location.href.split('http://localhost:3000/')[1];
+            let currentEvent = window.location.href.split(host)[1];
             let recording = window.location.href.split('#')[1];
             if(!recording) {                             
                 this.subscribers.publish('reorganized'); 
