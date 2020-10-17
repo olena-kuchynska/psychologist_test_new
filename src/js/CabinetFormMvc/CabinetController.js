@@ -5,13 +5,10 @@ export default class CabinetFormControll {
     }
 
     resizing() {
-        let height = document.documentElement.clientHeight;
         const cabinet = document.querySelector('.cabinet');
         const cabinetImg = document.querySelector('.cabinet__img');
 
         if(cabinetImg) {
-
-            cabinetImg.setAttribute('style',`height: ${height}` + `px;`);
 
             if(document.documentElement.clientWidth > 1200)  {
                 this.model.handleReorganized();

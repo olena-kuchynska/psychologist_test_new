@@ -11,7 +11,6 @@ export default class AboutFormControll {
 
     handleReorganized() {
         this.model.handleReorganized();
-        this.actionForReorganized();
     }
 
     actionforForm() {
@@ -24,12 +23,15 @@ export default class AboutFormControll {
         const mainContent = document.querySelector('.mainContent');
         const recording = document.querySelector('.recording');                
         const footer = document.querySelector('.footer');
-        const overlay = document.querySelector('.overlay');
+        const closeRecord = document.querySelector('.recording__block-elem');
 
-        overlay.addEventListener('click', (event) => {
-            overlay.classList.add('overlay--close');
+        closeRecord.addEventListener('click', (event) => {
+            recording.classList.add('recording--close'); 
+            article.classList.remove('blur');
+            mainContent.classList.remove('blur');
+            footer.classList.remove('blur');
+            menu.classList.remove('blur');
         });
-
 
         burger.addEventListener('change', event => {  
             if (event.target.checked === true) {                                
@@ -37,12 +39,10 @@ export default class AboutFormControll {
                 article.classList.add('blur');
                 mainContent.classList.add('blur');
                 footer.classList.add('blur');
-                recording.classList.add('blur');
             } else {                
                 article.classList.remove('blur');
                 mainContent.classList.remove('blur');
                 footer.classList.remove('blur');
-                recording.classList.remove('blur'); 
                 setTimeout(() => { menu.setAttribute('style','display:none;');},170);                
                 setTimeout(() => { menu.removeAttribute('style');},200);
             }
@@ -60,11 +60,10 @@ export default class AboutFormControll {
             article.classList.remove('blur');
             mainContent.classList.remove('blur');
             footer.classList.remove('blur');
-            recording.classList.remove('blur');
-            menu.removeAttribute('style');
+            menu.removeAttribute('style');                
+            event.preventDefault();
 
-            if(currentEvent!=='Записаться' && currentEvent.length < 20 ) {                
-                event.preventDefault();                                    
+            if(currentEvent!=='Записаться' && currentEvent.length < 20 ) {                           
                 this.subscribers.publish('reorganized'); 
                 let link = undefined;
                 if(currentEvent === 'Обо мне') {
@@ -80,6 +79,12 @@ export default class AboutFormControll {
                     this.subscribers.publish(link);
                 }
                 window.scrollTo(pageXOffset, 0);
+            } else if(currentEvent === 'Записаться') {
+                recording.classList.remove('recording--close');                
+                article.classList.add('blur');
+                mainContent.classList.add('blur');
+                footer.classList.add('blur');
+                menu.classList.add('blur');
             }
                         
         });
@@ -167,11 +172,8 @@ export default class AboutFormControll {
 
                 }
             }); 
-        }); 
+        });
         
-    }
-
-    actionForReorganized() {
         const recordingButton = document.querySelector('.recording__block-button');        
 
         let listener = (event) => {
@@ -187,20 +189,21 @@ export default class AboutFormControll {
                 inputComments: inputComments[0].value,
             }
 
-            if(inputPhone[0].value.length !== 17)  {inputPhone[0].setCustomValidity('Введите данные корректно');}
-            else if(inputName[0].value !== "" && inputPhone[0].value !== "") {                
-                event.preventDefault();
-                this.model.sendMessage(message);
-                const overlay = document.querySelector('.overlay');
-                overlay.classList.remove('overlay--close');
-            }
-        }                    
-        recordingButton.removeEventListener('click', listener, false);
+            /* if(inputPhone[0].value.length !== 17)  {inputPhone[0].setCustomValidity('Введите данные корректно');}
+            else if(inputName[0].value !== "" && inputPhone[0].value !== "") { 
+            } */
+
+            event.preventDefault();
+            recording.classList.add('recording--close');
+            this.model.sendMessage(message);
+        }
+
         recordingButton.addEventListener('click', listener);
 
         jQuery(function($){
             $('.recording__block-form-inputPhone').mask("+38 099 999 99 99");
         });
+        
     }
         
 } 

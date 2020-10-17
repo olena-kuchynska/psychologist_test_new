@@ -1,16 +1,23 @@
-//Navigation
-//-----------------------------------------------------------------------------
-a {
-  &:active,
-  &:hover,
-  &:focus {
-    outline: none;
+.hidden-scroll {
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar {
+      width: 3px;
+      background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+      background-color: transparent;
   }
 }
+//Navigation
+//-----------------------------------------------------------------------------
 .header {
   
   nav {
-    z-index: 98;
+    z-index: 8;
   }
   
   &__burger {
@@ -35,33 +42,26 @@ a {
         cursor: pointer;
       }
     }
-
-    &-icon2 {
-      position: absolute;
-      background-color: $elementsColor;
-      height: 3px;
-      display: inline-block;      
-      border-radius: 25%;
-      left: 0;
-      width: 100%;
-      top: 50%;
-      -webkit-transition: -webkit-transform 1s cubic-bezier(.23,1,.32,1);
-      transition: transform 1s cubic-bezier(.23,1,.32,1);
-    }
-
+    &-icon2,
     &-icon3 {
       position: absolute;
       background-color: $elementsColor;
       height: 3px;
       display: inline-block;      
       border-radius: 25%;
-      left: 0;
       width: 100%;
-      top: 50%;            
-      -webkit-transform: translateY(15px) translateZ(0);
-        transform: translateY(15px) translateZ(0);
-      -webkit-transition: -webkit-transform 1s cubic-bezier(.23,1,.32,1);
       transition: transform 1s cubic-bezier(.23,1,.32,1);
+    }
+
+    &-icon2 {
+      left: 0;
+      top: 50%;
+    }
+
+    &-icon3 {
+      left: 0;
+      top: 50%;
+      transform: translateY(15px) translateZ(0);      
     }
 
   }
@@ -158,8 +158,7 @@ a {
 .mainContent > div:nth-of-type(even) {
   background-color: $secondaryBGColor;
 }
-.mainContent > div,
-.recording {
+.mainContent > div {
   display: grid;
   padding: 100px 140px 100px 200px;
   grid-template-columns: repeat(auto-fill, 1fr);
@@ -395,6 +394,7 @@ a {
   &__block {
   &-text {
     background-color: $elementsColor;
+    color: #fff;
     border-radius: 20px 20px 0 20px;           
     padding: 30px 40px;
     margin-bottom: 35px;
@@ -498,11 +498,6 @@ a {
   }
 }
 
-.recording {
-  padding: 100px;
-}
-
-
 //Decoration elements
 //-----------------------------------------------------------------------------
 
@@ -578,10 +573,27 @@ a {
     }
   }  
 }
+
+a,
+li,
+input,
+button {
+  &:active,
+  &:hover,
+  &:focus {
+    outline: none;
+  }
+}
+
+input {
+  border-radius: 0;
+  outline: none;
+}
+
 //Modal window
 //-----------------------------------------------------------------------------
 
-.overlay {
+/* .overlay {
   background-color: rgba(190, 190, 190, 0.4);
   top: 0;
   left: 0;
@@ -635,34 +647,95 @@ a {
       transition: transform 0.2s;
     }
   }
-}
+} */
 
 //Recording block
 //-----------------------------------------------------------------------------
 
-.recording{ 
+.recording{   
+  position: fixed;
+  top: 0;
+  left: 0;  
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  background-color: rgba(#bebebe, 0.4);
+  z-index: 10;
+  opacity: 1;
 
   &__block {
-    padding: 50px;
-    padding-left: 100px;
+    background-color: rgba(#fff, 0.8);
+    transform: scale(1);
+    padding: 50px;    
+    margin: 5% 10%;
     border: 10px solid $elementsColor;
     border-radius: 20px;    
+    max-height: 70%;
+    overflow: auto;
     display: grid;
-    grid-template-columns: 2fr 400px;
-    align-items: center;
-    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px 100px;
+    grid-template-areas: 
+      "article info"
+      "button info";
+    @extend .hidden-scroll;
+    position: relative;
+    transition: transform 0.2s ease-in-out;
 
     &-title {
+      width: 50%;
       margin-bottom: 50px;
       font-size: 36px;
       font-weight: bold;      
     }
 
     &-text {
-      font-size: 32px;
+      font-size: 24px;
+    }
+
+    &-article {
+      grid-area: article;
+    }
+
+    &-form {
+      grid-area: info;
+
+      &-title {
+        font-size: 18px;
+      }
+      &-input {
+        margin-bottom: 40px;
+        background-color: transparent;
+        border: none;
+        border-bottom: 2px solid $elementsColor;
+        opacity: .8;
+        padding-bottom: 10px;
+        transition: all .5s ease-in-out;
+        width: 100%;
+        height: 40px;
+
+        &:focus {
+          opacity: 1;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+                
+      &-inputText {
+        height: 60px;
+        resize: none;
+        display: block;
+        @extend .hidden-scroll;
+      }
     }
 
     &-button {
+      grid-area: button;
+      display: inline-block;
+      max-width: 270px;
       padding: 25px;
       font-size: 32px;
       border-radius: 10px;
@@ -671,102 +744,51 @@ a {
       background-color: $elementsColor;
       border: none;
       align-self: flex-end;
-      transition: box-shadow .3s;
-
-      &:focus {
-        outline: none;
-      }
+      transition: all .3s ease-in-out;
 
       &:hover {
         cursor: pointer;
-        box-shadow: 0 0 11px rgba(33,33,33,.5);
-      }
-
-      a {
-        text-decoration: none;
-        color: #fff;
-        &:active {
-          color: #fff;
-        }
-      }
+        background-color: $elementsColorHover;
+      } 
     }
     
-  }
-}
+    &-close {
+      border: none;
+      background-color: transparent;
+      position: absolute;
+      height: 100%;
+      width: 30px;
+      top: 0;
+      right: 10px;
+    }
 
-.recording--new {
-  .recording{ 
+    &-elem {      
+      position: sticky;
+      color: $elementsColor;
+      top: -30px;
+      width: 100%;
 
-    &__block {
-      grid-gap: 0 100px;
-      grid-template-areas: 
-      "article info"
-      "button info";
-      align-items: start;     
-
-      &-title {        
-        width: 50%;
+      &:hover {
+        cursor: pointer;
       }
-      &-text {
+       
+      &::before {
+        content: "\f00d";
+        margin-top: 10px;
+        font-weight: bold;
+        font-family: "Font Awesome 5 Free";
         font-size: 24px;
-        
       }
-      
+    }
+  }
 
-      &-article {
-        grid-area: article;
-        font-size: 32px;
-      }
- 
-      &-button {
-        grid-area: button;
-        display: inline-block;
-        width: 270px;        
-      }
+  &--close {     
+    z-index: -10;
+    opacity: 0;
 
-      &-form {
-        grid-area: info;
-
-        &-title {
-          font-size: 18px;
-        }
-        &-input {
-          margin-bottom: 40px;
-          background-color: transparent;
-          border: none;
-          border-bottom: 2px solid $elementsColor;
-          opacity: .8;
-          padding-bottom: 10px;
-          transition: all .5s;
-          width: 100%;
-          height: 40px;
-          &:focus {
-            outline: none;
-            opacity: 1;
-            transition: all .5s;
-          }
-        }
-                  
-        &-inputText {
-          resize: none;
-          height: 80px;
-          display: block;
-          &::-webkit-scrollbar-track {
-              background-color: transparent;
-          }
-
-          &::-webkit-scrollbar {
-              width: 3px;
-              background-color: transparent;
-          }
-
-          &::-webkit-scrollbar-thumb {
-              background-color: transparent;
-          }
-        }
-      }
-      
-    }    
+    .recording__block {
+      transform: scale(.5);
+    }
   }
 }
 
@@ -778,9 +800,9 @@ a {
   grid-template-columns: 1.5fr repeat(3,1fr) 1.5fr;
   justify-items: center;
   align-items: center;
-  margin: 0px 50px;
-  margin-bottom: 150px;
+  margin: 50px;
   grid-gap: 50px;
+
   &__block {
    
     &-subtitie{
@@ -887,8 +909,9 @@ a {
       font-size: 40px;
       color: #d0021b;
       position: absolute;
-      left: 12px;
+      left: 15px;
       transform: rotate(-25deg);
+      top: calc(50% - 22px);
     }
     
     
@@ -995,8 +1018,7 @@ a {
         }
       }
     
-      &-text {         
-        color: $primaryBGColor;
+      &-text {
         width: 60%;
         float: right;
         margin-bottom: 20px;
@@ -1028,28 +1050,16 @@ a {
       display: inline-block;
       margin: auto 0;
       font-weight: bold;
-      color: $primaryBGColor;  
-      cursor: pointer;
+      color: $primaryBGColor;
       border-radius: 20px;
-      transition: box-shadow .3s;
+      transition: all .3s ease-in-out;
 
-      &:hover {
-        box-shadow: 0 0 11px rgba(33,33,33,.5);
-        &::before {
-          content: "";
-          position: absolute;
-          width: 50px;
-          height: 75px;
-          background: transparent;
-          transform: rotate(60deg);
-          top: 50px;
-          left: 28px;
-          box-shadow: 14px 0 11px -11px rgba(33,33,33,.3);
-        }
+      &:hover {  
+        cursor: pointer;
+        background-color: $elementsColorHover;
         &::after {
-          box-shadow: 7px 0 6px -5px rgba(33,33,33,.3);
+          border-right-color: $elementsColorHover;
         }
-
       } 
 
       &::after {
@@ -1057,6 +1067,7 @@ a {
         left: 40px;
         bottom: -29px;
         border-width: 0 50px 30px 0;
+        transition: all .3s ease-in-out;
       }
     }
   }
@@ -1123,7 +1134,7 @@ a {
   
     display: inline-block;
     position: relative;
-    .recording {
+    /* .recording {
       position: absolute;
       padding: 0;
       right: 0;
@@ -1169,7 +1180,7 @@ a {
         }
       }
 
-    }
+    } */
     
     & .footer {
       position: absolute;
@@ -1217,11 +1228,11 @@ a {
   position: relative;
   &__img {
     float: left;
+    height: 100vh;
     @include clearfix;
   }
   &__description{
     font-size: 20px;
-    color: $elementsColor;
     font-weight: bolder;
     z-index: 1000;
     position: absolute;
@@ -1332,9 +1343,8 @@ a {
 
   
   .header {
-
     nav {
-      font-size: larger;
+      font-size: 2rem;
       font-weight: bold;       
       position: fixed;      
       height: 100%;
@@ -1348,41 +1358,41 @@ a {
     &-nav {
       -webkit-transform: scale(0.85);
       -ms-transform: scale(0.85);
-      transform: scale(0.85);         
-      transition: all 0.2s;
+      transform: scale(0.85);
+      margin-top: 100px;
+      transition: all 0.2s ease-in-out;
       flex-direction: column;
-      align-content: flex-start;
-      justify-content: center;
-      align-items: center;      
-      height: 100%; 
+      align-items: center;
 
         &__link {
           box-sizing: border-box;
-          padding: 0;
           display: inline;
 
           &:hover {
-            border-bottom: 8px solid $elementsColor;
-            border-radius: 8px;
-            transition: all .2s;
-    
+            
             &::before {
               width: 0;
               height: 0;
               top: 0;
             }     
-          }
-
-          &:active {
-            border-bottom: 8px solid $elementsColor;
-            border-radius: 8px;
-            transition: all .2s;
-          }
-          
+          }          
         }
 
-        &__item {           
-          line-height: 120px;
+        &__item {
+          align-self: center;           
+          width: 100%;
+          text-align: left;
+          padding: 30px;
+          border-top: 1px solid rgba($secondaryBGColor, .8);
+
+          &:last-child {            
+            border-bottom: 1px solid rgba($secondaryBGColor, .8);
+          }
+
+          &:active,
+          &:focus {
+            background-color: rgba($secondaryBGColor, .3);
+          }
         }      
     }
 
@@ -1394,23 +1404,9 @@ a {
     }
   }
 
-  .mainContent > div,
-  .recording {
+  .mainContent > div {
     padding: 60px 80px 100px 120px;
   }
-
-  .recording {
-    padding: 60px;
-
-    &__block {
-      &-title {
-        font-size: 32px;
-      }
-      &-text {
-        font-size: 24px;
-      }
-    }    
-}
   
   .title-for-block {
     font-size: 36px;
@@ -1479,7 +1475,13 @@ a {
       grid-template-columns: repeat(auto-fill,minmax(250px,370px));
       margin-top: 0;
       grid-gap: 50px;
-      font-size: 16px;  
+      font-size: 16px;
+
+      &-block {        
+        &:last-child {
+          margin-bottom: 30px;
+        }
+      }
     }
   
     &__block {
@@ -1592,8 +1594,7 @@ a {
     justify-content: space-around;
     flex-wrap: wrap;
     flex-grow: 1;
-    margin: 0px 50px;
-    margin-bottom: 150px;
+    grid-gap: 30px;
     
     &__block {
       margin: 0 20px;
@@ -1642,7 +1643,7 @@ a {
         margin-left: 10px;
         &-block {        
         margin-bottom: 50px;
-          &:last-child{
+          &:last-child {
             margin-bottom: 0;
           }
         }
@@ -1656,7 +1657,7 @@ a {
             margin-right: 10px;
             transform: translate(0);
           }
-        }  
+        }
       }
     }
   }
@@ -1697,27 +1698,7 @@ a {
     }
   }
 
-  .recording{
-    &--new {
-      .recording__block {        
-        grid-gap: 0 50px;
-        &-title{
-          font-size: 32px;
-          width: 100%;
-        }
-        &-button {
-          font-size: 24px;
-          max-width: 250px;
-        }
-        &-form {
-          &-inputText {
-            height: 50px;
-          }
-        }
-      }
-    }
-    
-  }
+  
   .answer {
     &--feedbacks{
       padding: 0 80px 100px 120px;
@@ -1852,8 +1833,6 @@ a {
 }
 
 @media all and (max-width:900px) {
-  .recording{
-    &--new {
       .recording__block {        
         grid-gap: 20px 0;
         grid-template-areas:
@@ -1861,9 +1840,6 @@ a {
         "info"
         "button";
       }
-    }
-    
-  }
 }
 
 
@@ -1877,7 +1853,7 @@ a {
     }
   }
 
-  .recording{
+  /* .recording{
 
     &__block {
       grid-template-columns: 1fr;
@@ -1897,7 +1873,7 @@ a {
       }
       
     }
-  }
+  } */
     
 }
 
@@ -1908,19 +1884,12 @@ a {
   .header {
 
     &-nav {
-      font-size: 20px;
       &__item {
-        line-height: 90px;
       }
       &__link {
-        &:active {
-          border-bottom: 6px solid $elementsColor;
-          border-radius: 6px;
-          transition: all .2s;
-        }
-        &:hover {
-          border-bottom: 6px solid $elementsColor;
-          border-radius: 6px;
+        &:active,
+        &:focus {
+          
         }
       }
     }
@@ -1971,8 +1940,7 @@ a {
       }
     }
   }
-  .mainContent > div,
-  .recording {
+  .mainContent > div {
     padding: 50px 20px 30px 30px;
   }
   .mainContent > .relationship {
@@ -2007,13 +1975,18 @@ a {
   }
 
   .about {    
-  background-image: url(../images/about-me-1200.png);
+  background-image: none;
+  height: auto;
 
     &__block {
       max-width: 280px;
       align-self: center;
       margin: 0;
       margin-bottom: 50px;
+      &-title {
+        margin-bottom: 40px;
+        margin-top: 0;
+      }
     }
   }
 
@@ -2028,71 +2001,51 @@ a {
     }
   }
 
-  .recording{
+  /* .recording{
     
     &__block {
-      grid-template-columns: 1fr;
       grid-gap: 20px;
       padding: 20px;
       border-width: 3px;
+      grid-template-columns: minmax(200px,1fr);
 
       &-title {
-        font-size: 22px;
+        font-size: 26px;
         margin-bottom: 10px;   
       }
 
       &-text {
-        font-size: 16px;
+        font-size: 18px;
+      }
+      &-form {
+        &-title {
+          font-size: 14px;
+        }
+        &-input {
+          font-size: 18px;
+          margin-bottom: 20px;
+          padding-bottom: 0;            
+        }         
+
+        &-inputText {
+          height: 60px;
+        }
       }
 
       &-button {
-        padding: 15px;
-        font-size: 18px;        
-      }
-      
-    }
-    
-    &--new {
-      .recording__block {
-        grid-template-columns: minmax(200px,1fr);
+        font-size: 22px;
         padding: 20px;
-
-        &-title {
-          font-size: 26px;
-        }
-        &-form {
-          &-title {
-            font-size: 14px;
-          }
-          &-input {
-            font-size: 18px;
-            margin-bottom: 20px;
-            padding-bottom: 0;            
-          }         
-
-          &-inputText {
-            height: 60px;
-          }
-        }
-        &-text {
-          font-size: 18px;
-        }
-        &-button {
-          font-size: 22px;
-          padding: 20px;
-          width: 100%;
-        }
-      }
-
-    }
-
-  }
+        width: 100%;       
+      }      
+    }    
+   
+  } */
 
   
   .tree {
     &__first {
       top: -80px;
-      height: 250px;
+      height: 200px;
 
       &--consult {
         width: 250px;
@@ -2142,15 +2095,10 @@ a {
   }
 
   .footer {
-    margin-bottom: 50px;
-
-    &__block {
-      margin: 20px;
-    }
 
     &__logo{
       font-size: 15px;
-      margin: 20px;
+
       &::before {
         font-size: 38px;
       }

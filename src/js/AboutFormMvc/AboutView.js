@@ -11,7 +11,6 @@ export default class AboutView {
                 <header class="header">
                     <input id="burger" type="checkbox" class="header__burger-state"/>                
                     <label for="burger" class="header__burger-btn">
-                        <!--<span class="header__burger-icon1"></span>-->
                         <span class="header__burger-icon2"></span>
                         <span class="header__burger-icon3"></span>
                     </label>
@@ -244,9 +243,9 @@ export default class AboutView {
                         </div>
                     </div>                
                 </main>
-                <section class="recording" id="recording">
+                <section class="recording recording--close">
                     <form class="recording__block">
-                        <div class ="recording__block-acticle">
+                        <div class="recording__block-acticle">
                             <p class="recording__block-title">Запишитесь на&nbsp;консультацию</p>
                             <p class="recording__block-text">
                             Я помогаю улучшить качество жизни и
@@ -254,7 +253,31 @@ export default class AboutView {
                             в семье до вопросов саморазвития.
                             </p>
                         </div>
-                        <button class="recording__block-button"><a href="tg://resolve?domain=bulatik0101" target="_blank">Написать в Telegram</a></button>
+                        <div class="recording__block-form">
+                            <p class="recording__block-form-title">Ваше имя</p>
+                            <input class="recording__block-form-input" 
+                                placeholder="Констатнтин" required="required" 
+                                name="name" 
+                                autocomplete="off">
+                            <p class="recording__block-form-title">Ваш номер телефона</p>
+                            <input class="recording__block-form-input recording__block-form-inputPhone" 
+                                placeholder="+38 066 605 91 25" required="required" 
+                                name="phone" 
+                                autocomplete="off" 
+                                maxlength="17">
+                            <p class="recording__block-form-title">Удбные даты и время</p>
+                            <input class="recording__block-form-input"
+                                placeholder="12 октября 2020"
+                                name="date">
+                            <p class="recording__block-form-title">Что вы ожидаете от встречи?</p>
+                            <textarea class="recording__block-form-input recording__block-form-inputText"
+                                placeholder="Хочу разобраться в отношениях в семье и с самим собой." 
+                                name="comments" 
+                                autocomplete="off">
+                            </textarea>
+                        </div>
+                        <button class="recording__block-button">Отправить</button>
+                        <div class="recording__block-close"><span class="recording__block-elem"></span></div>
                     </form>
                 </section>
                 <footer class="footer">
@@ -302,13 +325,7 @@ export default class AboutView {
                         </ul>
                     </div>
                     <div class="footer__logo">Fedorov<br /> Desing Studio</div>
-                </footer>
-                <div id="popup1" class="overlay overlay--close">
-                    <div class="overlay__popup">
-                        <span class="overlay__popup--close"></span>
-                        <p class="overlay__popup--content">Ваш запрос успешно отправлен.<br/>Ожидайте обратную связь в ближайшее время.</p>
-                    </div>
-                </div>`;
+                </footer>`;
     }
 
     reorganizedView() {
@@ -322,9 +339,7 @@ export default class AboutView {
         mainContent.innerHTML = '';
 
         const articalPhoto = document.querySelector('.article__photo');        
-        const articalInfoText = document.querySelector('.article__info-text');  
-        const recordingButton = document.querySelector('.recording__block-button');
-        const recording = document.querySelector('.recording');
+        const articalInfoText = document.querySelector('.article__info-text');
 
         if(articalPhoto && articalInfoText) {
 
@@ -333,63 +348,6 @@ export default class AboutView {
 
             const article = document.querySelector('article');
             article.classList.add('article--another');
-
-            recordingButton.innerHTML = 'Отправить';
-            recording.classList.add('recording--new');
-
-            const recordingInfo = document.createElement('div');
-            recordingInfo.classList.add('recording__block-form');
-            recordingButton.before(recordingInfo);
-
-
-            const inputName = document.createElement('input');
-            inputName.classList.add('recording__block-form-input');
-            inputName.setAttribute('placeholder', 'Констатнтин');
-            inputName.setAttribute('required', 'required');
-            inputName.setAttribute('name', 'name');
-            inputName.setAttribute('autocomplete', 'off');
-
-            const inputPhone = document.createElement('input');
-            inputPhone.classList.add('recording__block-form-input');
-            inputPhone.classList.add('recording__block-form-inputPhone');
-            inputPhone.setAttribute('placeholder', '+38 066 605 91 25');
-            inputPhone.setAttribute('required', 'required');
-            inputPhone.setAttribute('name', 'phone');
-            inputPhone.setAttribute('autocomplete', 'off');
-
-            const inputDate = document.createElement('input');
-            inputDate.classList.add('recording__block-form-input');
-            inputDate.setAttribute('type','datetime-local');
-            inputDate.setAttribute('name', 'date');
-
-            const inputComments = document.createElement('textarea');
-            inputComments.classList.add('recording__block-form-input');
-            inputComments.classList.add('recording__block-form-inputText');
-            inputComments.setAttribute('placeholder','Хочу разобраться в отношениях в семье и с самим собой.');
-            inputComments.setAttribute('name', 'comments');
-            inputComments.setAttribute('autocomplete', 'off');
-
-            const titleName = document.createElement('p');
-            titleName.innerText = 'Ваше имя';
-            titleName.classList.add('recording__block-form-title');
-            const titlePhone = document.createElement('p');
-            titlePhone.innerText = 'Ваш номер телефона';
-            titlePhone.classList.add('recording__block-form-title');
-            const titleDate = document.createElement('p');
-            titleDate.innerText = 'Удбные даты и время';
-            titleDate.classList.add('recording__block-form-title');
-            const titleComments = document.createElement('p');
-            titleComments.innerText = 'Что вы ожидаете от встречи?';
-            titleComments.classList.add('recording__block-form-title');
-
-            recordingInfo.appendChild(titleName);
-            recordingInfo.appendChild(inputName);
-            recordingInfo.appendChild(titlePhone);
-            recordingInfo.appendChild(inputPhone);
-            recordingInfo.appendChild(titleDate);
-            recordingInfo.appendChild(inputDate);            
-            recordingInfo.appendChild(titleComments);
-            recordingInfo.appendChild(inputComments);
         }
         
         
