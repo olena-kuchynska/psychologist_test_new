@@ -11,7 +11,7 @@ export default class CabinetFormControll {
         if(cabinetImg) {
 
             if(document.documentElement.clientWidth > 1200)  {
-                this.model.handleReorganized();
+                this.model.handleReorganized();  
             } else { 
                 const container = document.querySelector('.wrapper');
                 container.classList.remove('wrapper__cabinet');
@@ -26,6 +26,8 @@ export default class CabinetFormControll {
                     let scroll = cabinet.scrollWidth * 0.4;
                     cabinet.scrollLeft = parseInt(scroll);
                 });
+                                 
+                this.actionforForm();
             }
 
         } 
@@ -78,9 +80,7 @@ export default class CabinetFormControll {
 
     handleShowForm() {
         this.model.handleShowForm();
-        this.resizing(); 
-        this.actionforForm();     
-              
+        this.resizing();
     }
         
 }

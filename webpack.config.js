@@ -9,7 +9,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const webpack = require('webpack');
 
 module.exports =  {  
-        mode: 'production',
+        mode: 'development',
         entry: __dirname + '/src/main.js',
         output: {
             path: __dirname + '/dist', 

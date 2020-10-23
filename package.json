@@ -8,6 +8,7 @@
   },
   "scripts": {
     "start": "node index.js",
+    "nodemon": "nodemon index.js",
     "watch": "webpack --watch",
     "build": "webpack",
     "dev": "webpack --env.mode=development",

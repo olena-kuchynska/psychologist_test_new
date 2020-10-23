@@ -34,7 +34,7 @@ export default class CabinetView {
         container.classList.add('wrapper__cabinet');
 
         const body = document.querySelector('body');
-        body.setAttribute('style','overflow-y: hidden;');     
+        body.setAttribute('style','overflow-y: hidden;'); 
 
         const block = document.querySelector('.containier');
         block.classList.add('containier--another');        

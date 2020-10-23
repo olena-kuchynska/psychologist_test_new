@@ -273,8 +273,7 @@ export default class AboutView {
                             <textarea class="recording__block-form-input recording__block-form-inputText"
                                 placeholder="Хочу разобраться в отношениях в семье и с самим собой." 
                                 name="comments" 
-                                autocomplete="off">
-                            </textarea>
+                                autocomplete="off"></textarea>
                         </div>
                         <button class="recording__block-button">Отправить</button>
                         <div class="recording__block-close"><span class="recording__block-elem"></span></div>

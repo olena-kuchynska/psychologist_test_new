@@ -24,6 +24,7 @@ export default class AboutFormControll {
         const recording = document.querySelector('.recording');                
         const footer = document.querySelector('.footer');
         const closeRecord = document.querySelector('.recording__block-elem');
+        const burgerMenu = document.querySelector('.header__burger-btn');
 
         closeRecord.addEventListener('click', (event) => {
             recording.classList.add('recording--close'); 
@@ -31,6 +32,7 @@ export default class AboutFormControll {
             mainContent.classList.remove('blur');
             footer.classList.remove('blur');
             menu.classList.remove('blur');
+            burgerMenu.removeAttribute('style'); 
         });
 
         burger.addEventListener('change', event => {  
@@ -84,7 +86,8 @@ export default class AboutFormControll {
                 article.classList.add('blur');
                 mainContent.classList.add('blur');
                 footer.classList.add('blur');
-                menu.classList.add('blur');
+                menu.classList.add('blur');                  
+                burgerMenu.setAttribute('style', 'z-index: -1;');
             }
                         
         });
@@ -192,10 +195,16 @@ export default class AboutFormControll {
             /* if(inputPhone[0].value.length !== 17)  {inputPhone[0].setCustomValidity('Введите данные корректно');}
             else if(inputName[0].value !== "" && inputPhone[0].value !== "") { 
             } */
-
+            
             event.preventDefault();
-            recording.classList.add('recording--close');
             this.model.sendMessage(message);
+
+            article.classList.remove('blur');
+            mainContent.classList.remove('blur');
+            footer.classList.remove('blur');
+            menu.classList.remove('blur');
+            recording.classList.add('recording--close');            
+            burgerMenu.removeAttribute('style');
         }
 
         recordingButton.addEventListener('click', listener);
