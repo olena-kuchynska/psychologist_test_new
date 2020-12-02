@@ -3,7 +3,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, 
 }
 
 body {
-  background: $primaryBGColor;
   font: 26px $primaryFont;
   height: 100%;
   color: $baseFontColor;
@@ -13,6 +12,7 @@ body {
   height: 100%;
   margin: 0 auto;
   @include clearfix;
+  background: $primaryBGColor;
 }
 
 

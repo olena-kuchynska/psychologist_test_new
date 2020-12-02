@@ -275,7 +275,7 @@ export default class AboutView {
                                 name="comments" 
                                 autocomplete="off"></textarea>
                         </div>
-                        <button class="recording__block-button">Отправить</button>
+                        <div class="recording__block-send"><button class="recording__block-button">Отправить</button></div>
                         <div class="recording__block-close"><span class="recording__block-elem"></span></div>
                     </form>
                 </section>

@@ -9,13 +9,13 @@ export default class CabinetView {
         mainContent.innerHTML = `
         <div class="cabinet">
             <img class="cabinet__img" src="./images/cabinet.png" alt="cabinet" />
-            <span class="cabinet__description cabinet__description-first">Можем<br />перекусить</span>
+            <!--<span class="cabinet__description cabinet__description-first">Можем<br />перекусить</span>
             <span class="cabinet__description cabinet__description-second">Мое образование</span>
             <span class="cabinet__description cabinet__description-third cabinet__description--right">Забавные<br />подарки</span>
             <span class="cabinet__description cabinet__description-fourth">Много<br />интересного</span>
             <span class="cabinet__description cabinet__description-fifth cabinet__description--right">Искусство<br />в основе</span>
             <span class="cabinet__description cabinet__description-sixth">Групповые<br />занятия</span>
-            <span class="cabinet__description cabinet__description-seventh">Все для вашего комфорта</span>
+            <span class="cabinet__description cabinet__description-seventh">Все для вашего комфорта</span>-->
         </div>
         <article class="location">
             <h1 class="location__title">Мой кабинет</h1>
@@ -33,8 +33,8 @@ export default class CabinetView {
         const container = document.querySelector('.wrapper');
         container.classList.add('wrapper__cabinet');
 
-        const body = document.querySelector('body');
-        body.setAttribute('style','overflow-y: hidden;'); 
+        /*const body = document.querySelector('body');
+        body.setAttribute('style','overflow-y: hidden;');*/
 
         const block = document.querySelector('.containier');
         block.classList.add('containier--another');        

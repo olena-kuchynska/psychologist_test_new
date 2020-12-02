@@ -16,8 +16,8 @@ export default class CabinetFormControll {
                 const container = document.querySelector('.wrapper');
                 container.classList.remove('wrapper__cabinet');
 
-                const body = document.querySelector('body');
-                body.removeAttribute('style');     
+                /* const body = document.querySelector('body');
+                body.removeAttribute('style');      */
 
                 const block = document.querySelector('.containier');
                 block.classList.remove('containier--another');

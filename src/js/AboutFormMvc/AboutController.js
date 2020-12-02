@@ -211,8 +211,15 @@ export default class AboutFormControll {
 
         jQuery(function($){
             $('.recording__block-form-inputPhone').mask("+38 099 999 99 99");
-        });
+        });       
+
+        const rails = document.querySelectorAll('.nicescroll-rails');
         
+        if(rails) {
+            rails.forEach(item => {
+                item.remove();
+            })
+        }
     }
         
 } 

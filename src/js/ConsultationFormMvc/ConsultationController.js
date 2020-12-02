@@ -15,6 +15,14 @@ export default class ConsultationFormControll {
 
     actionforForm() {
         const answers = document.querySelector('.answer__block');
+        const rails = document.querySelectorAll('.nicescroll-rails');
+        
+        if(rails) {
+            rails.forEach(item => {
+                item.remove();
+            })
+        }
+        
         answers.addEventListener('click', event => {
             window.scrollTo(pageXOffset, 0);
             this.handleFeedbacks();
